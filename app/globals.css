@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 246 248 252;
+  --foreground: 11 18 32;
+  --card: 255 255 255;
+  --card-foreground: 11 18 32;
+  --muted: 90 102 124;
+  --border: 220 229 240;
+  --primary: 16 91 255;
+  --primary-foreground: 255 255 255;
+  --accent: 27 208 230;
+  --ring: 82 146 255;
+  --soft-glow: 26 211 238;
+  color-scheme: light;
+}
+
+.dark {
+  --background: 5 10 19;
+  --foreground: 237 243 255;
+  --card: 10 17 30;
+  --card-foreground: 237 243 255;
+  --muted: 142 156 182;
+  --border: 31 43 66;
+  --primary: 84 145 255;
+  --primary-foreground: 3 8 18;
+  --accent: 45 216 233;
+  --ring: 84 145 255;
+  --soft-glow: 45 216 233;
+  color-scheme: dark;
+}
+
+html {
+  background: rgb(var(--background));
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.14), transparent 28%),
+    radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 24%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.45), transparent 18%),
+    rgb(var(--background));
+  color: rgb(var(--foreground));
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 26%),
+    radial-gradient(circle at top right, rgba(34, 211, 238, 0.14), transparent 22%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02), transparent 18%),
+    rgb(var(--background));
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.22);
+  color: rgb(var(--foreground));
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--ring));
+  outline-offset: 3px;
+}
+
+* {
+  border-color: rgb(var(--border));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
