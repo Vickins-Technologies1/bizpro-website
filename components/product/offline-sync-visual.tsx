@@ -2,26 +2,26 @@ import { Cloud, Laptop, RotateCcw, WifiOff } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const steps = [
-  { label: "User action", icon: Laptop, caption: "Tap, sell or update stock" },
-  { label: "Saved locally", icon: WifiOff, caption: "Core action persists on device" },
-  { label: "Queued for sync", icon: RotateCcw, caption: "Ready for the next connection" },
-  { label: "Internet returns", icon: Cloud, caption: "Connectivity is detected" },
-  { label: "Cloud updated", icon: Cloud, caption: "Data flows back to the cloud" }
+  { label: "Sale", icon: Laptop, caption: "Record the action" },
+  { label: "Local", icon: WifiOff, caption: "Saved on device" },
+  { label: "Queue", icon: RotateCcw, caption: "Waiting to sync" },
+  { label: "Reconnect", icon: Cloud, caption: "Internet returns" },
+  { label: "Cloud", icon: Cloud, caption: "Synced data" }
 ] as const;
 
 export function OfflineSyncVisual() {
   return (
-    <Card className="relative overflow-hidden p-5 sm:p-6">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(45,216,233,0.12),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.10),transparent_30%)]" />
+    <Card className="relative overflow-hidden p-4 sm:p-5">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(45,216,233,0.10),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.08),transparent_30%)]" />
       <div className="relative">
-        <div className="grid gap-3 md:grid-cols-5">
+        <div className="grid gap-2.5 md:grid-cols-5">
           {steps.map((step, index) => {
             const Icon = step.icon;
 
             return (
               <div
                 key={step.label}
-                className="relative rounded-2xl border border-border/70 bg-background/70 p-4"
+                className="relative rounded-2xl border border-border/70 bg-background/70 p-3.5"
               >
                 {index < steps.length - 1 ? (
                   <div className="absolute right-[-0.6rem] top-1/2 hidden h-px w-6 -translate-y-1/2 bg-gradient-to-r from-primary/50 to-accent/70 md:block motion-safe:animate-sync-drift" />
@@ -40,14 +40,14 @@ export function OfflineSyncVisual() {
           })}
         </div>
 
-        <div className="mt-6 rounded-3xl border border-border/70 bg-card/80 p-4">
-          <div className="flex items-center justify-between text-xs uppercase tracking-[0.22em] text-muted">
+        <div className="mt-5 rounded-3xl border border-border/70 bg-card/80 p-3.5">
+          <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-muted">
             <span>Offline</span>
             <span>Queue</span>
             <span>Reconnect</span>
             <span>Sync</span>
           </div>
-          <div className="mt-4 h-2 overflow-hidden rounded-full bg-border/60">
+          <div className="mt-3 h-2 overflow-hidden rounded-full bg-border/60">
             <div className="h-full w-1/2 rounded-full bg-gradient-to-r from-[rgb(var(--primary))] via-[rgb(var(--accent))] to-[rgb(var(--primary))] motion-safe:animate-sync-drift" />
           </div>
         </div>
@@ -55,4 +55,3 @@ export function OfflineSyncVisual() {
     </Card>
   );
 }
-

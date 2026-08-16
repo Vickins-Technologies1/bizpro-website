@@ -53,9 +53,9 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-8xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex w-full max-w-[77rem] items-center justify-between gap-3 px-4 py-2.5 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
-          <span className="relative h-9 w-28">
+          <span className="relative h-8 w-24 sm:w-28">
             <Image
               src="/brand/logo-light.svg"
               alt="BizPro"
@@ -103,14 +103,13 @@ export function Navbar() {
 
       {menuOpen ? (
         <div className="border-t border-border/60 bg-background/95 lg:hidden">
-          <div className="mx-auto grid w-full max-w-8xl gap-3 px-4 py-4 sm:px-6">
+          <div className="mx-auto grid w-full max-w-[77rem] gap-3 px-4 py-4 sm:px-6">
             <nav className="grid gap-1" aria-label="Mobile navigation">
               {navigation.map((item) => (
                 <NavLink key={item.href} href={item.href} label={item.label} active={pathname === item.href} mobile />
               ))}
             </nav>
             <div className="grid gap-3 rounded-3xl border border-border/70 bg-card/80 p-4 shadow-panel">
-              <p className="text-sm text-muted">Primary conversion goal: download BizPro for Android.</p>
               <DownloadCTA className="w-full justify-center" />
               <Link href="/download" className={buttonStyles("outline", "w-full justify-center")}>
                 Open download page

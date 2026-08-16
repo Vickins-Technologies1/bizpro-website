@@ -5,24 +5,29 @@ export type DownloadLink = {
   label: string;
 };
 
+function readPublicEnv(name: string, fallback: string) {
+  const value = process.env[name];
+  return value && value.trim() ? value.trim() : fallback;
+}
+
 export const siteConfig = {
   siteName: "BizPro",
   tagline: "Business OS",
   description:
     "BizPro is an offline-first Business Operating System for managing sales, POS, inventory, finance, teams and everyday business operations.",
-  websiteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://bizpro.example.com",
-  apkUrl: process.env.NEXT_PUBLIC_ANDROID_APK_URL ?? "",
-  contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
-  contactPhone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "",
-  whatsappUrl: process.env.NEXT_PUBLIC_WHATSAPP_URL ?? "",
-  supportHours: process.env.NEXT_PUBLIC_SUPPORT_HOURS ?? "Mon-Fri, 9:00-17:00",
-  productVersion: process.env.NEXT_PUBLIC_PRODUCT_VERSION ?? "Coming soon",
-  minimumAndroidVersion: process.env.NEXT_PUBLIC_MIN_ANDROID_VERSION ?? "Android 8.0+",
-  defaultCurrency: process.env.NEXT_PUBLIC_DEFAULT_CURRENCY ?? "KES",
-  analyticsEndpoint: process.env.NEXT_PUBLIC_ANALYTICS_ENDPOINT ?? "",
+  websiteUrl: readPublicEnv("NEXT_PUBLIC_SITE_URL", "https://bizpro.vickinstechnologies.com"),
+  apkUrl: readPublicEnv("NEXT_PUBLIC_ANDROID_APK_URL", ""),
+  contactEmail: readPublicEnv("NEXT_PUBLIC_CONTACT_EMAIL", ""),
+  contactPhone: readPublicEnv("NEXT_PUBLIC_CONTACT_PHONE", ""),
+  whatsappUrl: readPublicEnv("NEXT_PUBLIC_WHATSAPP_URL", ""),
+  supportHours: readPublicEnv("NEXT_PUBLIC_SUPPORT_HOURS", "Mon-Fri, 9:00-17:00"),
+  productVersion: readPublicEnv("NEXT_PUBLIC_PRODUCT_VERSION", "Current release"),
+  minimumAndroidVersion: readPublicEnv("NEXT_PUBLIC_MIN_ANDROID_VERSION", "Android 8.0+"),
+  defaultCurrency: readPublicEnv("NEXT_PUBLIC_DEFAULT_CURRENCY", "KES"),
+  analyticsEndpoint: readPublicEnv("NEXT_PUBLIC_ANALYTICS_ENDPOINT", ""),
   socialLinks: {
-    twitter: process.env.NEXT_PUBLIC_TWITTER_URL ?? "",
-    linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? ""
+    twitter: readPublicEnv("NEXT_PUBLIC_TWITTER_URL", ""),
+    linkedin: readPublicEnv("NEXT_PUBLIC_LINKEDIN_URL", "")
   },
   brand: {
     descriptor: "Business OS",
@@ -36,7 +41,7 @@ export function getDownloadLink(): DownloadLink {
       href: siteConfig.apkUrl,
       external: true,
       available: true,
-      label: "Download BizPro"
+      label: "Download APK"
     };
   }
 
@@ -44,7 +49,7 @@ export function getDownloadLink(): DownloadLink {
     href: "/download",
     external: false,
     available: false,
-    label: "Android download coming soon"
+    label: "Download BizPro"
   };
 }
 

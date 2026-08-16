@@ -6,29 +6,28 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Terms of Service",
-  description: "Placeholder terms of service content for BizPro.",
+  description: "BizPro terms overview.",
   path: "/terms"
 });
 
 export default function TermsPage() {
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
+    <section className="py-10 sm:py-14 lg:py-16">
       <Container>
         <SectionHeading
           eyebrow="Legal"
           title="Terms of Service"
-          description="This page is intentionally structured to make it easy to replace the placeholder copy with final terms."
+          description="A concise terms outline for BizPro."
         />
 
-        <div className="mt-10 grid gap-4">
+        <div className="mt-8 grid gap-4">
           {[
-            "BizPro is provided as a configurable business software platform, and available features depend on the deployed build and public settings.",
-            "Download links, contact details and product version information are managed centrally through environment configuration.",
-            "Users should verify the current APK, support channels and pricing before making operational decisions.",
-            "Replace this placeholder legal content with final reviewed terms prior to public launch."
+            "BizPro features depend on the deployed build and public settings.",
+            "Download links, support details and pricing should be verified before use.",
+            "Final legal copy should be reviewed before the site goes fully live."
           ].map((item) => (
-            <Card key={item} className="p-5">
-              <p className="text-sm leading-7 text-muted">{item}</p>
+            <Card key={item} className="p-4">
+              <p className="text-sm leading-6 text-muted">{item}</p>
             </Card>
           ))}
         </div>
@@ -36,4 +35,3 @@ export default function TermsPage() {
     </section>
   );
 }
-

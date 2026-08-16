@@ -6,29 +6,28 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy",
-  description: "Placeholder privacy policy content for BizPro, structured so final legal copy can be added later.",
+  description: "BizPro privacy overview.",
   path: "/privacy"
 });
 
 export default function PrivacyPage() {
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
+    <section className="py-10 sm:py-14 lg:py-16">
       <Container>
         <SectionHeading
           eyebrow="Legal"
           title="Privacy Policy"
-          description="This page uses professional placeholder copy until the final legal text is provided."
+          description="A concise privacy outline for BizPro."
         />
 
-        <div className="mt-10 grid gap-4">
+        <div className="mt-8 grid gap-4">
           {[
-            "BizPro only collects and processes data required to operate the service and support business workflows.",
-            "Public contact details and site settings are configurable through environment variables.",
-            "Any analytics implementation should remain opt-in and limited to non-invasive website events.",
-            "This placeholder policy should be replaced with the final legal review before launch."
+            "BizPro uses only the information needed to run the website and app.",
+            "Public settings such as contact details and download links are managed centrally.",
+            "Final legal copy should be reviewed before the site goes fully live."
           ].map((item) => (
-            <Card key={item} className="p-5">
-              <p className="text-sm leading-7 text-muted">{item}</p>
+            <Card key={item} className="p-4">
+              <p className="text-sm leading-6 text-muted">{item}</p>
             </Card>
           ))}
         </div>
@@ -36,4 +35,3 @@ export default function PrivacyPage() {
     </section>
   );
 }
-

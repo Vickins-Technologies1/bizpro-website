@@ -51,36 +51,35 @@ export const industryGroups = [
 
 export const industryDetailMap = {
   retail: {
-    title: "Retail businesses that need speed at the counter.",
-    bullets: ["POS and receipt flow", "Products and stock control", "Low-stock awareness", "Branch-ready operations"]
+    title: "Sell faster. Keep stock tight.",
+    bullets: ["POS", "Stock control", "Low stock", "Branches"]
   },
   food: {
-    title: "Service businesses that move quickly and need clean handoffs.",
-    bullets: ["Fast ordering", "Sales and expense tracking", "Team access", "Clear daily summaries"]
+    title: "Move quickly at the counter.",
+    bullets: ["Ordering", "Sales", "Staff access", "Daily summaries"]
   },
   beauty: {
-    title: "Appointments, products and repeat visits, organized in one place.",
-    bullets: ["Customer history", "Service and product sales", "Team permissions", "Compact reporting"]
+    title: "Services, products and repeat visits.",
+    bullets: ["Customer history", "Sales", "Team permissions", "Reports"]
   },
   hospitality: {
-    title: "Flexible operations for properties that run all day.",
-    bullets: ["Sales visibility", "Inventory control", "Branch support", "Reliable offline workflows"]
+    title: "Reliable operations all day.",
+    bullets: ["Sales visibility", "Inventory", "Branch support", "Offline work"]
   },
   healthcare: {
-    title: "A structured business workspace for everyday clinical operations.",
-    bullets: ["Product management", "Stock tracking", "Access control", "Operational reporting"]
+    title: "Structured daily operations.",
+    bullets: ["Products", "Stock tracking", "Access control", "Reports"]
   },
   automotive: {
-    title: "Parts and services under one operational view.",
-    bullets: ["Spare parts inventory", "Purchases and suppliers", "Receipts", "Daily performance summaries"]
+    title: "Parts, service and stock together.",
+    bullets: ["Parts inventory", "Purchases", "Receipts", "Summaries"]
   },
   services: {
-    title: "Keep services lean, visible and easy to manage.",
-    bullets: ["Finance visibility", "Employee access", "Client records", "Branch expansion ready"]
+    title: "Keep services lean and visible.",
+    bullets: ["Finance", "Employee access", "Client records", "Branches"]
   },
   professional: {
-    title: "Professional offices need trustworthy workflows and clean controls.",
-    bullets: ["Permissions", "Reporting", "Client management", "Multi-location support"]
+    title: "Clean control for office teams.",
+    bullets: ["Permissions", "Reporting", "Client management", "Multi-location"]
   }
 } as const;
-

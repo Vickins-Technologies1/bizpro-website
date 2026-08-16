@@ -40,14 +40,14 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 rounded-3xl border border-border/70 bg-card/70 p-5 sm:p-6">
+    <form onSubmit={handleSubmit} className="grid gap-4 rounded-3xl border border-border/70 bg-card/70 p-4 sm:p-5">
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-medium">
           Name
           <input
             name="name"
             autoComplete="name"
-            className="min-h-11 rounded-2xl border border-border/70 bg-background/70 px-4 text-sm outline-none transition placeholder:text-muted focus:border-primary/40"
+            className="min-h-10 rounded-2xl border border-border/70 bg-background/70 px-3.5 text-sm outline-none transition placeholder:text-muted focus:border-primary/40"
             placeholder="Your name"
           />
         </label>
@@ -57,7 +57,7 @@ export function ContactForm() {
             name="email"
             type="email"
             autoComplete="email"
-            className="min-h-11 rounded-2xl border border-border/70 bg-background/70 px-4 text-sm outline-none transition placeholder:text-muted focus:border-primary/40"
+            className="min-h-10 rounded-2xl border border-border/70 bg-background/70 px-3.5 text-sm outline-none transition placeholder:text-muted focus:border-primary/40"
             placeholder="you@example.com"
           />
         </label>
@@ -68,7 +68,7 @@ export function ContactForm() {
         <input
           name="company"
           autoComplete="organization"
-          className="min-h-11 rounded-2xl border border-border/70 bg-background/70 px-4 text-sm outline-none transition placeholder:text-muted focus:border-primary/40"
+          className="min-h-10 rounded-2xl border border-border/70 bg-background/70 px-3.5 text-sm outline-none transition placeholder:text-muted focus:border-primary/40"
           placeholder="Company name"
         />
       </label>
@@ -78,7 +78,7 @@ export function ContactForm() {
         <textarea
           name="message"
           rows={6}
-          className="rounded-2xl border border-border/70 bg-background/70 px-4 py-3 text-sm outline-none transition placeholder:text-muted focus:border-primary/40"
+          className="rounded-2xl border border-border/70 bg-background/70 px-3.5 py-3 text-sm outline-none transition placeholder:text-muted focus:border-primary/40"
           placeholder="Tell us what you need..."
         />
       </label>
@@ -90,12 +90,12 @@ export function ContactForm() {
           disabled={!siteConfig.contactEmail}
         >
           <Send className="h-4 w-4" aria-hidden="true" />
-          {siteConfig.contactEmail ? "Send email" : "Email unavailable"}
+          Send message
         </button>
         <p className="text-sm text-muted">
           {status === "sent"
             ? "Your email client should open with the message prefilled."
-            : "Form submission opens your email client because no backend is configured."}
+            : "The form opens your email app with the details prefilled."}
         </p>
       </div>
     </form>

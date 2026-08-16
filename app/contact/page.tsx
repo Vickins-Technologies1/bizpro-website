@@ -11,79 +11,73 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact",
-  description: "Contact BizPro by email, phone or WhatsApp using configurable public contact details.",
+  description: "Contact BizPro using the available support channels.",
   path: "/contact"
 });
 
 export default function ContactPage() {
+  const contactItems = [
+    siteConfig.contactEmail
+      ? { label: "Email", href: `mailto:${siteConfig.contactEmail}`, value: siteConfig.contactEmail, icon: Mail }
+      : null,
+    siteConfig.contactPhone
+      ? { label: "Phone", href: `tel:${siteConfig.contactPhone}`, value: siteConfig.contactPhone, icon: Phone }
+      : null,
+    siteConfig.whatsappUrl
+      ? { label: "WhatsApp", href: siteConfig.whatsappUrl, value: "Open WhatsApp", icon: MessageCircle, external: true }
+      : null
+  ].filter(Boolean) as Array<{
+    label: string;
+    href: string;
+    value: string;
+    icon: typeof Mail;
+    external?: boolean;
+  }>;
+
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
+    <section className="py-10 sm:py-14 lg:py-16">
       <Container>
         <SectionHeading
           eyebrow="Contact"
-          title="Reach out through the configured support channels."
-          description="The site keeps contact information centralized and falls back gracefully when a channel is missing."
+          title="Talk to BizPro."
+          description="Reach us through the available support options."
         />
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="mt-8 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="grid gap-4">
-            <Card className="p-5">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/15 bg-primary/5 text-primary">
-                  <Mail className="h-5 w-5" aria-hidden="true" />
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold">Email</h3>
-                  {siteConfig.contactEmail ? (
-                    <a className="text-sm text-muted transition hover:text-foreground" href={`mailto:${siteConfig.contactEmail}`}>
-                      {siteConfig.contactEmail}
-                    </a>
-                  ) : (
-                    <p className="text-sm text-muted">Email not configured</p>
-                  )}
-                </div>
-              </div>
-            </Card>
+            {contactItems.length ? (
+              contactItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Card key={item.label} className="p-4">
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-primary/15 bg-primary/5 text-primary">
+                        <Icon className="h-4 w-4" aria-hidden="true" />
+                      </div>
+                      <div className="space-y-1">
+                        <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">{item.label}</h3>
+                        <a
+                          className="text-sm text-muted transition hover:text-foreground"
+                          href={item.href}
+                          target={item.external ? "_blank" : undefined}
+                          rel={item.external ? "noreferrer" : undefined}
+                        >
+                          {item.value}
+                        </a>
+                      </div>
+                    </div>
+                  </Card>
+                );
+              })
+            ) : (
+              <Card className="p-4">
+                <p className="text-sm leading-6 text-muted">Reach out through the contact page to get the latest support details.</p>
+              </Card>
+            )}
 
-            <Card className="p-5">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/15 bg-primary/5 text-primary">
-                  <Phone className="h-5 w-5" aria-hidden="true" />
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold">Phone</h3>
-                  {siteConfig.contactPhone ? (
-                    <a className="text-sm text-muted transition hover:text-foreground" href={`tel:${siteConfig.contactPhone}`}>
-                      {siteConfig.contactPhone}
-                    </a>
-                  ) : (
-                    <p className="text-sm text-muted">Phone not configured</p>
-                  )}
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-5">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/15 bg-primary/5 text-primary">
-                  <MessageCircle className="h-5 w-5" aria-hidden="true" />
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold">WhatsApp</h3>
-                  {siteConfig.whatsappUrl ? (
-                    <a className="text-sm text-muted transition hover:text-foreground" href={siteConfig.whatsappUrl} target="_blank" rel="noreferrer">
-                      Open WhatsApp
-                    </a>
-                  ) : (
-                    <p className="text-sm text-muted">WhatsApp not configured</p>
-                  )}
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Support hours</p>
-              <p className="mt-3 text-sm leading-7 text-muted">{siteConfig.supportHours}</p>
+            <Card className="p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">Support hours</p>
+              <p className="mt-2 text-sm text-muted">{siteConfig.supportHours}</p>
             </Card>
 
             <div className="flex flex-wrap gap-3">
@@ -106,4 +100,3 @@ export default function ContactPage() {
     </section>
   );
 }
-

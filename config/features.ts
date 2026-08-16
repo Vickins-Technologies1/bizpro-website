@@ -10,48 +10,47 @@ import {
 export const homepageFeatureBlocks = [
   {
     title: "Point of sale",
-    description: "Fast checkout, discounts, tax handling, returns and flexible payment lines.",
+    description: "Fast checkout, discounts and receipts.",
     icon: ReceiptText,
-    bullets: ["Basket building", "Saved drafts", "Receipt handling"]
+    bullets: ["Basket building", "Payment lines", "Receipt handling"]
   },
   {
     title: "Inventory",
-    description: "Track products, suppliers, stock movements and purchase orders in one place.",
+    description: "Track products, suppliers and stock movement.",
     icon: Warehouse,
     bullets: ["Stock control", "Barcode lookup", "Transfers"]
   },
   {
     title: "Finance",
-    description: "Keep sales, expenses and customer balances connected to real business activity.",
+    description: "Keep sales, expenses and balances in view.",
     icon: Calculator,
     bullets: ["Summaries", "Collections", "Balances"]
   },
   {
     title: "Team management",
-    description: "Give owners, managers and staff only the access they need.",
+    description: "Give each role the access it needs.",
     icon: ShieldCheck,
     bullets: ["Roles", "Permissions", "Branches"]
   },
   {
     title: "Reporting",
-    description: "See performance snapshots without leaving your daily workflow.",
+    description: "See performance at a glance.",
     icon: Layers3,
-    bullets: ["Sales trends", "Low stock", "Business insights"]
+    bullets: ["Sales trends", "Low stock", "Insights"]
   },
   {
     title: "Offline sync",
-    description: "Keep working when connectivity drops and sync changes when it returns.",
+    description: "Keep working when connectivity drops.",
     icon: Barcode,
-    bullets: ["Local queue", "Cloud sync", "Conflict-aware flow"]
+    bullets: ["Local queue", "Reconnect sync", "Recovery"]
   }
 ] as const;
 
 export const featureCategories = [
   {
     label: "Sell",
-    title: "Point of sale built for busy counters.",
-    description:
-      "Move quickly through checkout while keeping pricing, discounts and receipts under control.",
+    title: "Sell quickly.",
+    description: "Keep checkout fast without losing control of pricing or receipts.",
     items: [
       "Fast product search",
       "Basket building",
@@ -63,9 +62,8 @@ export const featureCategories = [
   },
   {
     label: "Manage",
-    title: "Inventory and product operations in one system.",
-    description:
-      "Organize products, categories, suppliers and stock movements with fewer manual steps.",
+    title: "Know what you have.",
+    description: "Manage products, suppliers and stock movement from one place.",
     items: [
       "Products, brands and categories",
       "Suppliers and purchase orders",
@@ -77,9 +75,8 @@ export const featureCategories = [
   },
   {
     label: "Track",
-    title: "Finance that stays close to your sales reality.",
-    description:
-      "Monitor expenses, collections and balances without stitching together separate tools.",
+    title: "Track money clearly.",
+    description: "See expenses, collections and balances together.",
     items: [
       "Sales summaries",
       "Expense capture",
@@ -91,9 +88,8 @@ export const featureCategories = [
   },
   {
     label: "Operate",
-    title: "Access control that scales with your team.",
-    description:
-      "Operate across branches and assign permissions that match how your business runs.",
+    title: "Give the right access.",
+    description: "Assign roles and branch access with clarity.",
     items: [
       "Employees and roles",
       "Branch management",
@@ -105,9 +101,8 @@ export const featureCategories = [
   },
   {
     label: "Understand",
-    title: "Clear reporting for better decisions.",
-    description:
-      "See business performance with concise reports that are easy to understand at a glance.",
+    title: "Understand performance.",
+    description: "Read trends and summaries without digging.",
     items: [
       "Performance summaries",
       "Sales trends",
@@ -119,9 +114,8 @@ export const featureCategories = [
   },
   {
     label: "Stay connected",
-    title: "Offline-first architecture that keeps work moving.",
-    description:
-      "BizPro records core actions locally, queues sync operations and updates the cloud when the connection returns.",
+    title: "Stay connected.",
+    description: "BizPro saves locally and syncs when the connection returns.",
     items: [
       "Local persistence",
       "Queued synchronization",
@@ -132,4 +126,3 @@ export const featureCategories = [
     ]
   }
 ] as const;
-
