@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { navigation } from "@/config/navigation";
-import { buttonStyles } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { DownloadCTA } from "@/components/ui/download-cta";
 import { cn } from "@/lib/utils";
@@ -15,20 +15,27 @@ function NavLink({
   href,
   label,
   active = false,
-  mobile = false
+  mobile = false,
+  onNavigate
 }: {
   href: string;
   label: string;
   active?: boolean;
   mobile?: boolean;
+  onNavigate?: () => void;
 }) {
   return (
     <Link
       href={href}
+      aria-current={active ? "page" : undefined}
+      onClick={onNavigate}
       className={cn(
-        "text-sm font-medium text-muted transition hover:text-foreground",
-        active && "text-foreground",
-        mobile && "rounded-2xl px-4 py-3 text-base hover:bg-foreground/5"
+        "inline-flex items-center rounded-full text-[13px] font-medium tracking-[-0.01em] transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        mobile
+          ? "w-full rounded-2xl px-4 py-3 text-[14px] text-foreground hover:bg-foreground/5"
+          : "px-2.5 py-1.5 text-muted hover:bg-foreground/5 hover:text-foreground",
+        active && !mobile && "bg-primary/5 text-foreground",
+        active && mobile && "bg-primary/5 text-foreground ring-1 ring-inset ring-primary/15"
       )}
     >
       {label}
@@ -39,6 +46,21 @@ function NavLink({
 export function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const menuPanelRef = useRef<HTMLDivElement | null>(null);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+    menuButtonRef.current?.focus();
+  };
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 6);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -48,76 +70,158 @@ export function Navbar() {
   }, [menuOpen]);
 
   useEffect(() => {
+    if (!menuOpen) {
+      return;
+    }
+
+    const root = menuPanelRef.current;
+    const focusable = root
+      ? Array.from(root.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')).filter(
+          (element) => !element.hasAttribute("disabled")
+        )
+      : [];
+
+    focusable[0]?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu();
+        return;
+      }
+
+      if (event.key !== "Tab" || focusable.length === 0) {
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const activeElement = document.activeElement as HTMLElement | null;
+
+      if (event.shiftKey) {
+        if (!activeElement || activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        }
+        return;
+      }
+
+      if (activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
+  useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-[77rem] items-center justify-between gap-3 px-4 py-2.5 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="relative h-8 w-24 sm:w-28">
-            <Image
-              src="/brand/logo-light.svg"
-              alt="BizPro"
-              fill
-              priority
-              sizes="112px"
-              unoptimized
-              className="object-contain dark:hidden"
-            />
-            <Image
-              src="/brand/logo-dark.svg"
-              alt="BizPro"
-              fill
-              priority
-              sizes="112px"
-              unoptimized
-              className="hidden object-contain dark:block"
-            />
-          </span>
-        </Link>
+    <header
+      className={cn(
+        "sticky top-0 z-50 border-b transition-colors duration-200",
+        scrolled
+          ? "border-border/60 bg-background/88 shadow-none backdrop-blur-md supports-[backdrop-filter]:bg-background/75"
+          : "border-transparent bg-background"
+      )}
+    >
+      <Container className="relative">
+        <div className="flex min-h-[60px] items-center justify-between gap-3 py-2 sm:min-h-[64px] lg:min-h-[68px]">
+          <Link href="/" className="flex items-center gap-3">
+            <span className="relative h-7 w-[88px] shrink-0 sm:w-[96px]">
+              <Image
+                src="/brand/logo-light.svg"
+                alt="BizPro"
+                fill
+                priority
+                sizes="96px"
+                unoptimized
+                className="object-contain dark:hidden"
+              />
+              <Image
+                src="/brand/logo-dark.svg"
+                alt="BizPro"
+                fill
+                priority
+                sizes="96px"
+                unoptimized
+                className="hidden object-contain dark:block"
+              />
+            </span>
+          </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
-          {navigation.map((item) => (
-            <NavLink key={item.href} href={item.href} label={item.label} active={pathname === item.href} />
-          ))}
-        </nav>
+          <nav className="hidden items-center gap-5 lg:flex" aria-label="Main navigation">
+            {navigation.map((item) => (
+              <NavLink key={item.href} href={item.href} label={item.label} active={pathname === item.href} />
+            ))}
+          </nav>
 
-        <div className="hidden items-center gap-2 lg:flex">
-          <ThemeToggle />
-          <DownloadCTA />
-        </div>
+          <div className="hidden items-center gap-2 lg:flex">
+            <ThemeToggle compact className="shrink-0" />
+            <DownloadCTA compact className="shrink-0" />
+          </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
-          <ThemeToggle className="px-3" />
-          <button
-            type="button"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            className={buttonStyles("secondary", "px-3")}
-            onClick={() => setMenuOpen((value) => !value)}
-          >
-            {menuOpen ? <X className="h-4 w-4" aria-hidden="true" /> : <Menu className="h-4 w-4" aria-hidden="true" />}
-          </button>
-        </div>
-      </div>
-
-      {menuOpen ? (
-        <div className="border-t border-border/60 bg-background/95 lg:hidden">
-          <div className="mx-auto grid w-full max-w-[77rem] gap-3 px-4 py-4 sm:px-6">
-            <nav className="grid gap-1" aria-label="Mobile navigation">
-              {navigation.map((item) => (
-                <NavLink key={item.href} href={item.href} label={item.label} active={pathname === item.href} mobile />
-              ))}
-            </nav>
-            <div className="grid gap-3 rounded-3xl border border-border/70 bg-card/80 p-4 shadow-panel">
-              <DownloadCTA className="w-full justify-center" />
-              <Link href="/download" className={buttonStyles("outline", "w-full justify-center")}>
-                Open download page
-              </Link>
-            </div>
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle compact className="shrink-0" />
+            <button
+              ref={menuButtonRef}
+              type="button"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/80 bg-card/80 text-foreground transition duration-200 hover:border-primary/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              onClick={() => setMenuOpen((value) => !value)}
+            >
+              {menuOpen ? <X className="h-4 w-4" aria-hidden="true" /> : <Menu className="h-4 w-4" aria-hidden="true" />}
+            </button>
           </div>
         </div>
-      ) : null}
+
+        <button
+          type="button"
+          aria-hidden="true"
+          tabIndex={-1}
+          onClick={closeMenu}
+          className={cn(
+            "fixed inset-x-0 bottom-0 z-40 bg-transparent transition-opacity duration-200 lg:hidden",
+            menuOpen ? "pointer-events-auto top-[60px] opacity-100 sm:top-[64px]" : "pointer-events-none top-[60px] opacity-0 sm:top-[64px]"
+          )}
+        />
+
+        <div
+          id="mobile-navigation"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
+          ref={menuPanelRef}
+          className={cn(
+            "absolute left-0 right-0 top-full z-50 overflow-hidden border-b border-border/60 bg-background/96 backdrop-blur-md transition-[max-height,opacity,transform] duration-200 ease-out lg:hidden",
+            menuOpen ? "max-h-[calc(100dvh-60px)] translate-y-0 opacity-100 sm:max-h-[calc(100dvh-64px)]" : "max-h-0 -translate-y-2 opacity-0"
+          )}
+        >
+          <Container className="py-3">
+            <nav className="grid gap-1" aria-label="Mobile navigation links">
+              {navigation.map((item) => (
+                <NavLink
+                  key={item.href}
+                  href={item.href}
+                  label={item.label}
+                  active={pathname === item.href}
+                  mobile
+                  onNavigate={closeMenu}
+                />
+              ))}
+            </nav>
+            <div className="pt-3">
+              <DownloadCTA compact className="w-full justify-center" onClick={closeMenu} />
+            </div>
+          </Container>
+        </div>
+      </Container>
     </header>
   );
 }
