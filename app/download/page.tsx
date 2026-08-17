@@ -50,7 +50,13 @@ export default function DownloadPage() {
 
             <div className="flex flex-wrap gap-3 motion-safe:animate-slide-up" style={{ animationDelay: "140ms" }}>
               {download.available ? (
-                <a href={download.href} target="_blank" rel="noreferrer" className={buttonStyles("primary")}>
+                <a
+                  href={download.href}
+                  download={download.external ? undefined : "bizpro.apk"}
+                  target={download.external ? "_blank" : undefined}
+                  rel={download.external ? "noreferrer" : undefined}
+                  className={buttonStyles("primary")}
+                >
                   <Download className="h-4 w-4" aria-hidden="true" />
                   Download APK
                 </a>

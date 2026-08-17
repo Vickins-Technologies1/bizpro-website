@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { MouseEventHandler } from "react";
 import { getDownloadLink } from "@/config/site";
@@ -23,6 +22,7 @@ export function DownloadCTA({
 }) {
   const download = getDownloadLink();
   const text = label ?? "Download BizPro";
+  const isAttachmentDownload = download.available && !download.external;
   const handleClick = () => {
     track("apk_download_click", {
       available: download.available,
@@ -55,9 +55,10 @@ export function DownloadCTA({
   }
 
   return (
-    <Link
+    <a
       className={classes}
       href={download.href}
+      download={isAttachmentDownload ? "bizpro.apk" : undefined}
       onClick={(event) => {
         handleClick();
         onClick?.(event);
@@ -65,6 +66,6 @@ export function DownloadCTA({
     >
       {text}
       <ArrowRight className={compact ? "h-3.5 w-3.5" : "h-4 w-4"} aria-hidden="true" />
-    </Link>
+    </a>
   );
 }

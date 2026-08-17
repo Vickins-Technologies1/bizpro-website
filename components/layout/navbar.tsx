@@ -126,7 +126,8 @@ export function Navbar() {
         "sticky top-0 z-50 border-b transition-colors duration-200",
         scrolled
           ? "border-border/60 bg-background/88 shadow-none backdrop-blur-md supports-[backdrop-filter]:bg-background/75"
-          : "border-transparent bg-background"
+          : "border-transparent bg-background",
+        "max-lg:border-border/70 max-lg:bg-card/92 max-lg:shadow-[0_1px_0_rgba(15,23,42,0.05)] max-lg:backdrop-blur-xl max-lg:supports-[backdrop-filter]:bg-card/80 dark:max-lg:shadow-[0_1px_0_rgba(255,255,255,0.04)]"
       )}
     >
       <Container className="relative">
@@ -190,7 +191,7 @@ export function Navbar() {
           aria-label="Mobile navigation"
           ref={menuPanelRef}
           className={cn(
-            "absolute left-0 right-0 top-full z-50 overflow-hidden border-b border-border/60 bg-background/96 backdrop-blur-md transition-[max-height,opacity,transform] duration-200 ease-out lg:hidden",
+            "absolute left-0 right-0 top-full z-50 overflow-hidden border-b border-border/60 bg-card/96 backdrop-blur-xl transition-[max-height,opacity,transform] duration-200 ease-out lg:hidden supports-[backdrop-filter]:bg-card/88",
             menuOpen ? "max-h-[calc(100dvh-60px)] translate-y-0 opacity-100 sm:max-h-[calc(100dvh-64px)]" : "max-h-0 -translate-y-2 opacity-0"
           )}
         >
