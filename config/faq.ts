@@ -29,7 +29,7 @@ export const faqItems = [
   },
   {
     question: "What currency does BizPro support?",
-    answer: "KES is the default today, and currency can be changed through configuration."
+    answer: "KES is the default currency."
   },
   {
     question: "How do I contact support?",

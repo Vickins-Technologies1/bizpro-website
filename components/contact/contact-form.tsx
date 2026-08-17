@@ -41,6 +41,12 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-4 rounded-3xl border border-border/70 bg-card/70 p-4 sm:p-5">
+      {status === "sent" ? (
+        <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-600 dark:text-emerald-300">
+          Message ready. Your email app should open with the details prefilled.
+        </div>
+      ) : null}
+
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-medium">
           Name
@@ -92,11 +98,7 @@ export function ContactForm() {
           <Send className="h-4 w-4" aria-hidden="true" />
           Send message
         </button>
-        <p className="text-sm text-muted">
-          {status === "sent"
-            ? "Your email client should open with the message prefilled."
-            : "The form opens your email app with the details prefilled."}
-        </p>
+        <p className="text-sm text-muted">The form opens your email app with the details prefilled.</p>
       </div>
     </form>
   );

@@ -9,7 +9,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-3xl border border-border/70 bg-card/90 text-card-foreground shadow-panel backdrop-blur-sm",
+        "rounded-3xl border border-border/70 bg-card/90 text-card-foreground shadow-panel backdrop-blur-sm transition-[transform,border-color,box-shadow] duration-200 motion-safe:will-change-transform",
         className
       )}
       {...props}
@@ -18,4 +18,3 @@ export function Card({
     </div>
   );
 }
-

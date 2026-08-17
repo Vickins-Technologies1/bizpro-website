@@ -31,6 +31,14 @@ const config: Config = {
           "0%, 100%": { transform: "translateX(0)" },
           "50%": { transform: "translateX(12px)" }
         },
+        syncTravel: {
+          "0%": { left: "0%" },
+          "20%": { left: "18%" },
+          "40%": { left: "36%" },
+          "60%": { left: "54%" },
+          "80%": { left: "72%" },
+          "100%": { left: "calc(100% - 1.5rem)" }
+        },
         softPulse: {
           "0%, 100%": { opacity: "0.55" },
           "50%": { opacity: "1" }
@@ -42,6 +50,7 @@ const config: Config = {
       },
       animation: {
         "sync-drift": "syncDrift 8s ease-in-out infinite",
+        "sync-travel": "syncTravel 7s ease-in-out infinite",
         "soft-pulse": "softPulse 6s ease-in-out infinite",
         "slide-up": "slideUp 0.6s ease-out both"
       }
@@ -51,4 +60,3 @@ const config: Config = {
 };
 
 export default config;
-

@@ -22,7 +22,7 @@ export function DownloadCTA({
   onClick?: MouseEventHandler<HTMLAnchorElement>;
 }) {
   const download = getDownloadLink();
-  const text = label ?? download.label;
+  const text = label ?? "Download BizPro";
   const handleClick = () => {
     track("apk_download_click", {
       available: download.available,

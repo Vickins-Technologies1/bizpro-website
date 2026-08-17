@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { buttonStyles } from "@/components/ui/button";
 import { QRCodeCard } from "@/components/download/qr-code";
 import { siteConfig, getDownloadLink } from "@/config/site";
+import { Reveal } from "@/components/ui/reveal";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -24,7 +25,7 @@ export default function DownloadPage() {
       <Container>
         <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-start">
           <div className="max-w-2xl space-y-6">
-            <div className="inline-flex items-center gap-3 rounded-3xl border border-border/70 bg-card/70 p-3.5">
+            <div className="inline-flex items-center gap-3 rounded-3xl border border-border/70 bg-card/70 p-3.5 motion-safe:animate-slide-up">
               <Image
                 src="/brand/logo-official.png"
                 alt="BizPro official logo"
@@ -39,13 +40,15 @@ export default function DownloadPage() {
               </div>
             </div>
 
-            <SectionHeading
-              eyebrow="Download"
-              title="Download BizPro for Android."
-              description="Get BizPro and run sales, inventory and business operations from one place."
-            />
+            <Reveal delay={80}>
+              <SectionHeading
+                eyebrow="Download"
+                title="Download BizPro for Android."
+                description="Get BizPro and run sales, inventory and business operations from one place."
+              />
+            </Reveal>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 motion-safe:animate-slide-up" style={{ animationDelay: "140ms" }}>
               {download.available ? (
                 <a href={download.href} target="_blank" rel="noreferrer" className={buttonStyles("primary")}>
                   <Download className="h-4 w-4" aria-hidden="true" />
@@ -95,31 +98,37 @@ export default function DownloadPage() {
 
           <div className="w-full max-w-sm">
             {download.available ? (
-              <QRCodeCard value={download.href} />
+              <Reveal delay={120} direction="right">
+                <QRCodeCard value={download.href} />
+              </Reveal>
             ) : (
-              <Card className="p-5">
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">APK</p>
-                <p className="mt-2 text-sm leading-6 text-muted">Contact BizPro for the latest APK link.</p>
-              </Card>
+              <Reveal delay={120} direction="right">
+                <Card className="p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">APK</p>
+                  <p className="mt-2 text-sm leading-6 text-muted">Contact BizPro for the latest APK link.</p>
+                </Card>
+              </Reveal>
             )}
           </div>
         </div>
 
-        <Card className="mt-8 p-5">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">Install</p>
-          <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              "1. Download the APK.",
-              "2. Allow installs from your browser if prompted.",
-              "3. Open BizPro.",
-              "4. Start using your business workspace."
-            ].map((step) => (
-              <div key={step} className="rounded-2xl border border-border/60 bg-background/70 p-3 text-sm leading-6 text-muted">
-                {step}
-              </div>
-            ))}
-          </div>
-        </Card>
+        <Reveal delay={120}>
+          <Card className="mt-8 p-5">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">Install</p>
+            <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                "1. Download the APK.",
+                "2. Allow installs from your browser if prompted.",
+                "3. Open BizPro.",
+                "4. Start using your business workspace."
+              ].map((step) => (
+                <div key={step} className="rounded-2xl border border-border/60 bg-background/70 p-3 text-sm leading-6 text-muted">
+                  {step}
+                </div>
+              ))}
+            </div>
+          </Card>
+        </Reveal>
       </Container>
     </section>
   );

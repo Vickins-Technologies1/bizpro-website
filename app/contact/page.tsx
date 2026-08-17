@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Card } from "@/components/ui/card";
 import { buttonStyles } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
 import { ContactForm } from "@/components/contact/contact-form";
 import { siteConfig } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
@@ -37,19 +38,22 @@ export default function ContactPage() {
   return (
     <section className="py-10 sm:py-14 lg:py-16">
       <Container>
-        <SectionHeading
-          eyebrow="Contact"
-          title="Talk to BizPro."
-          description="Reach us through the available support options."
-        />
+        <Reveal>
+          <SectionHeading
+            eyebrow="Contact"
+            title="Talk to BizPro."
+            description="Reach us through the available support options."
+          />
+        </Reveal>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="grid gap-4">
             {contactItems.length ? (
-              contactItems.map((item) => {
+              contactItems.map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <Card key={item.label} className="p-4">
+                  <Reveal key={item.label} delay={index * 80} direction="left">
+                    <Card className="p-4">
                     <div className="flex items-start gap-4">
                       <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-primary/15 bg-primary/5 text-primary">
                         <Icon className="h-4 w-4" aria-hidden="true" />
@@ -66,7 +70,8 @@ export default function ContactPage() {
                         </a>
                       </div>
                     </div>
-                  </Card>
+                    </Card>
+                  </Reveal>
                 );
               })
             ) : (
@@ -74,11 +79,6 @@ export default function ContactPage() {
                 <p className="text-sm leading-6 text-muted">Reach out through the contact page to get the latest support details.</p>
               </Card>
             )}
-
-            <Card className="p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">Support hours</p>
-              <p className="mt-2 text-sm text-muted">{siteConfig.supportHours}</p>
-            </Card>
 
             <div className="flex flex-wrap gap-3">
               <Link href="/download" className={buttonStyles("secondary")}>

@@ -1,9 +1,21 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { navigation } from "@/config/navigation";
 import { buttonStyles } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { DownloadCTA } from "@/components/ui/download-cta";
+
+const productLinks = [
+  { href: "/features", label: "Features" },
+  { href: "/industries", label: "Industries" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/download", label: "Download" },
+  { href: "/faq", label: "FAQ" }
+] as const;
+
+const companyLinks = [
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" }
+] as const;
 
 const legalLinks = [
   { href: "/privacy", label: "Privacy Policy" },
@@ -16,7 +28,7 @@ export function Footer() {
   return (
     <footer className="mt-16 border-t border-border/60 bg-card/25">
       <Container className="py-10">
-        <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr_0.9fr]">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.1fr_0.75fr_0.65fr_0.65fr]">
           <div className="space-y-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">{siteConfig.siteName}</p>
@@ -26,7 +38,7 @@ export function Footer() {
               One connected platform for selling, tracking and operating the business.
             </p>
             <div className="flex flex-wrap gap-2">
-              <DownloadCTA />
+              <DownloadCTA compact />
               <Link href="/contact" className={buttonStyles("secondary")}>
                 Contact
               </Link>
@@ -36,7 +48,18 @@ export function Footer() {
           <div className="space-y-3">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Product</p>
             <div className="grid gap-2">
-              {navigation.map((item) => (
+              {productLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="text-xs text-muted transition hover:text-foreground">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Company</p>
+            <div className="grid gap-2">
+              {companyLinks.map((item) => (
                 <Link key={item.href} href={item.href} className="text-xs text-muted transition hover:text-foreground">
                   {item.label}
                 </Link>
@@ -53,7 +76,6 @@ export function Footer() {
                 </Link>
               ))}
             </div>
-            <p className="text-xs text-muted">Support hours: {siteConfig.supportHours}</p>
           </div>
         </div>
 

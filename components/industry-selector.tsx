@@ -20,7 +20,7 @@ export function IndustrySelector() {
             role="tab"
             aria-selected={selected === item.key}
             className={cn(
-              "rounded-full border px-3.5 py-2 text-[13px] transition",
+              "rounded-full border px-3.5 py-2 text-[13px] transition duration-200 motion-safe:hover:-translate-y-0.5",
               selected === item.key
                 ? "border-primary/30 bg-primary/10 text-foreground"
                 : "border-border/70 bg-background/60 text-muted hover:text-foreground"
@@ -33,7 +33,7 @@ export function IndustrySelector() {
       </div>
 
       <div className="mt-4 grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="rounded-3xl border border-border/70 bg-background/70 p-4">
+        <div key={`summary-${selected}`} className="rounded-3xl border border-border/70 bg-background/70 p-4 motion-safe:animate-slide-up">
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">Selected business</p>
           <h3 className="mt-2 text-xl font-semibold tracking-tight">{currentGroup.label}</h3>
           <p className="mt-2 text-sm leading-6 text-muted">{currentGroup.summary}</p>
@@ -49,7 +49,11 @@ export function IndustrySelector() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-border/70 bg-card/70 p-4">
+        <div
+          key={`detail-${selected}`}
+          className="rounded-3xl border border-border/70 bg-card/70 p-4 motion-safe:animate-slide-up"
+          style={{ animationDelay: "80ms" }}
+        >
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">How BizPro adapts</p>
           <h3 className="mt-2 text-xl font-semibold tracking-tight">{active.title}</h3>
           <ul className="mt-4 grid gap-2.5">

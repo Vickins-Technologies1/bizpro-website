@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Card } from "@/components/ui/card";
+import { Reveal } from "@/components/ui/reveal";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -14,21 +15,21 @@ export default function TermsPage() {
   return (
     <section className="py-10 sm:py-14 lg:py-16">
       <Container>
-        <SectionHeading
-          eyebrow="Legal"
-          title="Terms of Service"
-          description="A concise terms outline for BizPro."
-        />
+        <Reveal>
+          <SectionHeading eyebrow="Legal" title="Terms of Service" description="A concise terms outline for BizPro." />
+        </Reveal>
 
         <div className="mt-8 grid gap-4">
           {[
-            "BizPro features depend on the deployed build and public settings.",
-            "Download links, support details and pricing should be verified before use.",
-            "Final legal copy should be reviewed before the site goes fully live."
-          ].map((item) => (
-            <Card key={item} className="p-4">
-              <p className="text-sm leading-6 text-muted">{item}</p>
-            </Card>
+            "Use BizPro in line with the accepted terms and any applicable local requirements.",
+            "Account access and product availability may vary by deployment and plan.",
+            "Content and pricing can change over time as the service evolves."
+          ].map((item, index) => (
+            <Reveal key={item} delay={index * 80}>
+              <Card className="p-4">
+                <p className="text-sm leading-6 text-muted">{item}</p>
+              </Card>
+            </Reveal>
           ))}
         </div>
       </Container>

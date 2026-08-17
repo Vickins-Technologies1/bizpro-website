@@ -131,17 +131,18 @@ export function Navbar() {
     >
       <Container className="relative">
         <div className="flex min-h-[60px] items-center justify-between gap-3 py-2 sm:min-h-[64px] lg:min-h-[68px]">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-2.5">
             <Image
               src="/brand/logo-official.png"
               alt="BizPro"
-              width={44}
-              height={44}
+              width={36}
+              height={36}
               priority
-              sizes="44px"
+              sizes="36px"
               unoptimized
-              className="h-10 w-10 shrink-0 rounded-2xl object-cover sm:h-11 sm:w-11"
+              className="h-9 w-9 shrink-0 rounded-2xl object-cover sm:h-10 sm:w-10"
             />
+            <span className="text-sm font-semibold tracking-tight text-foreground">BizPro</span>
           </Link>
 
           <nav className="hidden items-center gap-5 lg:flex" aria-label="Main navigation">
