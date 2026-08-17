@@ -59,9 +59,9 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
 
-      <section className="py-10 sm:py-14 lg:py-16">
+      <section className="py-8 sm:py-12 lg:py-14">
         <Container>
-          <div className="grid items-center gap-8 lg:grid-cols-[1.02fr_0.98fr]">
+          <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="max-w-2xl space-y-6">
               <div
                 className="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary motion-safe:animate-slide-up"
@@ -105,7 +105,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative w-full lg:justify-self-end lg:max-w-[50rem]">
               <div className="pointer-events-none absolute inset-0 -z-10 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(45,216,233,0.14),transparent_34%),radial-gradient(circle_at_bottom,rgba(59,130,246,0.12),transparent_30%)] blur-2xl" />
               <ProductMockup />
             </div>
