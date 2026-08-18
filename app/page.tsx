@@ -59,11 +59,11 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
 
-      <section className="relative overflow-hidden py-10 sm:py-12 lg:py-14">
-        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(circle_at_72%_20%,rgba(45,216,233,0.14),transparent_28%),radial-gradient(circle_at_20%_18%,rgba(59,130,246,0.08),transparent_26%)] dark:bg-[radial-gradient(circle_at_72%_20%,rgba(45,216,233,0.18),transparent_28%),radial-gradient(circle_at_20%_18%,rgba(59,130,246,0.14),transparent_26%)]" />
+      <section className="relative overflow-hidden py-6 sm:py-8 lg:min-h-[calc(100svh-5.5rem)] lg:py-10">
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[26rem] bg-[radial-gradient(circle_at_72%_20%,rgba(45,216,233,0.12),transparent_28%),radial-gradient(circle_at_20%_18%,rgba(59,130,246,0.08),transparent_26%)] dark:bg-[radial-gradient(circle_at_72%_20%,rgba(45,216,233,0.16),transparent_28%),radial-gradient(circle_at_20%_18%,rgba(59,130,246,0.14),transparent_26%)]" />
         <Container>
-          <div className="grid items-center gap-8 lg:grid-cols-[0.84fr_1.16fr] lg:gap-10">
-            <div className="max-w-2xl space-y-6 lg:pt-4">
+          <div className="grid items-center gap-6 lg:grid-cols-[0.88fr_1.12fr] lg:gap-8">
+            <div className="max-w-2xl space-y-4 lg:space-y-5">
               <div
                 className="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-primary motion-safe:animate-slide-up"
                 style={{ animationDelay: "60ms" }}
@@ -71,29 +71,29 @@ export default function HomePage() {
                 Business Operating System
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h1
-                  className="max-w-xl text-balance text-[2.35rem] font-semibold leading-[1.02] tracking-tight motion-safe:animate-slide-up sm:text-[2.9rem] lg:text-[3.55rem]"
+                  className="max-w-xl text-balance text-[clamp(2rem,3.3vw,3.25rem)] font-semibold leading-[1.08] tracking-tight motion-safe:animate-slide-up"
                   style={{ animationDelay: "140ms" }}
                 >
                   Run your business. Even when the internet doesn&apos;t.
                 </h1>
                 <p
-                  className="max-w-xl text-sm leading-6 text-muted motion-safe:animate-slide-up sm:text-[15px]"
+                  className="max-w-lg text-[14px] leading-6 text-muted motion-safe:animate-slide-up sm:text-[15px]"
                   style={{ animationDelay: "220ms" }}
                 >
                   POS, inventory, finance and team management in one connected workspace.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 motion-safe:animate-slide-up sm:flex-row" style={{ animationDelay: "300ms" }}>
+              <div className="flex flex-col gap-2.5 motion-safe:animate-slide-up sm:flex-row" style={{ animationDelay: "300ms" }}>
                 <DownloadCTA />
                 <Link href="/features" className={buttonStyles("secondary")}>
                   Explore Features
                 </Link>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[12px] leading-5 text-muted motion-safe:animate-slide-up" style={{ animationDelay: "380ms" }}>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] leading-5 text-muted motion-safe:animate-slide-up" style={{ animationDelay: "360ms" }}>
                 {["Offline-first", "POS", "Inventory", "Reporting"].map((item) => (
                   <span key={item} className="inline-flex items-center gap-1.5">
                     <CheckCircle2 className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
@@ -104,7 +104,7 @@ export default function HomePage() {
             </div>
 
             <div className="relative w-full lg:justify-self-end">
-              <div className="pointer-events-none absolute inset-x-8 top-10 -z-10 h-[24rem] rounded-full bg-[radial-gradient(circle,rgba(45,216,233,0.16),transparent_64%)] blur-3xl" />
+              <div className="pointer-events-none absolute inset-x-8 top-8 -z-10 h-[20rem] rounded-full bg-[radial-gradient(circle,rgba(45,216,233,0.14),transparent_64%)] blur-2xl" />
               <ProductMockup />
             </div>
           </div>
