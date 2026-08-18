@@ -6,7 +6,7 @@ type Variant = "primary" | "secondary" | "ghost" | "outline";
 
 export function buttonStyles(variant: Variant = "primary", className?: string) {
   const base =
-    "inline-flex min-h-10 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-medium transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+    "group inline-flex min-h-10 items-center justify-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-medium transition-[transform,background-color,border-color,box-shadow,filter] duration-200 hover:-translate-y-0.5 active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
   const variants: Record<Variant, string> = {
     primary:

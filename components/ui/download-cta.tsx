@@ -31,7 +31,7 @@ export function DownloadCTA({
   };
 
   const compactClasses = cn(
-    "inline-flex min-h-9 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border px-[16px] py-[10px] text-[13px] font-medium transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "group inline-flex min-h-9 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border px-[16px] py-[10px] text-[13px] font-medium transition-[transform,background-color,border-color,box-shadow,filter] duration-200 hover:-translate-y-0.5 active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     variant === "primary" &&
       "border-transparent bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--accent))] text-[rgb(var(--primary-foreground))] hover:brightness-105",
     variant === "secondary" && "border-border/80 bg-card/85 text-foreground hover:border-primary/40 hover:bg-card",
@@ -43,13 +43,13 @@ export function DownloadCTA({
   const classes = compact ? compactClasses : cn(buttonStyles(variant, className), "whitespace-nowrap");
 
   if (download.external) {
-    return (
-      <a className={classes} href={download.href} target="_blank" rel="noreferrer" onClick={(event) => {
+      return (
+        <a className={classes} href={download.href} target="_blank" rel="noreferrer" onClick={(event) => {
         handleClick();
         onClick?.(event);
       }}>
         {text}
-        <ArrowRight className={compact ? "h-3.5 w-3.5" : "h-4 w-4"} aria-hidden="true" />
+        <ArrowRight className={cn(compact ? "h-3.5 w-3.5" : "h-4 w-4", "transition-transform duration-200 group-hover:translate-x-1")} aria-hidden="true" />
       </a>
     );
   }
@@ -65,7 +65,7 @@ export function DownloadCTA({
       }}
     >
       {text}
-      <ArrowRight className={compact ? "h-3.5 w-3.5" : "h-4 w-4"} aria-hidden="true" />
+      <ArrowRight className={cn(compact ? "h-3.5 w-3.5" : "h-4 w-4", "transition-transform duration-200 group-hover:translate-x-1")} aria-hidden="true" />
     </a>
   );
 }

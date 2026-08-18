@@ -43,6 +43,14 @@ const config: Config = {
           "0%, 100%": { opacity: "0.55" },
           "50%": { opacity: "1" }
         },
+        statusSwap: {
+          "0%, 42%": { opacity: "1", transform: "translateY(0)" },
+          "50%, 100%": { opacity: "0", transform: "translateY(-4px)" }
+        },
+        barRise: {
+          "0%": { transform: "scaleY(0.35)", opacity: "0.35" },
+          "60%, 100%": { transform: "scaleY(1)", opacity: "1" }
+        },
         slideUp: {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" }
@@ -52,6 +60,8 @@ const config: Config = {
         "sync-drift": "syncDrift 8s ease-in-out infinite",
         "sync-travel": "syncTravel 7s ease-in-out infinite",
         "soft-pulse": "softPulse 6s ease-in-out infinite",
+        "status-swap": "statusSwap 8s ease-in-out infinite",
+        "bar-rise": "barRise 900ms cubic-bezier(0.16, 1, 0.3, 1) both",
         "slide-up": "slideUp 0.6s ease-out both"
       }
     }
