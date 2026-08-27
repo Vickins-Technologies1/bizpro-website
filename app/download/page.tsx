@@ -13,7 +13,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Download",
-  description: "Download BizPro for Android and scan the APK QR code.",
+  description: "Open BizPro on Google Play and install the Android app.",
   path: "/download"
 });
 
@@ -43,8 +43,8 @@ export default function DownloadPage() {
             <Reveal delay={80}>
               <SectionHeading
                 eyebrow="Download"
-                title="Download BizPro for Android."
-                description="Get BizPro and run sales, inventory and business operations from one place."
+                title="Get BizPro on Google Play."
+                description="Install BizPro from Google Play and run sales, inventory and business operations from one place."
               />
             </Reveal>
 
@@ -52,13 +52,12 @@ export default function DownloadPage() {
               {download.available ? (
                 <a
                   href={download.href}
-                  download={download.external ? undefined : "bizpro.apk"}
                   target={download.external ? "_blank" : undefined}
                   rel={download.external ? "noreferrer" : undefined}
                   className={buttonStyles("primary")}
                 >
                   <Download className="h-4 w-4" aria-hidden="true" />
-                  Download APK
+                  Open Google Play
                 </a>
               ) : (
                 <Link href="/contact" className={buttonStyles("primary")}>
@@ -95,7 +94,7 @@ export default function DownloadPage() {
                   <ShieldCheck className="h-5 w-5 text-primary" aria-hidden="true" />
                   <div>
                     <p className="text-sm font-semibold">{download.available ? "Ready" : "Link"}</p>
-                    <p className="text-sm text-muted">{download.available ? "APK available" : "Contact support"}</p>
+                    <p className="text-sm text-muted">{download.available ? "Google Play available" : "Contact support"}</p>
                   </div>
                 </div>
               </Card>
@@ -110,8 +109,8 @@ export default function DownloadPage() {
             ) : (
               <Reveal delay={120} direction="right">
                 <Card className="p-5">
-                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">APK</p>
-                  <p className="mt-2 text-sm leading-6 text-muted">Contact BizPro for the latest APK link.</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">Google Play</p>
+                  <p className="mt-2 text-sm leading-6 text-muted">Contact BizPro for the latest Google Play link.</p>
                 </Card>
               </Reveal>
             )}
@@ -123,9 +122,9 @@ export default function DownloadPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">Install</p>
             <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {[
-                "1. Download the APK.",
-                "2. Allow installs from your browser if prompted.",
-                "3. Open BizPro.",
+                "1. Open Google Play.",
+                "2. Install BizPro.",
+                "3. Sign in to your workspace.",
                 "4. Start using your business workspace."
               ].map((step) => (
                 <div key={step} className="rounded-2xl border border-border/60 bg-background/70 p-3 text-sm leading-6 text-muted">

@@ -1,7 +1,7 @@
 import { siteConfig } from "@/config/site";
 
 export type AnalyticsEvent =
-  | "apk_download_click"
+  | "play_store_click"
   | "pricing_interaction"
   | "contact_click"
   | "whatsapp_click"
@@ -34,4 +34,3 @@ export function track(event: AnalyticsEvent, properties: Record<string, unknown>
     keepalive: true
   });
 }
-

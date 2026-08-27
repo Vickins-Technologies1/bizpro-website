@@ -10,7 +10,7 @@ function readPublicEnv(name: string, fallback: string) {
   return value && value.trim() ? value.trim() : fallback;
 }
 
-const defaultApkPath = "/download/apk";
+const defaultPlayStoreUrl = "https://play.google.com/store/apps/details?id=com.bizpro.vickins";
 
 export const siteConfig = {
   siteName: "BizPro",
@@ -18,7 +18,7 @@ export const siteConfig = {
   description:
     "BizPro is an offline-first Business Operating System for managing sales, POS, inventory, finance, teams and everyday business operations.",
   websiteUrl: readPublicEnv("NEXT_PUBLIC_SITE_URL", "https://bizpro.vickinstechnologies.com"),
-  apkUrl: readPublicEnv("NEXT_PUBLIC_ANDROID_APK_URL", defaultApkPath),
+  playStoreUrl: readPublicEnv("NEXT_PUBLIC_PLAY_STORE_URL", defaultPlayStoreUrl),
   contactEmail: readPublicEnv("NEXT_PUBLIC_CONTACT_EMAIL", ""),
   contactPhone: readPublicEnv("NEXT_PUBLIC_CONTACT_PHONE", ""),
   whatsappUrl: readPublicEnv("NEXT_PUBLIC_WHATSAPP_URL", ""),
@@ -38,22 +38,22 @@ export const siteConfig = {
 } as const;
 
 export function getDownloadLink(): DownloadLink {
-  const isExternal = /^https?:\/\//i.test(siteConfig.apkUrl);
+  const isExternal = /^https?:\/\//i.test(siteConfig.playStoreUrl);
 
-  if (siteConfig.apkUrl) {
+  if (siteConfig.playStoreUrl) {
     return {
-      href: siteConfig.apkUrl,
+      href: siteConfig.playStoreUrl,
       external: isExternal,
       available: true,
-      label: "Download APK"
+      label: "Get it on Google Play"
     };
   }
 
   return {
-    href: defaultApkPath,
+    href: defaultPlayStoreUrl,
     external: false,
     available: true,
-    label: "Download APK"
+    label: "Get it on Google Play"
   };
 }
 

@@ -59,42 +59,45 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
 
-      <section className="relative overflow-hidden py-6 sm:py-8 lg:min-h-[calc(100svh-5.5rem)] lg:py-10">
-        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[26rem] bg-[radial-gradient(circle_at_72%_20%,rgba(45,216,233,0.12),transparent_28%),radial-gradient(circle_at_20%_18%,rgba(59,130,246,0.08),transparent_26%)] dark:bg-[radial-gradient(circle_at_72%_20%,rgba(45,216,233,0.16),transparent_28%),radial-gradient(circle_at_20%_18%,rgba(59,130,246,0.14),transparent_26%)]" />
+      <section className="relative overflow-hidden py-5 sm:py-7 lg:min-h-[calc(100svh-5.5rem)] lg:py-10">
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[24rem] bg-[radial-gradient(circle_at_74%_18%,rgba(45,216,233,0.11),transparent_28%),radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.08),transparent_26%)] dark:bg-[radial-gradient(circle_at_74%_18%,rgba(45,216,233,0.15),transparent_28%),radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.12),transparent_26%)]" />
         <Container>
-          <div className="grid items-center gap-6 lg:grid-cols-[0.88fr_1.12fr] lg:gap-8">
-            <div className="max-w-2xl space-y-4 lg:space-y-5">
+          <div className="grid items-center gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-9 xl:gap-12">
+            <div className="max-w-2xl space-y-5 lg:space-y-6">
               <div
-                className="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-primary motion-safe:animate-slide-up"
+                className="inline-flex items-center rounded-full border border-primary/15 bg-primary/6 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.26em] text-primary motion-safe:animate-slide-up"
                 style={{ animationDelay: "60ms" }}
               >
-                Business Operating System
+                Smart Business Management
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <h1
-                  className="max-w-xl text-balance text-[clamp(2rem,3.3vw,3.25rem)] font-semibold leading-[1.08] tracking-tight motion-safe:animate-slide-up"
-                  style={{ animationDelay: "140ms" }}
+                  className="max-w-[12ch] text-balance text-[clamp(2.3rem,4vw,4.05rem)] font-semibold leading-[0.98] tracking-tight motion-safe:animate-slide-up"
+                  style={{ animationDelay: "120ms" }}
                 >
-                  Run your business. Even when the internet doesn&apos;t.
+                  Run Your Business. Smarter.
                 </h1>
                 <p
-                  className="max-w-lg text-[14px] leading-6 text-muted motion-safe:animate-slide-up sm:text-[15px]"
-                  style={{ animationDelay: "220ms" }}
+                  className="max-w-xl text-[15px] leading-7 text-muted motion-safe:animate-slide-up sm:text-[16px]"
+                  style={{ animationDelay: "190ms" }}
                 >
-                  POS, inventory, finance and team management in one connected workspace.
+                  Sales, inventory, expenses, customers, staff and insights in one simple platform built to help your business stay organized and grow.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-2.5 motion-safe:animate-slide-up sm:flex-row" style={{ animationDelay: "300ms" }}>
-                <DownloadCTA />
-                <Link href="/features" className={buttonStyles("secondary")}>
-                  Explore Features
+              <div className="flex flex-col gap-3 motion-safe:animate-slide-up sm:flex-row sm:items-center" style={{ animationDelay: "260ms" }}>
+                <DownloadCTA label="Download BizPro" className="sm:min-w-[13rem]" />
+                <Link href="/features" className={buttonStyles("secondary", "sm:min-w-[11rem]")}>
+                  See How It Works
                 </Link>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] leading-5 text-muted motion-safe:animate-slide-up" style={{ animationDelay: "360ms" }}>
-                {["Offline-first", "POS", "Inventory", "Reporting"].map((item) => (
+              <div
+                className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[12px] leading-5 text-muted motion-safe:animate-slide-up"
+                style={{ animationDelay: "330ms" }}
+              >
+                {["Offline-first sync", "Android ready", "Built for daily operations"].map((item) => (
                   <span key={item} className="inline-flex items-center gap-1.5">
                     <CheckCircle2 className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
                     {item}
@@ -104,7 +107,7 @@ export default function HomePage() {
             </div>
 
             <div className="relative w-full lg:justify-self-end">
-              <div className="pointer-events-none absolute inset-x-8 top-8 -z-10 h-[20rem] rounded-full bg-[radial-gradient(circle,rgba(45,216,233,0.14),transparent_64%)] blur-2xl" />
+              <div className="pointer-events-none absolute inset-x-8 top-8 -z-10 h-[22rem] rounded-full bg-[radial-gradient(circle,rgba(45,216,233,0.14),transparent_64%)] blur-3xl" />
               <ProductMockup />
             </div>
           </div>

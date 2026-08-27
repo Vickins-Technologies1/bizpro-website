@@ -25,7 +25,7 @@ export const faqItems = [
   },
   {
     question: "Is BizPro available on Android?",
-    answer: "Yes. BizPro is distributed as an Android APK."
+    answer: "Yes. BizPro is available on Google Play for Android."
   },
   {
     question: "What currency does BizPro support?",

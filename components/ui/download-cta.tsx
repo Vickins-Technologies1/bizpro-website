@@ -21,10 +21,9 @@ export function DownloadCTA({
   onClick?: MouseEventHandler<HTMLAnchorElement>;
 }) {
   const download = getDownloadLink();
-  const text = label ?? "Download BizPro";
-  const isAttachmentDownload = download.available && !download.external;
+  const text = label ?? "Get it on Google Play";
   const handleClick = () => {
-    track("apk_download_click", {
+    track("play_store_click", {
       available: download.available,
       destination: download.href
     });
@@ -43,11 +42,17 @@ export function DownloadCTA({
   const classes = compact ? compactClasses : cn(buttonStyles(variant, className), "whitespace-nowrap");
 
   if (download.external) {
-      return (
-        <a className={classes} href={download.href} target="_blank" rel="noreferrer" onClick={(event) => {
-        handleClick();
-        onClick?.(event);
-      }}>
+    return (
+      <a
+        className={classes}
+        href={download.href}
+        target="_blank"
+        rel="noreferrer"
+        onClick={(event) => {
+          handleClick();
+          onClick?.(event);
+        }}
+      >
         {text}
         <ArrowRight className={cn(compact ? "h-3.5 w-3.5" : "h-4 w-4", "transition-transform duration-200 group-hover:translate-x-1")} aria-hidden="true" />
       </a>
@@ -58,7 +63,6 @@ export function DownloadCTA({
     <a
       className={classes}
       href={download.href}
-      download={isAttachmentDownload ? "bizpro.apk" : undefined}
       onClick={(event) => {
         handleClick();
         onClick?.(event);
