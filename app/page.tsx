@@ -1,12 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Building2, ChartColumn, CheckCircle2, CloudOff, Clock3, PackageSearch, Users2 } from "lucide-react";
+import { ArrowUpRight, Building2, ChartColumn, CheckCircle2, CloudOff, Clock3, PackageSearch, Users2 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { buttonStyles } from "@/components/ui/button";
 import { DownloadCTA } from "@/components/ui/download-cta";
-import { ProductMockup } from "@/components/product/product-mockup";
 import { OfflineSyncVisual } from "@/components/product/offline-sync-visual";
 import { IndustrySelector } from "@/components/industry-selector";
 import { Reveal } from "@/components/ui/reveal";
@@ -59,11 +58,12 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
 
-      <section className="relative overflow-hidden py-5 sm:py-7 lg:min-h-[calc(100svh-5.5rem)] lg:py-10">
-        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[24rem] bg-[radial-gradient(circle_at_74%_18%,rgba(45,216,233,0.11),transparent_28%),radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.08),transparent_26%)] dark:bg-[radial-gradient(circle_at_74%_18%,rgba(45,216,233,0.15),transparent_28%),radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.12),transparent_26%)]" />
+      <section className="relative isolate overflow-hidden py-12 sm:py-16 lg:min-h-[calc(100svh-5.5rem)] lg:py-24">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_8%,rgba(45,216,233,0.16),transparent_25%),radial-gradient(circle_at_12%_56%,rgba(59,130,246,0.09),transparent_24%),radial-gradient(circle_at_88%_44%,rgba(59,130,246,0.08),transparent_24%)] dark:bg-[radial-gradient(circle_at_50%_8%,rgba(45,216,233,0.2),transparent_25%),radial-gradient(circle_at_12%_56%,rgba(59,130,246,0.13),transparent_24%),radial-gradient(circle_at_88%_44%,rgba(59,130,246,0.12),transparent_24%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/2 opacity-40 [background-image:linear-gradient(rgba(90,102,124,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(90,102,124,0.12)_1px,transparent_1px)] [background-size:42px_42px] [mask-image:linear-gradient(to_bottom,transparent,black)]" />
         <Container>
-          <div className="grid items-center gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-9 xl:gap-12">
-            <div className="max-w-2xl space-y-5 lg:space-y-6">
+          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+            <div className="space-y-6">
               <div
                 className="inline-flex items-center rounded-full border border-primary/15 bg-primary/6 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.26em] text-primary motion-safe:animate-slide-up"
                 style={{ animationDelay: "60ms" }}
@@ -71,22 +71,22 @@ export default function HomePage() {
                 Smart Business Management
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-5">
                 <h1
-                  className="max-w-[12ch] text-balance text-[clamp(2.3rem,4vw,4.05rem)] font-semibold leading-[0.98] tracking-tight motion-safe:animate-slide-up"
+                  className="text-balance text-[clamp(2.75rem,7vw,6.7rem)] font-semibold leading-[0.9] tracking-[-0.055em] motion-safe:animate-slide-up"
                   style={{ animationDelay: "120ms" }}
                 >
-                  Run Your Business. Smarter.
+                  Run the day.<br /><span className="text-primary">Grow the business.</span>
                 </h1>
                 <p
-                  className="max-w-xl text-[15px] leading-7 text-muted motion-safe:animate-slide-up sm:text-[16px]"
+                  className="mx-auto max-w-2xl text-[15px] leading-7 text-muted motion-safe:animate-slide-up sm:text-[17px] sm:leading-8"
                   style={{ animationDelay: "190ms" }}
                 >
-                  Sales, inventory, expenses, customers, staff and insights in one simple platform built to help your business stay organized and grow.
+                  BizPro brings sales, inventory, people and insight into one calm, connected workspace, so you can spend less time chasing details and more time moving forward.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 motion-safe:animate-slide-up sm:flex-row sm:items-center" style={{ animationDelay: "260ms" }}>
+              <div className="flex flex-col justify-center gap-3 motion-safe:animate-slide-up sm:flex-row sm:items-center" style={{ animationDelay: "260ms" }}>
                 <DownloadCTA label="Download BizPro" className="sm:min-w-[13rem]" />
                 <Link href="/features" className={buttonStyles("secondary", "sm:min-w-[11rem]")}>
                   See How It Works
@@ -94,7 +94,7 @@ export default function HomePage() {
               </div>
 
               <div
-                className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[12px] leading-5 text-muted motion-safe:animate-slide-up"
+                className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[12px] leading-5 text-muted motion-safe:animate-slide-up"
                 style={{ animationDelay: "330ms" }}
               >
                 {["Offline-first sync", "Android ready", "Built for daily operations"].map((item) => (
@@ -106,9 +106,25 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative w-full lg:justify-self-end">
-              <div className="pointer-events-none absolute inset-x-8 top-8 -z-10 h-[22rem] rounded-full bg-[radial-gradient(circle,rgba(45,216,233,0.14),transparent_64%)] blur-3xl" />
-              <ProductMockup />
+            <div className="relative mt-14 w-full max-w-3xl motion-safe:animate-slide-up" style={{ animationDelay: "420ms" }}>
+              <div className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-3xl" />
+              <div className="relative grid grid-cols-2 gap-3 text-left sm:grid-cols-4 sm:gap-4">
+                {[
+                  { label: "Sales today", value: "+24.8%", note: "vs. last week" },
+                  { label: "Stock health", value: "92%", note: "18 items synced" },
+                  { label: "Team active", value: "08", note: "across 2 branches" },
+                  { label: "Time saved", value: "6.4h", note: "this week", accent: true }
+                ].map((item, index) => (
+                  <div key={item.label} className={`rounded-3xl border border-border/70 bg-card/75 p-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-1 hover:border-primary/30 ${index % 2 === 1 ? "sm:translate-y-5" : ""}`}>
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted">{item.label}</span>
+                      {item.accent ? <ArrowUpRight className="h-4 w-4 text-primary" aria-hidden="true" /> : null}
+                    </div>
+                    <p className="mt-6 text-2xl font-semibold tracking-tight sm:text-3xl">{item.value}</p>
+                    <p className="mt-1 text-xs text-muted">{item.note}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </Container>
