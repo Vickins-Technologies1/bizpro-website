@@ -130,6 +130,9 @@ export function Navbar() {
         "max-lg:border-border/70 max-lg:bg-card/92 max-lg:shadow-[0_1px_0_rgba(15,23,42,0.05)] max-lg:backdrop-blur-xl max-lg:supports-[backdrop-filter]:bg-card/80 dark:max-lg:shadow-[0_1px_0_rgba(255,255,255,0.04)]"
       )}
     >
+      <div className="border-b border-primary/10 bg-primary/[0.04] py-2 text-center text-[11px] font-semibold tracking-[0.16em] text-primary">
+        1 MONTH FREE <span className="mx-2 text-muted">·</span> No card required
+      </div>
       <Container className="relative">
         <div className="flex min-h-[60px] items-center justify-between gap-3 py-2 sm:min-h-[64px] lg:min-h-[68px]">
           <Link href="/" className="flex items-center gap-2.5">

@@ -1,329 +1,43 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowUpRight, Building2, ChartColumn, CheckCircle2, CloudOff, Clock3, PackageSearch, Users2 } from "lucide-react";
+import { ArrowRight, BarChart3, Boxes, Building2, Check, CircleDollarSign, Cloud, CreditCard, LayoutGrid, Package, Receipt, ShieldCheck, ShoppingCart, Store, Users2, WifiOff } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Card } from "@/components/ui/card";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { buttonStyles } from "@/components/ui/button";
 import { DownloadCTA } from "@/components/ui/download-cta";
 import { OfflineSyncVisual } from "@/components/product/offline-sync-visual";
 import { IndustrySelector } from "@/components/industry-selector";
 import { Reveal } from "@/components/ui/reveal";
-import { homepageFeatureBlocks } from "@/config/features";
-import { faqItems } from "@/config/faq";
 import { siteConfig } from "@/config/site";
+import { pricingPlans } from "@/config/pricing";
+import { faqItems } from "@/config/faq";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Dira OS — Business Operating System",
-  description: siteConfig.description,
-  path: "/"
-});
+export const metadata: Metadata = buildMetadata({ title: "Dira OS — Business Operating System for Modern Businesses", description: siteConfig.description, path: "/" });
 
-const capabilityItems = [
-  { label: "Offline-first", icon: CloudOff },
-  { label: "Fast POS", icon: Clock3 },
-  { label: "Inventory control", icon: PackageSearch },
-  { label: "Team access", icon: Users2 },
-  { label: "Branch management", icon: Building2 },
-  { label: "Reporting", icon: ChartColumn }
-] as const;
+const capabilities = [[ShoppingCart, "POS"], [Package, "Inventory"], [CircleDollarSign, "Finance"], [Users2, "Teams"], [Building2, "Branches"], [BarChart3, "Reports"]] as const;
 
-const faqPreview = faqItems.slice(0, 3);
+function PhoneMockup() {
+  return <div className="relative mx-auto w-full max-w-[24rem] motion-safe:animate-slide-up"><div className="absolute -inset-10 rounded-full bg-primary/15 blur-3xl" /><div className="relative rounded-[2.4rem] border-[7px] border-slate-900 bg-slate-950 p-2 shadow-[0_28px_80px_rgba(15,23,42,0.28)] dark:border-slate-700"><div className="overflow-hidden rounded-[1.9rem] bg-background"><div className="flex items-center justify-between bg-slate-950 px-5 py-3 text-[10px] text-white"><span>9:41</span><span className="h-1.5 w-12 rounded-full bg-white/20" /><span>● ●</span></div><div className="space-y-4 p-5"><div className="flex items-center justify-between"><div><p className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted">Good morning</p><p className="mt-1 text-lg font-semibold">Your business</p></div><div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-white"><LayoutGrid className="h-4 w-4" /></div></div><div className="rounded-2xl bg-slate-950 p-4 text-white"><div className="flex items-center justify-between text-[10px] text-slate-300"><span>Revenue today</span><span className="text-emerald-300">+12.4%</span></div><p className="mt-2 text-2xl font-semibold">KES 84,200</p><div className="mt-4 flex h-12 items-end gap-1.5">{[20, 34, 25, 46, 38, 58, 50, 72, 64, 86, 72, 92].map((height, i) => <span key={i} className="flex-1 rounded-t bg-gradient-to-t from-primary to-cyan-300" style={{ height: `${height}%` }} />)}</div></div><div className="grid grid-cols-2 gap-2"><div className="rounded-2xl border border-border/70 bg-card p-3"><Receipt className="h-4 w-4 text-primary" /><p className="mt-3 text-xl font-semibold">126</p><p className="text-[10px] text-muted">Sales</p></div><div className="rounded-2xl border border-border/70 bg-card p-3"><Boxes className="h-4 w-4 text-primary" /><p className="mt-3 text-xl font-semibold">06</p><p className="text-[10px] text-muted">Low stock</p></div></div><div className="flex items-center gap-2 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-3 text-xs text-emerald-700 dark:text-emerald-300"><Cloud className="h-4 w-4" /> Synced just now</div></div></div></div><div className="absolute -right-5 top-20 hidden rounded-2xl border border-border/70 bg-card p-3 shadow-lg sm:block"><p className="text-[10px] text-muted">Recent sale</p><p className="mt-1 text-sm font-semibold">+ KES 4,850</p></div><div className="absolute -left-8 bottom-20 hidden rounded-2xl border border-border/70 bg-card p-3 shadow-lg sm:block"><p className="text-[10px] text-muted">Connection</p><p className="mt-1 flex items-center gap-1.5 text-sm font-semibold"><span className="h-2 w-2 rounded-full bg-emerald-500" /> Synced</p></div></div>;
+}
+
+const showcase = [["01", "POS", "Sell faster. Keep the counter moving.", "Fast checkout, product search, receipts and payment handling in one focused flow.", CreditCard], ["02", "Inventory", "Know what is available before it becomes a problem.", "Track products, stock levels, barcode lookups and low-stock awareness.", Package], ["03", "Finance", "Understand where your money is going.", "Keep sales, expenses, collections and balances in view.", CircleDollarSign], ["04", "Team", "Give your team the access they need.", "Manage employees, roles and branch access with clarity.", ShieldCheck], ["05", "Branches", "Manage multiple locations from one system.", "Stay connected across the business as your operations expand.", Store], ["06", "Reports", "Turn business activity into clear insights.", "See performance summaries and trends without digging through tools.", BarChart3]] as const;
 
 export default function HomePage() {
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.siteName,
-    url: siteConfig.websiteUrl,
-    description: siteConfig.description
-  };
-
-  const softwareSchema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: siteConfig.siteName,
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Android",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: siteConfig.defaultCurrency
-    }
-  };
-
-  return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
-
-      <section className="relative isolate overflow-hidden py-12 sm:py-16 lg:min-h-[calc(100svh-5.5rem)] lg:py-24">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_8%,rgba(45,216,233,0.16),transparent_25%),radial-gradient(circle_at_12%_56%,rgba(59,130,246,0.09),transparent_24%),radial-gradient(circle_at_88%_44%,rgba(59,130,246,0.08),transparent_24%)] dark:bg-[radial-gradient(circle_at_50%_8%,rgba(45,216,233,0.2),transparent_25%),radial-gradient(circle_at_12%_56%,rgba(59,130,246,0.13),transparent_24%),radial-gradient(circle_at_88%_44%,rgba(59,130,246,0.12),transparent_24%)]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-1/2 opacity-40 [background-image:linear-gradient(rgba(90,102,124,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(90,102,124,0.12)_1px,transparent_1px)] [background-size:42px_42px] [mask-image:linear-gradient(to_bottom,transparent,black)]" />
-        <Container>
-          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-            <div className="space-y-6">
-              <div
-                className="inline-flex items-center rounded-full border border-primary/15 bg-primary/6 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.26em] text-primary motion-safe:animate-slide-up"
-                style={{ animationDelay: "60ms" }}
-              >
-                BUSINESS OPERATIONS, SIMPLIFIED
-              </div>
-
-              <div className="space-y-5">
-                <h1
-                  className="text-balance text-[clamp(2.75rem,7vw,6.7rem)] font-semibold leading-[0.9] tracking-[-0.055em] motion-safe:animate-slide-up"
-                  style={{ animationDelay: "120ms" }}
-                >
-                  Run Your Business<br /><span className="text-primary">Smarter With Dira OS.</span>
-                </h1>
-                <p
-                  className="mx-auto max-w-2xl text-[15px] leading-7 text-muted motion-safe:animate-slide-up sm:text-[17px] sm:leading-8"
-                  style={{ animationDelay: "190ms" }}
-                >
-                  Dira OS brings sales, inventory, finances, staff, branches and business insights together in one powerful business operating system.
-                </p>
-              </div>
-
-              <div className="flex flex-col justify-center gap-3 motion-safe:animate-slide-up sm:flex-row sm:items-center" style={{ animationDelay: "260ms" }}>
-                <DownloadCTA label="Start Free Trial" className="sm:min-w-[13rem]" />
-                <Link href="/features" className={buttonStyles("secondary", "sm:min-w-[11rem]")}>
-                  Explore Features
-                </Link>
-              </div>
-
-              <div
-                className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[12px] leading-5 text-muted motion-safe:animate-slide-up"
-                style={{ animationDelay: "330ms" }}
-              >
-                {["Offline-first sync", "Android ready", "Built for daily operations"].map((item) => (
-                  <span key={item} className="inline-flex items-center gap-1.5">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative mt-14 w-full max-w-3xl motion-safe:animate-slide-up" style={{ animationDelay: "420ms" }}>
-              <div className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-3xl" />
-              <div className="relative grid grid-cols-2 gap-3 text-left sm:grid-cols-4 sm:gap-4">
-                {[
-                  { label: "Sales today", value: "+24.8%", note: "vs. last week" },
-                  { label: "Stock health", value: "92%", note: "18 items synced" },
-                  { label: "Team active", value: "08", note: "across 2 branches" },
-                  { label: "Time saved", value: "6.4h", note: "this week", accent: true }
-                ].map((item, index) => (
-                  <div key={item.label} className={`rounded-3xl border border-border/70 bg-card/75 p-4 shadow-sm backdrop-blur-sm transition hover:-translate-y-1 hover:border-primary/30 ${index % 2 === 1 ? "sm:translate-y-5" : ""}`}>
-                    <div className="flex items-start justify-between gap-2">
-                      <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted">{item.label}</span>
-                      {item.accent ? <ArrowUpRight className="h-4 w-4 text-primary" aria-hidden="true" /> : null}
-                    </div>
-                    <p className="mt-6 text-2xl font-semibold tracking-tight sm:text-3xl">{item.value}</p>
-                    <p className="mt-1 text-xs text-muted">{item.note}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      <section className="border-y border-border/60 bg-card/25">
-        <Container className="py-10 lg:py-12">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Core capabilities"
-              title="Everything you need to run the day."
-              description="Dira OS combines the essentials into one place so the business stays focused, visible and in control."
-            />
-          </Reveal>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-            {capabilityItems.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <Reveal key={item.label} delay={index * 60}>
-                  <Card className="p-4">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-primary/15 bg-primary/5 text-primary">
-                        <Icon className="h-4 w-4" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold">{item.label}</p>
-                        <p className="text-xs text-muted">Core capability</p>
-                      </div>
-                    </div>
-                  </Card>
-                </Reveal>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-12 lg:py-16">
-        <Container>
-          <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-            <Reveal direction="left">
-              <SectionHeading
-                eyebrow="Offline-first"
-                title="Your business shouldn't stop because the internet did."
-                description="Dira OS saves locally, queues changes and syncs them when the connection returns."
-                action={
-                  <div className="flex flex-wrap gap-3">
-                    <Link href="/download" className={buttonStyles("secondary")}>
-                      Open download page
-                    </Link>
-                    <Link href="/features" className={buttonStyles("ghost")}>
-                      View features
-                    </Link>
-                  </div>
-                }
-              />
-            </Reveal>
-            <OfflineSyncVisual />
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-12 lg:py-16">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow="Features"
-              title="Show the product, not just the idea."
-              description="Short feature blocks keep the site product-focused and easy to scan."
-            />
-          </Reveal>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {homepageFeatureBlocks.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <Reveal key={feature.title} delay={index * 70} direction={index % 2 === 0 ? "left" : "right"}>
-                  <Card className="p-4 transition hover:-translate-y-0.5 hover:border-primary/30">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-primary/15 bg-primary/5 text-primary">
-                        <Icon className="h-4 w-4" aria-hidden="true" />
-                      </div>
-                      <span className="rounded-full border border-border/70 px-2.5 py-1 text-[11px] font-medium text-muted">
-                        Core
-                      </span>
-                    </div>
-                    <h3 className="mt-4 text-lg font-semibold">{feature.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-muted">{feature.description}</p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {feature.bullets.map((bullet) => (
-                        <span
-                          key={bullet}
-                          className="rounded-full border border-primary/15 bg-primary/5 px-2.5 py-1 text-[11px] font-medium text-primary"
-                        >
-                          {bullet}
-                        </span>
-                      ))}
-                    </div>
-                  </Card>
-                </Reveal>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-12 lg:py-16">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow="Industries"
-              title="One platform. Different businesses."
-              description="One operating system. Different businesses. Configured around how you work."
-            />
-          </Reveal>
-          <Reveal delay={80}>
-            <div className="mt-8">
-            <IndustrySelector />
-            </div>
-          </Reveal>
-        </Container>
-      </section>
-
-      <section className="py-12 lg:py-16">
-        <Container>
-          <Reveal>
-            <Card className="overflow-hidden p-0">
-              <div className="grid gap-0 lg:grid-cols-[1fr_auto]">
-                <div className="space-y-4 p-5 sm:p-6 lg:p-8">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">Download</p>
-                  <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Start your Dira OS journey.</h2>
-                  <p className="max-w-xl text-sm leading-6 text-muted">
-                    Explore Dira OS and manage your business from one connected system.
-                  </p>
-                  <div className="flex flex-wrap gap-3">
-                    <DownloadCTA />
-                    <Link href="/contact" className={buttonStyles("secondary")}>
-                      Contact Dira OS
-                    </Link>
-                  </div>
-                </div>
-                <div className="flex items-center bg-[linear-gradient(135deg,rgba(59,130,246,0.1),rgba(34,211,238,0.14))] p-5 sm:p-6 lg:p-8">
-                  <div className="grid gap-2 rounded-3xl border border-border/70 bg-background/80 p-4">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted">Android</p>
-                    <p className="text-sm font-semibold">{siteConfig.productVersion}</p>
-                    <p className="text-xs text-muted">{siteConfig.minimumAndroidVersion}</p>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          </Reveal>
-        </Container>
-      </section>
-
-      <section className="py-12 lg:py-16">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow="FAQ"
-              title="Quick answers."
-              description="The essentials are answered here without adding clutter."
-              action={<Link href="/faq" className={buttonStyles("secondary")}>Open FAQ</Link>}
-            />
-          </Reveal>
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
-            {faqPreview.map((item, index) => (
-              <Reveal key={item.question} delay={index * 60}>
-                <Card className="p-4">
-                  <h3 className="text-base font-semibold">{item.question}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted">{item.answer}</p>
-                </Card>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-12 lg:py-16">
-        <Container>
-          <Reveal>
-            <Card className="overflow-hidden border-primary/20 bg-[linear-gradient(135deg,rgba(59,130,246,0.1),rgba(34,211,238,0.12))] p-5 sm:p-6 lg:p-8">
-              <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
-                <div className="space-y-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">Final CTA</p>
-                  <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Sell. Manage. Grow.</h2>
-                  <p className="max-w-xl text-sm leading-6 text-muted">
-                    Dira OS brings sales, inventory, finance, teams and everyday operations into one Business Operating System.
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  <DownloadCTA />
-                  <Link href="/features" className={buttonStyles("secondary")}>
-                    Explore Features
-                  </Link>
-                </div>
-              </div>
-            </Card>
-          </Reveal>
-        </Container>
-      </section>
-    </>
-  );
+  const organizationSchema = { "@context": "https://schema.org", "@type": "Organization", name: siteConfig.siteName, url: siteConfig.websiteUrl, description: siteConfig.description };
+  const softwareSchema = { "@context": "https://schema.org", "@type": "SoftwareApplication", name: siteConfig.siteName, applicationCategory: "BusinessApplication", operatingSystem: "Android" };
+  return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
+    <section className="overflow-hidden border-b border-border/60 py-14 sm:py-20 lg:py-24"><Container><div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]"><div className="max-w-xl"><p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">Business Operating System</p><h1 className="mt-5 text-balance text-[clamp(3.25rem,7vw,6.5rem)] font-semibold leading-[0.88] tracking-[-0.065em]">Run your business.<br /><span className="text-primary">Even when the internet doesn&apos;t.</span></h1><p className="mt-6 max-w-lg text-base leading-7 text-muted sm:text-lg">Sales, inventory, finance, teams and branches — connected in one simple business operating system.</p><div className="mt-8 flex flex-col gap-3 sm:flex-row"><DownloadCTA label="Start Free Trial" className="sm:min-w-[10.5rem]" /><Link href="#product" className={buttonStyles("secondary", "sm:min-w-[10.5rem]")}>Explore Dira OS</Link></div><div className="mt-5 flex items-center gap-2 text-xs text-muted"><Check className="h-4 w-4 text-primary" /> Set up your business in one place</div></div><PhoneMockup /></div></Container></section>
+    <section className="border-b border-border/60 bg-card/35"><Container><div className="grid grid-cols-2 divide-x divide-y divide-border/60 sm:grid-cols-3 sm:divide-y-0 lg:grid-cols-6">{capabilities.map(([Icon, label]) => <div key={label} className="flex items-center justify-center gap-2 px-3 py-5 text-xs font-semibold text-muted"><Icon className="h-4 w-4 text-primary" />{label}</div>)}</div></Container></section>
+    <section id="product" className="py-16 sm:py-20"><Container><div className="grid items-end gap-8 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">One connected system</p><h2 className="mt-4 max-w-xl text-4xl font-semibold leading-tight tracking-[-0.045em] sm:text-5xl">One system.<br />Everything connected.</h2></div><p className="max-w-lg text-sm leading-7 text-muted">Dira OS brings the essential parts of running your business together — so you can spend less time managing tools and more time managing your business.</p></div><div className="mt-10 grid gap-3 sm:grid-cols-3 lg:grid-cols-6">{capabilities.map(([Icon, label], i) => <div key={label} className="relative rounded-2xl border border-border/70 bg-card p-4 shadow-sm"><div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary"><Icon className="h-4 w-4" /></div><p className="mt-4 text-sm font-semibold">{label}</p><p className="mt-1 text-[11px] text-muted">Connected by Dira OS</p>{i < 5 ? <ArrowRight className="absolute -right-3 top-1/2 z-10 hidden h-5 w-5 rounded-full bg-background p-1 text-primary lg:block" /> : null}</div>)}</div></Container></section>
+    <section className="bg-slate-950 py-16 text-white sm:py-20"><Container><div className="grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300">Signature reliability</p><h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.045em] sm:text-5xl">Your business shouldn&apos;t stop because the internet did.</h2><p className="mt-5 max-w-lg text-sm leading-7 text-slate-300">Dira OS keeps critical business operations available when connectivity is unreliable, then synchronizes your data when the connection returns.</p></div><OfflineSyncVisual /></div></Container></section>
+    <section className="py-16 sm:py-20"><Container><div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">Product showcase</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">Everything your business needs.<br />Right where you need it.</h2></div><Link href="/features" className={buttonStyles("secondary")}>See all features <ArrowRight className="h-4 w-4" /></Link></div><div className="mt-10 grid gap-3 md:grid-cols-2 xl:grid-cols-3">{showcase.map(([number, title, heading, description, Icon]) => <Reveal key={number}><Card className="group p-5 transition hover:-translate-y-1 hover:border-primary/30"><div className="flex items-center justify-between"><span className="text-xs font-semibold tracking-[0.2em] text-primary">{number}</span><Icon className="h-5 w-5 text-primary transition group-hover:scale-110" /></div><p className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-muted">{title}</p><h3 className="mt-2 text-xl font-semibold tracking-tight">{heading}</h3><p className="mt-2 text-sm leading-6 text-muted">{description}</p><div className="mt-5 flex h-16 items-end gap-1 rounded-xl border border-border/60 bg-background/70 p-3">{[28, 42, 36, 64, 52, 74, 62, 88].map((height, i) => <span key={i} className="flex-1 rounded-sm bg-gradient-to-t from-primary/30 to-primary" style={{ height: `${height}%` }} />)}</div></Card></Reveal>)}</div></Container></section>
+    <section className="border-y border-border/60 bg-card/30 py-16 sm:py-20"><Container><div className="mx-auto max-w-2xl text-center"><p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">Solutions</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">One OS. Built around your business.</h2></div><div className="mt-10"><IndustrySelector /></div></Container></section>
+    <section className="py-16 sm:py-20"><Container><div className="mx-auto max-w-2xl text-center"><p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">Why Dira OS</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">Built for the way businesses actually operate.</h2></div><div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{[[LayoutGrid, "One system", "Everything important in one place."], [WifiOff, "Works offline", "Keep critical operations moving."], [BarChart3, "Clear visibility", "Understand sales, stock and performance."], [Building2, "Ready to grow", "Add staff and branches as you expand."]].map(([Icon, title, body]) => <Card key={title as string} className="p-5"><Icon className="h-5 w-5 text-primary" /><h3 className="mt-6 font-semibold">{title as string}</h3><p className="mt-2 text-sm leading-6 text-muted">{body as string}</p></Card>)}</div></Container></section>
+    <section className="bg-slate-950 py-16 text-white sm:py-20"><Container><div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end"><div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300">Pricing</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">Start simple.<br />Scale when you need to.</h2><p className="mt-4 text-sm text-slate-300"><span className="font-semibold text-white">1 MONTH FREE</span> · No card required.</p></div><Link href="/pricing" className={buttonStyles("secondary", "border-white/20 bg-white/10 text-white hover:bg-white/15")}>Compare plans <ArrowRight className="h-4 w-4" /></Link></div><div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{pricingPlans.map((plan) => <Card key={plan.name} className={`border-white/10 bg-white/[0.06] p-5 text-white ${plan.recommended ? "ring-1 ring-cyan-300/70" : ""}`}><div className="flex items-center justify-between"><p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">{plan.name}</p>{plan.recommended ? <span className="text-[10px] text-cyan-200">Recommended</span> : null}</div><p className="mt-5 text-2xl font-semibold">{plan.price}</p><p className="mt-1 text-xs text-slate-300">{plan.note}</p><Link href="/download" className="mt-6 inline-flex text-xs font-semibold text-white hover:text-cyan-200">Start free trial <ArrowRight className="ml-1 h-3.5 w-3.5" /></Link></Card>)}</div></Container></section>
+    <section className="py-16 sm:py-20"><Container><div className="grid items-center gap-10 rounded-3xl border border-border/70 bg-card p-6 shadow-sm sm:p-10 lg:grid-cols-[1fr_auto]"><div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">Dira OS on Android</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em]">Your business.<br />In your pocket.</h2><p className="mt-4 max-w-lg text-sm leading-7 text-muted">Take Dira OS with you and manage your business wherever you work.</p></div><div className="flex flex-wrap gap-3"><DownloadCTA label="Get Dira OS" /><Link href="/download" className={buttonStyles("secondary")}>Learn more</Link></div></div></Container></section>
+    <section className="border-t border-border/60 py-16 sm:py-20"><Container><div className="mx-auto max-w-2xl text-center"><p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">FAQ</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em]">Quick answers.</h2></div><div className="mx-auto mt-8 max-w-3xl space-y-3">{faqItems.slice(0, 6).map((item) => <details key={item.question} className="group rounded-2xl border border-border/70 bg-card p-5"><summary className="cursor-pointer list-none text-sm font-semibold">{item.question}<span className="float-right text-primary">+</span></summary><p className="mt-3 max-w-2xl text-sm leading-6 text-muted">{item.answer}</p></details>)}</div></Container></section>
+    <section className="pb-16 sm:pb-20"><Container><div className="rounded-3xl bg-gradient-to-br from-primary to-cyan-500 p-8 text-white sm:p-12"><p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/75">Start with clarity</p><h2 className="mt-4 max-w-2xl text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">Run your business with clarity.</h2><p className="mt-4 text-sm text-white/80">Sales. Stock. Finance. Teams. One connected operating system.</p><div className="mt-7 flex flex-wrap gap-3"><DownloadCTA label="Start Your Free Month" className="bg-white text-slate-950 hover:bg-white/90" /><Link href="/features" className={buttonStyles("secondary", "border-white/30 bg-white/10 text-white hover:bg-white/20")}>Explore Dira OS</Link></div></div></Container></section>
+  </>;
 }
