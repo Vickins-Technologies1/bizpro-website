@@ -16,7 +16,7 @@ export const siteConfig = {
   siteName: "Dira OS",
   tagline: "Business OS",
   description:
-    "Dira OS is an all-in-one business operating system for managing sales, inventory, finances, staff, branches and business operations from one simple platform.",
+    "Dira OS is an all-in-one business operating system for managing sales, inventory, finance, teams, branches and everyday business operations.",
   websiteUrl: readPublicEnv("NEXT_PUBLIC_SITE_URL", "https://dira-os.vickinstechnologies.com"),
   playStoreUrl: readPublicEnv("NEXT_PUBLIC_PLAY_STORE_URL", defaultPlayStoreUrl),
   contactEmail: readPublicEnv("NEXT_PUBLIC_CONTACT_EMAIL", ""),

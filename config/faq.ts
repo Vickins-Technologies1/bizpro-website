@@ -24,6 +24,14 @@ export const faqItems = [
     answer: "Yes. Dira OS is structured to support multi-branch operations."
   },
   {
+    question: "How much does Dira OS cost?",
+    answer: "Plans start at KES 700 per month, with options for growing teams and multi-branch businesses."
+  },
+  {
+    question: "Is there a free trial?",
+    answer: "Yes. Start with one month free, with no card required."
+  },
+  {
     question: "Is Dira OS available on Android?",
     answer: "Yes. Dira OS is available on Google Play for Android."
   },

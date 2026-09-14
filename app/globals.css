@@ -9,7 +9,7 @@
   --card-foreground: 11 18 32;
   --muted: 90 102 124;
   --border: 220 229 240;
-  --primary: 16 91 255;
+  --primary: 0 92 230;
   --primary-foreground: 255 255 255;
   --accent: 27 208 230;
   --ring: 82 146 255;
@@ -39,23 +39,27 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top left, rgba(59, 130, 246, 0.14), transparent 28%),
-    radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 24%),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.45), transparent 18%),
-    rgb(var(--background));
+  background: rgb(var(--background));
   color: rgb(var(--foreground));
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .dark body {
-  background:
-    radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 26%),
-    radial-gradient(circle at top right, rgba(34, 211, 238, 0.14), transparent 22%),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02), transparent 18%),
-    rgb(var(--background));
+  background: rgb(var(--background));
+}
+
+@layer components {
+  .section-pad { @apply py-20 sm:py-24; }
+  .section-title { @apply text-3xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-[42px]; }
+  .eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.22em] text-primary; }
+  .hero-grid { background-image: linear-gradient(rgba(15,23,42,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,.035) 1px, transparent 1px); background-size: 48px 48px; }
+}
+
+@media (max-width: 640px) {
+  .section-pad { @apply py-16; }
 }
 
 ::selection {
@@ -82,4 +86,3 @@ body {
     scroll-behavior: auto !important;
   }
 }
-
