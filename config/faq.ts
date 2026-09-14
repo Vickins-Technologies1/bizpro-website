@@ -1,10 +1,10 @@
 export const faqItems = [
   {
-    question: "What is BizPro?",
-    answer: "BizPro is an offline-first Business Operating System for running day-to-day operations."
+    question: "What is Dira OS?",
+    answer: "Dira OS is an offline-first Business Operating System for running day-to-day operations."
   },
   {
-    question: "Does BizPro work offline?",
+    question: "Does Dira OS work offline?",
     answer: "Yes. Core actions can be recorded locally so work continues when the internet is unavailable."
   },
   {
@@ -12,23 +12,23 @@ export const faqItems = [
     answer: "Queued actions sync to the cloud when connectivity returns."
   },
   {
-    question: "Which businesses can use BizPro?",
+    question: "Which businesses can use Dira OS?",
     answer: "Retail, food service, beauty, healthcare, automotive, services and professional teams."
   },
   {
-    question: "Can multiple employees use BizPro?",
+    question: "Can multiple employees use Dira OS?",
     answer: "Yes. Roles and permissions let each employee use the right tools."
   },
   {
     question: "Can businesses have multiple branches?",
-    answer: "Yes. BizPro is structured to support multi-branch operations."
+    answer: "Yes. Dira OS is structured to support multi-branch operations."
   },
   {
-    question: "Is BizPro available on Android?",
-    answer: "Yes. BizPro is available on Google Play for Android."
+    question: "Is Dira OS available on Android?",
+    answer: "Yes. Dira OS is available on Google Play for Android."
   },
   {
-    question: "What currency does BizPro support?",
+    question: "What currency does Dira OS support?",
     answer: "KES is the default currency."
   },
   {

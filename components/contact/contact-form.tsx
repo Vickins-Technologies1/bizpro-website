@@ -23,7 +23,7 @@ export function ContactForm() {
     const company = String(formData.get("company") ?? "");
     const message = String(formData.get("message") ?? "");
 
-    const subject = `BizPro contact from ${name || "website visitor"}`;
+    const subject = `Dira OS contact from ${name || "website visitor"}`;
     const body = [
       `Name: ${name}`,
       `Email: ${email}`,

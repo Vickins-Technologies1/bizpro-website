@@ -15,7 +15,7 @@ import { siteConfig } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "BizPro — Business OS",
+  title: "Dira OS — Business Operating System",
   description: siteConfig.description,
   path: "/"
 });
@@ -68,7 +68,7 @@ export default function HomePage() {
                 className="inline-flex items-center rounded-full border border-primary/15 bg-primary/6 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.26em] text-primary motion-safe:animate-slide-up"
                 style={{ animationDelay: "60ms" }}
               >
-                Smart Business Management
+                BUSINESS OPERATIONS, SIMPLIFIED
               </div>
 
               <div className="space-y-5">
@@ -76,20 +76,20 @@ export default function HomePage() {
                   className="text-balance text-[clamp(2.75rem,7vw,6.7rem)] font-semibold leading-[0.9] tracking-[-0.055em] motion-safe:animate-slide-up"
                   style={{ animationDelay: "120ms" }}
                 >
-                  Run the day.<br /><span className="text-primary">Grow the business.</span>
+                  Run Your Business<br /><span className="text-primary">Smarter With Dira OS.</span>
                 </h1>
                 <p
                   className="mx-auto max-w-2xl text-[15px] leading-7 text-muted motion-safe:animate-slide-up sm:text-[17px] sm:leading-8"
                   style={{ animationDelay: "190ms" }}
                 >
-                  BizPro brings sales, inventory, people and insight into one calm, connected workspace, so you can spend less time chasing details and more time moving forward.
+                  Dira OS brings sales, inventory, finances, staff, branches and business insights together in one powerful business operating system.
                 </p>
               </div>
 
               <div className="flex flex-col justify-center gap-3 motion-safe:animate-slide-up sm:flex-row sm:items-center" style={{ animationDelay: "260ms" }}>
-                <DownloadCTA label="Download BizPro" className="sm:min-w-[13rem]" />
+                <DownloadCTA label="Start Free Trial" className="sm:min-w-[13rem]" />
                 <Link href="/features" className={buttonStyles("secondary", "sm:min-w-[11rem]")}>
-                  See How It Works
+                  Explore Features
                 </Link>
               </div>
 
@@ -136,7 +136,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Core capabilities"
               title="Everything you need to run the day."
-              description="BizPro combines the essentials into one place so the business stays focused and fast."
+              description="Dira OS combines the essentials into one place so the business stays focused, visible and in control."
             />
           </Reveal>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
@@ -169,7 +169,7 @@ export default function HomePage() {
               <SectionHeading
                 eyebrow="Offline-first"
                 title="Your business shouldn't stop because the internet did."
-                description="BizPro saves locally, queues changes and syncs them when the connection returns."
+                description="Dira OS saves locally, queues changes and syncs them when the connection returns."
                 action={
                   <div className="flex flex-wrap gap-3">
                     <Link href="/download" className={buttonStyles("secondary")}>
@@ -236,7 +236,7 @@ export default function HomePage() {
             <SectionHeading
               eyebrow="Industries"
               title="One platform. Different businesses."
-              description="Retail, food service, beauty, healthcare, automotive, services and professional teams can all use BizPro."
+              description="One operating system. Different businesses. Configured around how you work."
             />
           </Reveal>
           <Reveal delay={80}>
@@ -254,14 +254,14 @@ export default function HomePage() {
               <div className="grid gap-0 lg:grid-cols-[1fr_auto]">
                 <div className="space-y-4 p-5 sm:p-6 lg:p-8">
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">Download</p>
-                  <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Download BizPro for Android.</h2>
+                  <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Start your Dira OS journey.</h2>
                   <p className="max-w-xl text-sm leading-6 text-muted">
-                    Get BizPro for Android and manage the business from one place.
+                    Explore Dira OS and manage your business from one connected system.
                   </p>
                   <div className="flex flex-wrap gap-3">
                     <DownloadCTA />
                     <Link href="/contact" className={buttonStyles("secondary")}>
-                      Contact BizPro
+                      Contact Dira OS
                     </Link>
                   </div>
                 </div>
@@ -310,7 +310,7 @@ export default function HomePage() {
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">Final CTA</p>
                   <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Sell. Manage. Grow.</h2>
                   <p className="max-w-xl text-sm leading-6 text-muted">
-                    BizPro brings sales, inventory, finance, teams and everyday operations into one Business OS.
+                    Dira OS brings sales, inventory, finance, teams and everyday operations into one Business Operating System.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">

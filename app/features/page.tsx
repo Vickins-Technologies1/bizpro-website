@@ -11,7 +11,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Features",
-  description: "Explore BizPro across selling, inventory, finance, operations, reporting and offline sync.",
+  description: "Explore Dira OS across selling, inventory, finance, operations, reporting and offline sync.",
   path: "/features"
 });
 
@@ -66,9 +66,9 @@ export default function FeaturesPage() {
 
         <Reveal delay={80}>
           <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-border/70 bg-card/70 p-5">
-            <p className="text-sm text-muted">BizPro keeps the core workflow compact so teams can move quickly.</p>
+            <p className="text-sm text-muted">Dira OS keeps the core workflow compact so teams can move quickly.</p>
             <Link href="/download" className={buttonStyles("primary")}>
-              Download BizPro
+              Start Free Trial
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>

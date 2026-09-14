@@ -12,7 +12,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact",
-  description: "Contact BizPro using the available support channels.",
+  description: "Contact Dira OS using the available support channels.",
   path: "/contact"
 });
 
@@ -41,7 +41,7 @@ export default function ContactPage() {
         <Reveal>
           <SectionHeading
             eyebrow="Contact"
-            title="Talk to BizPro."
+            title="Talk to Dira OS."
             description="Reach us through the available support options."
           />
         </Reveal>

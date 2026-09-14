@@ -9,8 +9,8 @@ import "@/app/globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.websiteUrl),
   title: {
-    default: "BizPro — Business OS",
-    template: "%s | BizPro"
+    default: "Dira OS — Business Operating System",
+    template: "%s | Dira OS"
   },
   description: siteConfig.description,
   applicationName: siteConfig.siteName,

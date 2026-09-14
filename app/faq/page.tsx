@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "FAQ",
-  description: "Answers to common questions about BizPro, offline workflows and Android installation.",
+  description: "Answers to common questions about Dira OS, offline workflows and Android installation.",
   path: "/faq"
 });
 

@@ -35,7 +35,7 @@ export function Footer() {
               <h2 className="mt-2 text-xl font-semibold tracking-tight">{siteConfig.brand.descriptor}</h2>
             </div>
             <p className="max-w-md text-xs leading-6 text-muted">
-              One connected platform for selling, tracking and operating the business.
+              A modern business operating system designed to simplify everyday business management.
             </p>
             <div className="flex flex-wrap gap-2">
               <DownloadCTA compact />
@@ -80,7 +80,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-border/60 pt-5">
-          <p className="text-xs text-muted">© {year} BizPro. All rights reserved.</p>
+          <p className="text-xs text-muted">© {year} Dira OS. All rights reserved.</p>
         </div>
       </Container>
     </footer>

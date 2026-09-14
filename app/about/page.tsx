@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "About",
-  description: "Learn why BizPro exists and how it brings business operations together in one offline-first system.",
+  description: "Learn why Dira OS exists and how it brings business operations together in one offline-first system.",
   path: "/about"
 });
 
@@ -19,7 +19,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="About"
             title="A simpler way to run day-to-day business operations."
-            description="BizPro brings essential workflows together so teams can stay focused and work with confidence."
+            description="Dira OS brings essential workflows together so teams can stay focused and work with confidence."
           />
         </Reveal>
 

@@ -13,11 +13,11 @@ function readPublicEnv(name: string, fallback: string) {
 const defaultPlayStoreUrl = "https://play.google.com/store/apps/details?id=com.bizpro.vickins";
 
 export const siteConfig = {
-  siteName: "BizPro",
+  siteName: "Dira OS",
   tagline: "Business OS",
   description:
-    "BizPro is an offline-first Business Operating System for managing sales, POS, inventory, finance, teams and everyday business operations.",
-  websiteUrl: readPublicEnv("NEXT_PUBLIC_SITE_URL", "https://bizpro.vickinstechnologies.com"),
+    "Dira OS is an all-in-one business operating system for managing sales, inventory, finances, staff, branches and business operations from one simple platform.",
+  websiteUrl: readPublicEnv("NEXT_PUBLIC_SITE_URL", "https://dira-os.vickinstechnologies.com"),
   playStoreUrl: readPublicEnv("NEXT_PUBLIC_PLAY_STORE_URL", defaultPlayStoreUrl),
   contactEmail: readPublicEnv("NEXT_PUBLIC_CONTACT_EMAIL", ""),
   contactPhone: readPublicEnv("NEXT_PUBLIC_CONTACT_PHONE", ""),
@@ -32,8 +32,8 @@ export const siteConfig = {
     linkedin: readPublicEnv("NEXT_PUBLIC_LINKEDIN_URL", "")
   },
   brand: {
-    descriptor: "Business OS",
-    positioning: "Sell. Manage. Grow."
+    descriptor: "Business Operating System",
+    positioning: "Sales. Inventory. Finance. Teams. Insights."
   }
 } as const;
 

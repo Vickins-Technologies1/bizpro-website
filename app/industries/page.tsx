@@ -12,7 +12,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Industries",
-  description: "See how BizPro adapts to retail, food service, beauty, hospitality, healthcare and more.",
+  description: "See how Dira OS adapts to retail, food service, beauty, hospitality, healthcare and more.",
   path: "/industries"
 });
 
@@ -24,7 +24,7 @@ export default function IndustriesPage() {
           <SectionHeading
             eyebrow="Industries"
             title="Different businesses. One platform."
-            description="BizPro adjusts to the workflow instead of forcing every business into the same shape."
+            description="Dira OS adjusts to the workflow instead of forcing every business into the same shape."
           />
         </Reveal>
 
@@ -47,7 +47,7 @@ export default function IndustriesPage() {
 
         <Reveal delay={90}>
           <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-border/70 bg-card/70 p-5">
-            <p className="text-sm text-muted">BizPro keeps the same core system while adapting to the business.</p>
+            <p className="text-sm text-muted">Dira OS keeps the same core system while adapting to the business.</p>
             <Link href="/features" className={buttonStyles("secondary")}>
               Review features
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

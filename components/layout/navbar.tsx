@@ -134,8 +134,8 @@ export function Navbar() {
         <div className="flex min-h-[60px] items-center justify-between gap-3 py-2 sm:min-h-[64px] lg:min-h-[68px]">
           <Link href="/" className="flex items-center gap-2.5">
             <Image
-              src="/brand/logo-official.png"
-              alt="BizPro"
+              src="/brand/dira-logo.png"
+              alt="Dira OS"
               width={36}
               height={36}
               priority
@@ -143,7 +143,7 @@ export function Navbar() {
               unoptimized
               className="h-9 w-9 shrink-0 rounded-2xl object-cover sm:h-10 sm:w-10"
             />
-            <span className="text-sm font-semibold tracking-tight text-foreground">BizPro</span>
+            <span className="text-sm font-semibold tracking-tight text-foreground">Dira OS</span>
           </Link>
 
           <nav className="hidden items-center gap-5 lg:flex" aria-label="Main navigation">

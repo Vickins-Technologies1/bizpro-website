@@ -54,7 +54,7 @@ export function IndustrySelector() {
           className="rounded-3xl border border-border/70 bg-card/70 p-4 motion-safe:animate-slide-up"
           style={{ animationDelay: "80ms" }}
         >
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">How BizPro adapts</p>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">How Dira OS adapts</p>
           <h3 className="mt-2 text-xl font-semibold tracking-tight">{active.title}</h3>
           <ul className="mt-4 grid gap-2.5">
             {active.bullets.map((bullet) => (

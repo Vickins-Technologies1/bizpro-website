@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy",
-  description: "BizPro privacy overview.",
+  description: "Dira OS privacy overview.",
   path: "/privacy"
 });
 
@@ -16,12 +16,12 @@ export default function PrivacyPage() {
     <section className="py-10 sm:py-14 lg:py-16">
       <Container>
         <Reveal>
-          <SectionHeading eyebrow="Legal" title="Privacy Policy" description="A concise privacy outline for BizPro." />
+          <SectionHeading eyebrow="Legal" title="Privacy Policy" description="A concise privacy outline for Dira OS." />
         </Reveal>
 
         <div className="mt-8 grid gap-4">
           {[
-            "BizPro uses only the information needed to run the website and app.",
+            "Dira OS uses only the information needed to run the website and app.",
             "Contact details are used to reply to support and sales requests.",
             "Usage data may be collected to keep the product reliable and improve performance."
           ].map((item, index) => (

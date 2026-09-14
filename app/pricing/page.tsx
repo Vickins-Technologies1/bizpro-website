@@ -11,7 +11,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Pricing",
-  description: "Explore BizPro Lite, Standard and Pro with contact-first pricing.",
+  description: "Choose a Dira OS plan for your team, from Starter to Enterprise.",
   path: "/pricing"
 });
 
@@ -23,13 +23,13 @@ export default function PricingPage() {
           <SectionHeading
             eyebrow="Pricing"
             title="Simple plan structure."
-            description="Three plans keep the model easy to understand."
+            description="Start with a 1-month free trial, then choose a plan based on your team size."
           />
         </Reveal>
 
         <Reveal delay={70}>
           <div className="mt-4 rounded-3xl border border-border/70 bg-card/60 p-4 text-sm text-muted">
-            Contact us for current pricing.
+            1 month free trial. No card required.
           </div>
         </Reveal>
 
@@ -49,6 +49,8 @@ export default function PricingPage() {
                   ) : null}
                 </div>
 
+                <p className="mt-5 text-2xl font-semibold tracking-tight">{plan.price}</p>
+
                 <ul className="mt-5 grid gap-2.5">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3 text-sm text-muted">
@@ -64,7 +66,7 @@ export default function PricingPage() {
 
         <Reveal delay={90}>
           <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-border/70 bg-card/70 p-5">
-            <p className="text-sm text-muted">Need a quote? Reach out to BizPro for the latest plan details.</p>
+            <p className="text-sm text-muted">Need help choosing? Talk to the Dira OS team.</p>
             <Link href="/contact" className={buttonStyles("secondary")}>
               Contact us
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

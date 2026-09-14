@@ -13,7 +13,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Download",
-  description: "Open BizPro on Google Play and install the Android app.",
+  description: "Open Dira OS on Google Play and install the Android app.",
   path: "/download"
 });
 
@@ -27,15 +27,15 @@ export default function DownloadPage() {
           <div className="max-w-2xl space-y-6">
             <div className="inline-flex items-center gap-3 rounded-3xl border border-border/70 bg-card/70 p-3.5 motion-safe:animate-slide-up">
               <Image
-                src="/brand/logo-official.png"
-                alt="BizPro official logo"
+                src="/brand/dira-logo.png"
+                alt="Dira OS logo"
                 width={160}
                 height={160}
                 className="h-14 w-14 rounded-2xl object-cover"
                 priority
               />
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">BizPro</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">Dira OS</p>
                 <p className="text-sm text-muted">Business OS for Android</p>
               </div>
             </div>
@@ -43,8 +43,8 @@ export default function DownloadPage() {
             <Reveal delay={80}>
               <SectionHeading
                 eyebrow="Download"
-                title="Get BizPro on Google Play."
-                description="Install BizPro from Google Play and run sales, inventory and business operations from one place."
+                title="Get Dira OS on Google Play."
+                description="Install Dira OS from Google Play and run sales, inventory and business operations from one place."
               />
             </Reveal>
 
@@ -61,7 +61,7 @@ export default function DownloadPage() {
                 </a>
               ) : (
                 <Link href="/contact" className={buttonStyles("primary")}>
-                  Contact BizPro
+                  Contact Dira OS
                 </Link>
               )}
               <Link href="/features" className={buttonStyles("secondary")}>
@@ -110,7 +110,7 @@ export default function DownloadPage() {
               <Reveal delay={120} direction="right">
                 <Card className="p-5">
                   <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary">Google Play</p>
-                  <p className="mt-2 text-sm leading-6 text-muted">Contact BizPro for the latest Google Play link.</p>
+                  <p className="mt-2 text-sm leading-6 text-muted">Contact Dira OS for the latest Google Play link.</p>
                 </Card>
               </Reveal>
             )}
@@ -123,7 +123,7 @@ export default function DownloadPage() {
             <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 "1. Open Google Play.",
-                "2. Install BizPro.",
+                "2. Install Dira OS.",
                 "3. Sign in to your workspace.",
                 "4. Start using your business workspace."
               ].map((step) => (

@@ -115,7 +115,7 @@ export const featureCategories = [
   {
     label: "Stay connected",
     title: "Stay connected.",
-    description: "BizPro saves locally and syncs when the connection returns.",
+    description: "Dira OS saves locally and syncs when the connection returns.",
     items: [
       "Local persistence",
       "Queued synchronization",
