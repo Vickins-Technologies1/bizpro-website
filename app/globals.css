@@ -3,32 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --background: 246 248 252;
-  --foreground: 11 18 32;
+  --background: 248 250 252;
+  --foreground: 10 15 24;
   --card: 255 255 255;
-  --card-foreground: 11 18 32;
-  --muted: 90 102 124;
-  --border: 220 229 240;
-  --primary: 0 92 230;
+  --card-foreground: 10 15 24;
+  --muted: 86 99 120;
+  --border: 222 228 238;
+  --primary: 0 91 224;
   --primary-foreground: 255 255 255;
-  --accent: 27 208 230;
-  --ring: 82 146 255;
-  --soft-glow: 26 211 238;
+  --accent: 26 199 222;
+  --ring: 37 99 235;
+  --soft-glow: 26 199 222;
   color-scheme: light;
 }
 
 .dark {
-  --background: 5 10 19;
+  --background: 8 10 13;
   --foreground: 237 243 255;
-  --card: 10 17 30;
+  --card: 16 19 24;
   --card-foreground: 237 243 255;
-  --muted: 142 156 182;
-  --border: 31 43 66;
-  --primary: 84 145 255;
-  --primary-foreground: 3 8 18;
-  --accent: 45 216 233;
-  --ring: 84 145 255;
-  --soft-glow: 45 216 233;
+  --muted: 150 160 176;
+  --border: 255 255 255;
+  --primary: 88 150 255;
+  --primary-foreground: 5 10 16;
+  --accent: 47 210 226;
+  --ring: 88 150 255;
+  --soft-glow: 47 210 226;
   color-scheme: dark;
 }
 
@@ -41,7 +41,7 @@ body {
   min-height: 100vh;
   background: rgb(var(--background));
   color: rgb(var(--foreground));
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -52,10 +52,11 @@ body {
 }
 
 @layer components {
-  .section-pad { @apply py-20 sm:py-24; }
-  .section-title { @apply text-3xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-[42px]; }
+  .section-pad { @apply py-16 sm:py-20 lg:py-24; }
+  .section-title { @apply text-[2rem] font-bold leading-[1.06] tracking-[-0.045em] sm:text-[40px]; }
   .eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.22em] text-primary; }
-  .hero-grid { background-image: linear-gradient(rgba(15,23,42,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,.035) 1px, transparent 1px); background-size: 48px 48px; }
+  .hero-grid { background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 56px 56px; }
+  .text-gradient { @apply bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent; }
 }
 
 @media (max-width: 640px) {
@@ -63,9 +64,11 @@ body {
 }
 
 ::selection {
-  background: rgba(59, 130, 246, 0.22);
+  background: rgba(37, 99, 235, 0.22);
   color: rgb(var(--foreground));
 }
+
+button, a { -webkit-tap-highlight-color: transparent; }
 
 :focus-visible {
   outline: 2px solid rgb(var(--ring));

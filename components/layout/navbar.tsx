@@ -130,7 +130,7 @@ export function Navbar() {
         "max-lg:border-border/70 max-lg:bg-card/92 max-lg:shadow-[0_1px_0_rgba(15,23,42,0.05)] max-lg:backdrop-blur-xl max-lg:supports-[backdrop-filter]:bg-card/80 dark:max-lg:shadow-[0_1px_0_rgba(255,255,255,0.04)]"
       )}
     >
-      <div className="border-b border-primary/10 bg-primary/[0.04] py-2 text-center text-[11px] font-semibold tracking-[0.16em] text-primary">
+      <div className="border-b border-primary/10 bg-primary/[0.04] py-1.5 text-center text-[10px] font-semibold tracking-[0.16em] text-primary sm:text-[11px]">
         1 MONTH FREE <span className="mx-2 text-muted">·</span> No card required
       </div>
       <Container className="relative">
@@ -146,7 +146,7 @@ export function Navbar() {
               unoptimized
               className="h-9 w-9 shrink-0 rounded-2xl object-cover sm:h-10 sm:w-10"
             />
-            <span className="text-sm font-semibold tracking-tight text-foreground">Dira OS</span>
+            <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-foreground">Dira OS</span>
           </Link>
 
           <nav className="hidden items-center gap-5 lg:flex" aria-label="Main navigation">
@@ -157,7 +157,7 @@ export function Navbar() {
 
           <div className="hidden items-center gap-2 lg:flex">
             <ThemeToggle compact className="shrink-0" />
-            <DownloadCTA compact className="shrink-0" />
+            <DownloadCTA compact label="Start Free" className="shrink-0" />
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
@@ -212,7 +212,7 @@ export function Navbar() {
               ))}
             </nav>
             <div className="pt-3">
-              <DownloadCTA compact className="w-full justify-center" onClick={closeMenu} />
+              <DownloadCTA compact label="Start Free" className="w-full justify-center" onClick={closeMenu} />
             </div>
           </Container>
         </div>

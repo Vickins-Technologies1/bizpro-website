@@ -6,10 +6,13 @@ import { DownloadCTA } from "@/components/ui/download-cta";
 
 const productLinks = [
   { href: "/features", label: "Features" },
-  { href: "/industries", label: "Industries" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/download", label: "Download" },
-  { href: "/faq", label: "FAQ" }
+  { href: "/download", label: "Download" }
+] as const;
+
+const solutionLinks = [
+  { href: "/industries", label: "Solutions" },
+  { href: "/features", label: "Business tools" }
 ] as const;
 
 const companyLinks = [
@@ -28,7 +31,7 @@ export function Footer() {
   return (
     <footer className="mt-16 border-t border-border/60 bg-card/25">
       <Container className="py-10">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.1fr_0.75fr_0.65fr_0.65fr]">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.15fr_0.7fr_0.7fr_0.7fr_0.7fr_0.75fr]">
           <div className="space-y-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">{siteConfig.siteName}</p>
@@ -38,7 +41,7 @@ export function Footer() {
               A modern business operating system designed to simplify everyday business management.
             </p>
             <div className="flex flex-wrap gap-2">
-              <DownloadCTA compact />
+              <DownloadCTA compact label="Start Free" />
               <Link href="/contact" className={buttonStyles("secondary")}>
                 Contact
               </Link>
@@ -57,6 +60,17 @@ export function Footer() {
           </div>
 
           <div className="space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Solutions</p>
+            <div className="grid gap-2">
+              {solutionLinks.map((item) => (
+                <Link key={item.href + item.label} href={item.href} className="text-xs text-muted transition hover:text-foreground">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-3">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Company</p>
             <div className="grid gap-2">
               {companyLinks.map((item) => (
@@ -64,6 +78,14 @@ export function Footer() {
                   {item.label}
                 </Link>
               ))}
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Resources</p>
+            <div className="grid gap-2">
+              <Link href="/faq" className="text-xs text-muted transition hover:text-foreground">FAQ</Link>
+              <Link href="/contact" className="text-xs text-muted transition hover:text-foreground">Support</Link>
             </div>
           </div>
 

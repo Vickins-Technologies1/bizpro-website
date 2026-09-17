@@ -11,16 +11,18 @@ export function IndustrySelector() {
   const currentGroup = industryGroups.find((item) => item.key === selected) ?? industryGroups[0];
 
   return (
-    <Card className="p-4">
-      <div className="flex flex-wrap gap-2" role="tablist" aria-label="Business type selector">
+    <Card className="p-3 sm:p-4">
+      <div className="flex flex-wrap gap-1.5" role="tablist" aria-label="Business type selector">
         {industryGroups.map((item) => (
           <button
             key={item.key}
             type="button"
             role="tab"
+            id={`industry-tab-${item.key}`}
             aria-selected={selected === item.key}
+            aria-controls="industry-panel"
             className={cn(
-              "rounded-full border px-3.5 py-2 text-[13px] transition duration-200 motion-safe:hover:-translate-y-0.5",
+              "rounded-lg border px-3 py-2 text-[13px] transition duration-200 motion-safe:hover:-translate-y-0.5",
               selected === item.key
                 ? "border-primary/30 bg-primary/10 text-foreground"
                 : "border-border/70 bg-background/60 text-muted hover:text-foreground"
@@ -32,8 +34,8 @@ export function IndustrySelector() {
         ))}
       </div>
 
-      <div className="mt-4 grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
-        <div key={`summary-${selected}`} className="rounded-3xl border border-border/70 bg-background/70 p-4 motion-safe:animate-slide-up">
+      <div id="industry-panel" role="tabpanel" aria-labelledby={`industry-tab-${selected}`} className="mt-4 grid gap-3 lg:grid-cols-[0.95fr_1.05fr]">
+        <div key={`summary-${selected}`} className="rounded-2xl border border-border/70 bg-background/70 p-4 motion-safe:animate-slide-up">
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">Selected business</p>
           <h3 className="mt-2 text-xl font-semibold tracking-tight">{currentGroup.label}</h3>
           <p className="mt-2 text-sm leading-6 text-muted">{currentGroup.summary}</p>
@@ -41,7 +43,7 @@ export function IndustrySelector() {
             {currentGroup.capabilities.map((capability) => (
               <span
                 key={capability}
-                className="rounded-full border border-primary/15 bg-primary/5 px-2.5 py-1 text-[11px] font-medium text-primary"
+                className="rounded-md border border-primary/15 bg-primary/5 px-2.5 py-1 text-[11px] font-medium text-primary"
               >
                 {capability}
               </span>
@@ -51,14 +53,14 @@ export function IndustrySelector() {
 
         <div
           key={`detail-${selected}`}
-          className="rounded-3xl border border-border/70 bg-card/70 p-4 motion-safe:animate-slide-up"
+          className="rounded-2xl border border-border/70 bg-card/70 p-4 motion-safe:animate-slide-up"
           style={{ animationDelay: "80ms" }}
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">How Dira OS adapts</p>
           <h3 className="mt-2 text-xl font-semibold tracking-tight">{active.title}</h3>
           <ul className="mt-4 grid gap-2.5">
             {active.bullets.map((bullet) => (
-              <li key={bullet} className="flex items-start gap-3 rounded-2xl border border-border/60 px-3 py-2.5">
+              <li key={bullet} className="flex items-start gap-3 rounded-xl border border-border/60 px-3 py-2.5">
                 <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[rgb(var(--accent))]" aria-hidden="true" />
                 <span className="text-sm text-muted">{bullet}</span>
               </li>
