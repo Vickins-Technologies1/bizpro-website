@@ -41,7 +41,7 @@ export function Footer() {
               A modern business operating system designed to simplify everyday business management.
             </p>
             <div className="flex flex-wrap gap-2">
-              <DownloadCTA compact label="Start Free" />
+              <DownloadCTA compact label="Start Free Trial" />
               <Link href="/contact" className={buttonStyles("secondary")}>
                 Contact
               </Link>

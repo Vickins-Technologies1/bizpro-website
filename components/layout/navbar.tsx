@@ -131,7 +131,7 @@ export function Navbar() {
       )}
     >
       <div className="border-b border-primary/10 bg-primary/[0.04] py-1.5 text-center text-[10px] font-semibold tracking-[0.16em] text-primary sm:text-[11px]">
-        1 MONTH FREE <span className="mx-2 text-muted">·</span> No card required
+        1 MONTH FREE <span className="mx-2 text-muted">·</span> NO CARD REQUIRED
       </div>
       <Container className="relative">
         <div className="flex min-h-[60px] items-center justify-between gap-3 py-2 sm:min-h-[64px] lg:min-h-[68px]">
@@ -157,7 +157,7 @@ export function Navbar() {
 
           <div className="hidden items-center gap-2 lg:flex">
             <ThemeToggle compact className="shrink-0" />
-            <DownloadCTA compact label="Start Free" className="shrink-0" />
+            <DownloadCTA compact label="Start Free Trial" className="shrink-0" />
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
@@ -212,7 +212,7 @@ export function Navbar() {
               ))}
             </nav>
             <div className="pt-3">
-              <DownloadCTA compact label="Start Free" className="w-full justify-center" onClick={closeMenu} />
+              <DownloadCTA compact label="Start Free Trial" className="w-full justify-center" onClick={closeMenu} />
             </div>
           </Container>
         </div>

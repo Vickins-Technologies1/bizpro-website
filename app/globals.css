@@ -4,11 +4,11 @@
 
 :root {
   --background: 248 250 252;
-  --foreground: 10 15 24;
+  --foreground: 15 23 42;
   --card: 255 255 255;
-  --card-foreground: 10 15 24;
-  --muted: 86 99 120;
-  --border: 222 228 238;
+  --card-foreground: 15 23 42;
+  --muted: 71 85 105;
+  --border: 226 232 240;
   --primary: 0 91 224;
   --primary-foreground: 255 255 255;
   --accent: 26 199 222;
@@ -52,7 +52,7 @@ body {
 }
 
 @layer components {
-  .section-pad { @apply py-16 sm:py-20 lg:py-24; }
+  .section-pad { @apply py-14 sm:py-16 lg:py-20; }
   .section-title { @apply text-[2rem] font-bold leading-[1.06] tracking-[-0.045em] sm:text-[40px]; }
   .eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.22em] text-primary; }
   .hero-grid { background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 56px 56px; }
@@ -60,7 +60,7 @@ body {
 }
 
 @media (max-width: 640px) {
-  .section-pad { @apply py-16; }
+  .section-pad { @apply py-12; }
 }
 
 ::selection {
