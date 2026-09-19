@@ -9,6 +9,9 @@ const config: Config = {
         background: "rgb(var(--background) / <alpha-value>)",
         foreground: "rgb(var(--foreground) / <alpha-value>)",
         card: "rgb(var(--card) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        "surface-muted": "rgb(var(--surface-muted) / <alpha-value>)",
+        "surface-elevated": "rgb(var(--surface-elevated) / <alpha-value>)",
         muted: "rgb(var(--muted) / <alpha-value>)",
         border: "rgb(var(--border) / <alpha-value>)",
         primary: "rgb(var(--primary) / <alpha-value>)",
@@ -17,7 +20,7 @@ const config: Config = {
       },
       boxShadow: {
         glow: "0 24px 80px -30px rgba(59, 130, 246, 0.45)",
-        panel: "0 18px 60px -36px rgba(2, 6, 23, 0.45)"
+        panel: "var(--shadow-panel)"
       },
       borderRadius: {
         "2xl": "1.5rem",

@@ -10,11 +10,6 @@ const productLinks = [
   { href: "/download", label: "Download" }
 ] as const;
 
-const solutionLinks = [
-  { href: "/industries", label: "Solutions" },
-  { href: "/features", label: "Business tools" }
-] as const;
-
 const companyLinks = [
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" }
@@ -29,9 +24,9 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-16 border-t border-border/60 bg-card/25">
-      <Container className="py-10">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.15fr_0.7fr_0.7fr_0.7fr_0.7fr_0.75fr]">
+    <footer className="mt-14 border-t border-border/60 bg-surface-muted/45">
+      <Container className="py-9">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.25fr_0.75fr_0.75fr_0.75fr_0.75fr]">
           <div className="space-y-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">{siteConfig.siteName}</p>
@@ -60,17 +55,6 @@ export function Footer() {
           </div>
 
           <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Solutions</p>
-            <div className="grid gap-2">
-              {solutionLinks.map((item) => (
-                <Link key={item.href + item.label} href={item.href} className="text-xs text-muted transition hover:text-foreground">
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-3">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Company</p>
             <div className="grid gap-2">
               {companyLinks.map((item) => (
@@ -82,7 +66,7 @@ export function Footer() {
           </div>
 
           <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Resources</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Support</p>
             <div className="grid gap-2">
               <Link href="/faq" className="text-xs text-muted transition hover:text-foreground">FAQ</Link>
               <Link href="/contact" className="text-xs text-muted transition hover:text-foreground">Support</Link>

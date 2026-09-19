@@ -125,16 +125,13 @@ export function Navbar() {
       className={cn(
         "sticky top-0 z-50 border-b transition-colors duration-200",
         scrolled
-          ? "border-border/60 bg-background/88 shadow-none backdrop-blur-md supports-[backdrop-filter]:bg-background/75"
-          : "border-transparent bg-background",
-        "max-lg:border-border/70 max-lg:bg-card/92 max-lg:shadow-[0_1px_0_rgba(15,23,42,0.05)] max-lg:backdrop-blur-xl max-lg:supports-[backdrop-filter]:bg-card/80 dark:max-lg:shadow-[0_1px_0_rgba(255,255,255,0.04)]"
+          ? "border-border/70 bg-background/90 shadow-panel backdrop-blur-md supports-[backdrop-filter]:bg-background/80"
+          : "border-border/60 bg-background/90 backdrop-blur-md",
+        "supports-[backdrop-filter]:bg-background/75"
       )}
     >
-      <div className="border-b border-primary/10 bg-primary/[0.04] py-1.5 text-center text-[10px] font-semibold tracking-[0.16em] text-primary sm:text-[11px]">
-        1 MONTH FREE <span className="mx-2 text-muted">·</span> NO CARD REQUIRED
-      </div>
       <Container className="relative">
-        <div className="flex min-h-[60px] items-center justify-between gap-3 py-2 sm:min-h-[64px] lg:min-h-[68px]">
+        <div className="flex min-h-[64px] items-center justify-between gap-3 py-2 lg:min-h-[68px]">
           <Link href="/" className="flex items-center gap-2.5">
             <Image
               src="/brand/dira-logo.png"
@@ -144,9 +141,9 @@ export function Navbar() {
               priority
               sizes="36px"
               unoptimized
-              className="h-9 w-9 shrink-0 rounded-2xl object-cover sm:h-10 sm:w-10"
+              className="h-9 w-9 shrink-0 rounded-xl object-cover sm:h-10 sm:w-10"
             />
-            <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-foreground">Dira OS</span>
+            <span className="text-[13px] font-semibold tracking-[-0.01em] text-foreground">Dira OS</span>
           </Link>
 
           <nav className="hidden items-center gap-5 lg:flex" aria-label="Main navigation">

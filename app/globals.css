@@ -7,28 +7,36 @@
   --foreground: 15 23 42;
   --card: 255 255 255;
   --card-foreground: 15 23 42;
+  --surface: 255 255 255;
+  --surface-muted: 241 245 249;
+  --surface-elevated: 255 255 255;
   --muted: 71 85 105;
   --border: 226 232 240;
-  --primary: 0 91 224;
+  --primary: 37 99 235;
   --primary-foreground: 255 255 255;
-  --accent: 26 199 222;
+  --accent: 14 165 233;
   --ring: 37 99 235;
-  --soft-glow: 26 199 222;
+  --soft-glow: 14 165 233;
+  --shadow-panel: 0 18px 50px -34px rgba(15, 23, 42, 0.34);
   color-scheme: light;
 }
 
 .dark {
-  --background: 8 10 13;
-  --foreground: 237 243 255;
-  --card: 16 19 24;
-  --card-foreground: 237 243 255;
-  --muted: 150 160 176;
-  --border: 255 255 255;
-  --primary: 88 150 255;
-  --primary-foreground: 5 10 16;
-  --accent: 47 210 226;
-  --ring: 88 150 255;
-  --soft-glow: 47 210 226;
+  --background: 2 6 23;
+  --foreground: 248 250 252;
+  --card: 15 23 42;
+  --card-foreground: 248 250 252;
+  --surface: 17 24 39;
+  --surface-muted: 15 23 42;
+  --surface-elevated: 23 32 51;
+  --muted: 148 163 184;
+  --border: 30 41 59;
+  --primary: 59 130 246;
+  --primary-foreground: 248 250 252;
+  --accent: 96 165 250;
+  --ring: 96 165 250;
+  --soft-glow: 96 165 250;
+  --shadow-panel: 0 18px 54px -34px rgba(0, 0, 0, 0.76);
   color-scheme: dark;
 }
 
@@ -53,10 +61,10 @@ body {
 
 @layer components {
   .section-pad { @apply py-14 sm:py-16 lg:py-20; }
-  .section-title { @apply text-[2rem] font-bold leading-[1.06] tracking-[-0.045em] sm:text-[40px]; }
+  .section-title { @apply text-[2rem] font-semibold leading-[1.08] tracking-[-0.045em] sm:text-[40px]; }
   .eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.22em] text-primary; }
-  .hero-grid { background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 56px 56px; }
-  .text-gradient { @apply bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent; }
+  .hero-grid { background-image: linear-gradient(rgba(37,99,235,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.055) 1px, transparent 1px); background-size: 56px 56px; }
+  .text-gradient { @apply bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 bg-clip-text text-transparent dark:from-blue-300 dark:via-blue-400 dark:to-sky-300; }
 }
 
 @media (max-width: 640px) {
