@@ -3,40 +3,40 @@
 @tailwind utilities;
 
 :root {
-  --background: 248 250 252;
-  --foreground: 15 23 42;
+  --background: 247 249 252;
+  --foreground: 17 24 39;
   --card: 255 255 255;
-  --card-foreground: 15 23 42;
+  --card-foreground: 17 24 39;
   --surface: 255 255 255;
-  --surface-muted: 241 245 249;
+  --surface-muted: 239 243 248;
   --surface-elevated: 255 255 255;
-  --muted: 71 85 105;
-  --border: 226 232 240;
-  --primary: 37 99 235;
+  --muted: 82 96 116;
+  --border: 219 226 236;
+  --primary: 29 78 216;
   --primary-foreground: 255 255 255;
-  --accent: 14 165 233;
-  --ring: 37 99 235;
-  --soft-glow: 14 165 233;
-  --shadow-panel: 0 18px 50px -34px rgba(15, 23, 42, 0.34);
+  --accent: 8 145 178;
+  --ring: 29 78 216;
+  --soft-glow: 8 145 178;
+  --shadow-panel: 0 20px 52px -34px rgba(15, 23, 42, 0.38);
   color-scheme: light;
 }
 
 .dark {
-  --background: 2 6 23;
-  --foreground: 248 250 252;
-  --card: 15 23 42;
-  --card-foreground: 248 250 252;
-  --surface: 17 24 39;
-  --surface-muted: 15 23 42;
-  --surface-elevated: 23 32 51;
+  --background: 7 12 22;
+  --foreground: 241 245 249;
+  --card: 13 22 36;
+  --card-foreground: 241 245 249;
+  --surface: 11 19 32;
+  --surface-muted: 10 17 29;
+  --surface-elevated: 18 31 50;
   --muted: 148 163 184;
-  --border: 30 41 59;
-  --primary: 59 130 246;
-  --primary-foreground: 248 250 252;
-  --accent: 96 165 250;
-  --ring: 96 165 250;
-  --soft-glow: 96 165 250;
-  --shadow-panel: 0 18px 54px -34px rgba(0, 0, 0, 0.76);
+  --border: 32 49 70;
+  --primary: 96 165 250;
+  --primary-foreground: 7 12 22;
+  --accent: 45 212 191;
+  --ring: 125 211 252;
+  --soft-glow: 45 212 191;
+  --shadow-panel: 0 22px 58px -30px rgba(0, 0, 0, 0.82);
   color-scheme: dark;
 }
 
@@ -49,7 +49,7 @@ body {
   min-height: 100vh;
   background: rgb(var(--background));
   color: rgb(var(--foreground));
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: Manrope, "Inter Tight", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -60,11 +60,11 @@ body {
 }
 
 @layer components {
-  .section-pad { @apply py-14 sm:py-16 lg:py-20; }
-  .section-title { @apply text-[2rem] font-semibold leading-[1.08] tracking-[-0.045em] sm:text-[40px]; }
-  .eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.22em] text-primary; }
-  .hero-grid { background-image: linear-gradient(rgba(37,99,235,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.055) 1px, transparent 1px); background-size: 56px 56px; }
-  .text-gradient { @apply bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 bg-clip-text text-transparent dark:from-blue-300 dark:via-blue-400 dark:to-sky-300; }
+  .section-pad { @apply py-16 sm:py-20 lg:py-24; }
+  .section-title { @apply text-[2rem] font-bold leading-[1.08] tracking-[-0.05em] sm:text-[40px]; }
+  .eyebrow { @apply text-[10px] font-bold uppercase tracking-[0.24em] text-primary; }
+  .hero-grid { background-image: linear-gradient(rgba(29,78,216,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(29,78,216,.055) 1px, transparent 1px); background-size: 48px 48px; }
+  .text-gradient { @apply bg-gradient-to-r from-blue-800 via-blue-700 to-teal-600 bg-clip-text text-transparent dark:from-blue-300 dark:via-cyan-200 dark:to-teal-300; }
 }
 
 @media (max-width: 640px) {
@@ -72,7 +72,7 @@ body {
 }
 
 ::selection {
-  background: rgba(37, 99, 235, 0.22);
+  background: rgba(29, 78, 216, 0.22);
   color: rgb(var(--foreground));
 }
 

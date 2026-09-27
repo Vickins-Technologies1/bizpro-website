@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { buttonStyles } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -29,8 +30,13 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.25fr_0.75fr_0.75fr_0.75fr_0.75fr]">
           <div className="space-y-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">{siteConfig.siteName}</p>
-              <h2 className="mt-2 text-xl font-semibold tracking-tight">{siteConfig.brand.descriptor}</h2>
+              <div className="flex items-center gap-2.5">
+                <Image src="/brand/dira-logo.png" alt="Dira OS" width={32} height={32} className="h-8 w-8 rounded-lg" unoptimized />
+                <div>
+                  <p className="text-sm font-bold tracking-[-0.02em]">{siteConfig.siteName}</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">{siteConfig.tagline}</p>
+                </div>
+              </div>
             </div>
             <p className="max-w-md text-xs leading-6 text-muted">
               A modern business operating system designed to simplify everyday business management.

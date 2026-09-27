@@ -131,7 +131,7 @@ export function Navbar() {
       )}
     >
       <Container className="relative">
-        <div className="flex min-h-[64px] items-center justify-between gap-3 py-2 lg:min-h-[68px]">
+        <div className="flex min-h-[60px] items-center justify-between gap-3 py-2 lg:min-h-[64px]">
           <Link href="/" className="flex items-center gap-2.5">
             <Image
               src="/brand/dira-logo.png"
@@ -141,9 +141,9 @@ export function Navbar() {
               priority
               sizes="36px"
               unoptimized
-              className="h-9 w-9 shrink-0 rounded-xl object-cover sm:h-10 sm:w-10"
+              className="h-8 w-8 shrink-0 rounded-lg object-cover sm:h-9 sm:w-9"
             />
-            <span className="text-[13px] font-semibold tracking-[-0.01em] text-foreground">Dira OS</span>
+            <span className="text-[13px] font-bold tracking-[-0.02em] text-foreground">Dira OS</span>
           </Link>
 
           <nav className="hidden items-center gap-5 lg:flex" aria-label="Main navigation">
