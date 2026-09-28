@@ -1,3 +1,12 @@
 <svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dira OS">
-  <image href="/brand/dira-logo.png" width="1024" height="1024" />
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="900" y2="950" gradientUnits="userSpaceOnUse"><stop stop-color="#16C7E8"/><stop offset="0.48" stop-color="#1458E8"/><stop offset="1" stop-color="#07133D"/></linearGradient>
+    <linearGradient id="mark" x1="220" y1="220" x2="800" y2="840" gradientUnits="userSpaceOnUse"><stop stop-color="#54E8B0"/><stop offset="1" stop-color="#00A9D5"/></linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="224" fill="url(#bg)"/>
+  <path d="M260 265C260 225 292 192 332 192H610C762 192 862 303 862 447C862 596 756 704 608 704H532L709 812H458L260 679V265Z" fill="#071B65" fill-opacity="0.72"/>
+  <path d="M265 280C265 240 297 208 337 208H590C705 208 790 294 790 411C790 528 706 614 590 614H480L676 754H451L265 628V280Z" fill="url(#mark)"/>
+  <rect x="355" y="384" width="58" height="145" rx="29" fill="#092B75"/>
+  <rect x="440" y="330" width="58" height="199" rx="29" fill="#092B75"/>
+  <rect x="525" y="276" width="58" height="253" rx="29" fill="#092B75"/>
 </svg>

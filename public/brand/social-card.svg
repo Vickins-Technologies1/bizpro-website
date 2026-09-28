@@ -7,4 +7,28 @@
   <text x="88" y="306" fill="#A9B8D6" font-size="30" font-family="Arial, sans-serif">Business Operating System</text>
   <text x="88" y="402" fill="white" font-size="40" font-weight="600" font-family="Arial, sans-serif">Run your business. Even when the internet doesn't.</text>
   <text x="88" y="470" fill="#A9B8D6" font-size="24" font-family="Arial, sans-serif">Offline-first POS, inventory, finance, reporting and team management.</text>
+  <g transform="translate(760 112)">
+    <rect width="342" height="392" rx="22" fill="#0D1729" stroke="#2A4265" stroke-width="2"/>
+    <rect width="78" height="392" rx="22" fill="#101F36"/>
+    <rect x="22" y="26" width="34" height="34" rx="10" fill="#1458E8"/>
+    <path d="M33 37h12v12H33z" fill="#54E8B0"/>
+    <rect x="20" y="91" width="38" height="7" rx="3.5" fill="#3D70C7"/>
+    <rect x="20" y="117" width="38" height="7" rx="3.5" fill="#29476E"/>
+    <rect x="20" y="143" width="38" height="7" rx="3.5" fill="#29476E"/>
+    <rect x="20" y="169" width="38" height="7" rx="3.5" fill="#29476E"/>
+    <text x="102" y="42" fill="#91A8C9" font-size="13" font-family="Arial, sans-serif">BUSINESS OVERVIEW</text>
+    <text x="102" y="70" fill="white" font-size="22" font-weight="700" font-family="Arial, sans-serif">Good morning, Admin</text>
+    <rect x="102" y="94" width="96" height="72" rx="12" fill="#13284A"/>
+    <text x="116" y="117" fill="#91A8C9" font-size="10" font-family="Arial, sans-serif">REVENUE</text>
+    <text x="116" y="143" fill="white" font-size="17" font-weight="700" font-family="Arial, sans-serif">KES 248k</text>
+    <rect x="210" y="94" width="104" height="72" rx="12" fill="#13284A"/>
+    <text x="224" y="117" fill="#91A8C9" font-size="10" font-family="Arial, sans-serif">ORDERS</text>
+    <text x="224" y="143" fill="white" font-size="17" font-weight="700" font-family="Arial, sans-serif">184</text>
+    <rect x="102" y="184" width="212" height="122" rx="12" fill="#101F36"/>
+    <path d="M119 274L142 251L162 260L188 225L212 242L238 211L262 228L290 199" stroke="#54E8B0" stroke-width="4" fill="none"/>
+    <path d="M119 274L142 251L162 260L188 225L212 242L238 211L262 228L290 199V286H119Z" fill="#1458E8" fill-opacity="0.18"/>
+    <rect x="102" y="326" width="212" height="38" rx="10" fill="#112842"/>
+    <circle cx="121" cy="345" r="5" fill="#54E8B0"/>
+    <text x="134" y="350" fill="#C9D7ED" font-size="11" font-family="Arial, sans-serif">All systems synced · Offline-first</text>
+  </g>
 </svg>

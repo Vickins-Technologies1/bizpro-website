@@ -9,8 +9,8 @@ import "@/app/globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.websiteUrl),
   title: {
-    default: "Dira OS — Business Operating System",
-    template: "%s | Dira OS"
+    default: "Dira OS — Business Operating System for Modern Businesses",
+    template: "%s"
   },
   description: siteConfig.description,
   applicationName: siteConfig.siteName,
@@ -23,6 +23,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image"
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/brand/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/brand/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/brand/icon-512.png", sizes: "512x512", type: "image/png" }
+    ],
+    apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" }]
   }
 };
 
