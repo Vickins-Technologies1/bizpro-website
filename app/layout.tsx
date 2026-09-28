@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { ThemeProvider } from "@/components/layout/theme-provider";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
+import { SiteChrome } from "@/components/layout/site-chrome";
 import { siteConfig } from "@/config/site";
 import "@/app/globals.css";
 
@@ -55,9 +54,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <div className="relative flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
+            <main className="flex-1"><SiteChrome>{children}</SiteChrome></main>
           </div>
         </ThemeProvider>
       </body>
