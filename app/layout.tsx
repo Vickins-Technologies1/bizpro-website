@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image"
   },
+  alternates: { canonical: siteConfig.websiteUrl },
   icons: {
     icon: [
       { url: "/favicon.ico", type: "image/x-icon" },
@@ -51,6 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head><meta name="color-scheme" content="light dark" /><meta name="theme-color" content="#ffffff" /></head>
       <body>
         <ThemeProvider>
           <div className="relative flex min-h-screen flex-col">
