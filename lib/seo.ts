@@ -26,7 +26,7 @@ export function buildMetadata({ title, description, path = "/", noIndex = false 
       type: "website",
       images: [
         {
-          url: new URL("/brand/social-card.svg", siteConfig.websiteUrl).toString(),
+          url: new URL("/brand/logo-official.png", siteConfig.websiteUrl).toString(),
           width: 1200,
           height: 630,
           alt: "Dira OS business operating system dashboard and product overview"
@@ -37,7 +37,7 @@ export function buildMetadata({ title, description, path = "/", noIndex = false 
       card: "summary_large_image",
       title: resolvedTitle,
       description,
-      images: [new URL("/brand/social-card.svg", siteConfig.websiteUrl).toString()]
+      images: [new URL("/brand/logo-official.png", siteConfig.websiteUrl).toString()]
     },
     robots: {
       index: !noIndex,

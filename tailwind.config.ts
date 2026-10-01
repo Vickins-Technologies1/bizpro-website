@@ -6,17 +6,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "rgb(var(--background) / <alpha-value>)",
-        foreground: "rgb(var(--foreground) / <alpha-value>)",
-        card: "rgb(var(--card) / <alpha-value>)",
-        surface: "rgb(var(--surface) / <alpha-value>)",
-        "surface-muted": "rgb(var(--surface-muted) / <alpha-value>)",
-        "surface-elevated": "rgb(var(--surface-elevated) / <alpha-value>)",
-        muted: "rgb(var(--muted) / <alpha-value>)",
-        border: "rgb(var(--border) / <alpha-value>)",
-        primary: "rgb(var(--primary) / <alpha-value>)",
-        "primary-foreground": "rgb(var(--primary-foreground) / <alpha-value>)",
-        accent: "rgb(var(--accent) / <alpha-value>)"
+        background: "var(--background)", foreground: "var(--foreground)", card: "var(--card)", surface: "var(--surface)", "surface-muted": "var(--surface-muted)", "surface-elevated": "var(--surface-elevated)", muted: "var(--muted)", border: "var(--border)", primary: "var(--primary)", "primary-foreground": "var(--primary-foreground)", accent: "var(--accent)"
       },
       boxShadow: {
         glow: "0 24px 80px -30px rgba(59, 130, 246, 0.45)",

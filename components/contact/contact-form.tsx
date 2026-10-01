@@ -42,7 +42,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="grid gap-4 rounded-3xl border border-border/70 bg-card/70 p-4 sm:p-5">
       {status === "sent" ? (
-        <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-600 dark:text-emerald-300">
+        <div className="rounded-2xl border border-accent/20 bg-accent/10 px-4 py-3 text-sm text-accent">
           Message ready. Your email app should open with the details prefilled.
         </div>
       ) : null}

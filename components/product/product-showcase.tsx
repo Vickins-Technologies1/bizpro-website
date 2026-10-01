@@ -17,10 +17,10 @@ function WindowChrome({ children, label }: { children: ReactNode; label: string 
     <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-panel">
       <div className="flex items-center justify-between border-b border-border bg-surface-muted px-4 py-3">
         <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-rose-400" /><span className="h-2 w-2 rounded-full bg-amber-400" /><span className="h-2 w-2 rounded-full bg-emerald-400" />
+          <span className="h-2 w-2 rounded-full bg-primary/40" /><span className="h-2 w-2 rounded-full bg-accent/70" /><span className="h-2 w-2 rounded-full bg-accent" />
           <span className="ml-2 text-[10px] font-semibold text-muted">Dira OS / {label}</span>
         </div>
-        <span className="flex items-center gap-1 text-[10px] font-semibold text-emerald-600"><span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Synced</span>
+        <span className="flex items-center gap-1 text-[10px] font-semibold text-accent"><span className="h-1.5 w-1.5 rounded-full bg-accent" /> Synced</span>
       </div>
       {children}
     </div>

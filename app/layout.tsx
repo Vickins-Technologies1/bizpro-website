@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { DownloadProvider } from "@/components/download/download-context";
 import { SiteChrome } from "@/components/layout/site-chrome";
 import { siteConfig } from "@/config/site";
 import "@/app/globals.css";
@@ -38,8 +39,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
-    { media: "(prefers-color-scheme: dark)", color: "#020617" }
+    { media: "(prefers-color-scheme: light)", color: "#f8fafd" },
+    { media: "(prefers-color-scheme: dark)", color: "#050b18" }
   ],
   width: "device-width",
   initialScale: 1
@@ -55,9 +56,11 @@ export default function RootLayout({
       <head><meta name="color-scheme" content="light dark" /><meta name="theme-color" content="#ffffff" /></head>
       <body>
         <ThemeProvider>
-          <div className="relative flex min-h-screen flex-col">
-            <main className="flex-1"><SiteChrome>{children}</SiteChrome></main>
-          </div>
+          <DownloadProvider>
+            <div className="relative flex min-h-screen flex-col">
+              <main className="flex-1"><SiteChrome>{children}</SiteChrome></main>
+            </div>
+          </DownloadProvider>
         </ThemeProvider>
       </body>
     </html>

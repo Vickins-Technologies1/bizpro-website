@@ -1,7 +1,8 @@
 export const navigation = [
-  { href: "/#product", label: "Product" },
-  { href: "/features", label: "Features" },
-  { href: "/industries", label: "Business types" },
+  { href: "/features", label: "Product" },
+  { href: "/industries", label: "Industries" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/faq", label: "FAQ" }
+  { href: "/download", label: "Download" },
+  { href: "/faq", label: "Resources" },
+  { href: "/contact", label: "Contact" }
 ] as const;

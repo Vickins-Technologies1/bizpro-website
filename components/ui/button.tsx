@@ -10,7 +10,7 @@ export function buttonStyles(variant: Variant = "primary", className?: string) {
 
   const variants: Record<Variant, string> = {
     primary:
-      "border border-transparent bg-[rgb(var(--primary))] text-[rgb(var(--primary-foreground))] shadow-glow hover:brightness-110",
+      "border border-transparent bg-primary text-primary-foreground shadow-glow hover:brightness-110",
     secondary: "border border-border/80 bg-card/85 text-foreground hover:border-primary/40 hover:bg-card",
     ghost: "border border-transparent bg-transparent text-foreground hover:bg-foreground/5",
     outline: "border border-border/80 bg-transparent text-foreground hover:border-primary/40 hover:bg-primary/5"

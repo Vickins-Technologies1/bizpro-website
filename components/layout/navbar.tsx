@@ -134,14 +134,14 @@ export function Navbar() {
         <div className="flex min-h-[60px] items-center justify-between gap-3 py-2 lg:min-h-[64px]">
           <Link href="/" className="flex items-center gap-2.5">
             <Image
-              src="/brand/dira-logo.png"
+              src="/brand/logo-official.png"
               alt="Dira OS"
               width={36}
               height={36}
               priority
               sizes="36px"
               unoptimized
-              className="h-8 w-8 shrink-0 rounded-lg object-cover sm:h-9 sm:w-9"
+              className="h-8 w-8 shrink-0 object-contain sm:h-9 sm:w-9"
             />
             <span className="text-[13px] font-bold tracking-[-0.02em] text-foreground">Dira OS</span>
           </Link>

@@ -31,7 +31,7 @@ export function Footer() {
           <div className="space-y-4">
             <div>
               <div className="flex items-center gap-2.5">
-                <Image src="/brand/dira-logo.png" alt="Dira OS" width={32} height={32} className="h-8 w-8 rounded-lg" unoptimized />
+                <Image src="/brand/logo-official.png" alt="Dira OS" width={32} height={32} className="h-8 w-8 object-contain" unoptimized />
                 <div>
                   <p className="text-sm font-bold tracking-[-0.02em]">{siteConfig.siteName}</p>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">{siteConfig.tagline}</p>

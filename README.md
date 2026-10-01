@@ -17,3 +17,23 @@ Swap customer marks, testimonials and platform links in `components/home-client.
 ## Validation
 
 Run `pnpm typecheck`, `pnpm lint`, and `pnpm build` before deployment.
+## Dira OS marketing site
+
+Premium, responsive Next.js App Router site for Dira OS. The design system is documented in [docs/design-system.md](docs/design-system.md).
+
+### Run locally
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Before publishing, run `pnpm run typecheck` and `pnpm run build`.
+
+### Common edits
+
+- Releases: `config/releases.ts`
+- Pricing: `config/pricing.ts`
+- Navigation: `config/navigation.ts`
+- Brand assets: `public/brand/`
+- Site and contact configuration: `config/site.ts` / `.env.example`
