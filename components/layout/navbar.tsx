@@ -49,6 +49,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const menuPanelRef = useRef<HTMLDivElement | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const sidebarCloseRef = useRef<HTMLButtonElement | null>(null);
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -81,7 +82,7 @@ export function Navbar() {
         )
       : [];
 
-    focusable[0]?.focus();
+    sidebarCloseRef.current?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -121,7 +122,8 @@ export function Navbar() {
   }, [pathname]);
 
   return (
-    <header
+    <>
+      <header
       className={cn(
         "sticky top-0 z-50 border-b transition-colors duration-200",
         scrolled
@@ -134,7 +136,7 @@ export function Navbar() {
         <div className="flex min-h-[60px] items-center justify-between gap-3 py-2 lg:min-h-[64px]">
           <Link href="/" className="flex items-center gap-2.5">
             <Image
-              src="/brand/logo-official.png"
+              src="/brand/dira-logo.png"
               alt="Dira OS"
               width={36}
               height={36}
@@ -173,47 +175,67 @@ export function Navbar() {
           </div>
         </div>
 
-        <button
-          type="button"
-          aria-hidden="true"
-          tabIndex={-1}
-          onClick={closeMenu}
-          className={cn(
-            "fixed inset-x-0 bottom-0 z-40 bg-transparent transition-opacity duration-200 lg:hidden",
-            menuOpen ? "pointer-events-auto top-[60px] opacity-100 sm:top-[64px]" : "pointer-events-none top-[60px] opacity-0 sm:top-[64px]"
-          )}
-        />
-
-        <div
-          id="mobile-navigation"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Mobile navigation"
-          ref={menuPanelRef}
-          className={cn(
-            "absolute left-0 right-0 top-full z-50 overflow-hidden border-b border-border/60 bg-card/96 backdrop-blur-xl transition-[max-height,opacity,transform] duration-200 ease-out lg:hidden supports-[backdrop-filter]:bg-card/88",
-            menuOpen ? "max-h-[calc(100dvh-60px)] translate-y-0 opacity-100 sm:max-h-[calc(100dvh-64px)]" : "max-h-0 -translate-y-2 opacity-0"
-          )}
-        >
-          <Container className="py-3">
-            <nav className="grid gap-1" aria-label="Mobile navigation links">
-              {navigation.map((item) => (
-                <NavLink
-                  key={item.href}
-                  href={item.href}
-                  label={item.label}
-                  active={pathname === item.href}
-                  mobile
-                  onNavigate={closeMenu}
-                />
-              ))}
-            </nav>
-            <div className="pt-3">
-              <DownloadCTA compact label="Get Started" className="w-full justify-center" onClick={closeMenu} />
-            </div>
-          </Container>
-        </div>
       </Container>
-    </header>
+      </header>
+
+      <button
+        type="button"
+        aria-label="Close mobile navigation"
+        tabIndex={menuOpen ? 0 : -1}
+        onClick={closeMenu}
+        className={cn(
+          "fixed inset-0 z-40 bg-slate-950/45 backdrop-blur-[2px] transition-opacity duration-200 lg:hidden",
+          menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        )}
+      />
+
+      <div
+        id="mobile-navigation"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+        ref={menuPanelRef}
+        className={cn(
+          "fixed inset-y-0 right-0 z-50 flex w-[min(88vw,22rem)] flex-col border-l border-border/70 bg-card shadow-[-24px_0_70px_rgba(4,12,28,.2)] transition-transform duration-300 ease-out lg:hidden supports-[backdrop-filter]:bg-card/92 supports-[backdrop-filter]:backdrop-blur-xl",
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        )}
+      >
+        <div className="flex items-center justify-between border-b border-border/70 px-5 py-4">
+          <div>
+            <p className="text-sm font-semibold tracking-[-0.02em] text-foreground">Dira OS</p>
+            <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">Business OS</p>
+          </div>
+          <button
+            ref={sidebarCloseRef}
+            type="button"
+            aria-label="Close mobile navigation"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/80 bg-background/70 text-foreground transition duration-200 hover:border-primary/40 hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            onClick={closeMenu}
+          >
+            <X className="h-4 w-4" aria-hidden="true" />
+          </button>
+        </div>
+
+        <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 py-5">
+          <p className="px-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">Explore</p>
+          <nav className="mt-2 grid gap-1" aria-label="Mobile navigation links">
+            {navigation.map((item) => (
+              <NavLink
+                key={item.href}
+                href={item.href}
+                label={item.label}
+                active={pathname === item.href}
+                mobile
+                onNavigate={closeMenu}
+              />
+            ))}
+          </nav>
+          <div className="mt-auto border-t border-border/70 pt-5">
+            <p className="px-3 text-xs leading-5 text-muted">Bring sales, operations, finance and teams into one connected workspace.</p>
+            <DownloadCTA compact label="Get Started" className="mt-4 w-full justify-center" onClick={closeMenu} />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

@@ -181,3 +181,8 @@ header.sticky nav a[aria-current="page"] {
     font-size: clamp(3.25rem, 5.7vw, 5.5rem);
   }
 }
+
+html,
+body {
+  overflow-x: hidden;
+}
