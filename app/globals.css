@@ -168,3 +168,16 @@ header.sticky nav a[aria-current="page"] {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Premium desktop hero balance: keep the headline expressive without letting it dominate the product surface. */
+@media (min-width: 901px) {
+  .hero-grid {
+    grid-template-columns: 0.94fr 1.06fr;
+    gap: 52px;
+  }
+
+  .hero h1 {
+    max-width: 660px;
+    font-size: clamp(3.25rem, 5.7vw, 5.5rem);
+  }
+}

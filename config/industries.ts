@@ -2,59 +2,59 @@ export const industryGroups = [
   {
     key: "retail",
     label: "Retail",
-    summary: "Retail shops, boutiques, cosmetics, accessories, wines & spirits and hardware.",
-    capabilities: ["Fast POS", "Inventory control", "Suppliers", "Branches", "Reports"]
+    summary: "Shops and product-led businesses that need a connected view of customers, sales and stock.",
+    capabilities: ["Sales workflows", "Stock visibility", "Suppliers", "Branches", "Insights"]
   },
   {
     key: "food",
     label: "Food & Beverage",
-    summary: "Restaurants, cafes, bakeries and bars that need quick service workflows.",
-    capabilities: ["Menu POS", "Expenses", "Staff access", "Receipts", "Sales reporting"]
+    summary: "Restaurants, cafes, bakeries and bars that need quick service and team workflows.",
+    capabilities: ["Orders", "Expenses", "Staff access", "Payments", "Daily insights"]
   },
   {
     key: "beauty",
     label: "Beauty",
-    summary: "Salons and spas managing services, products and customer visits.",
-    capabilities: ["Appointments support", "Product sales", "Customer records", "Team roles"]
+    summary: "Salons and spas managing services, specialists, appointments and repeat visits.",
+    capabilities: ["Appointments", "Service records", "Customer history", "Team roles"]
   },
   {
     key: "hospitality",
     label: "Hospitality",
-    summary: "Hotels and lodges that need everyday operating visibility.",
-    capabilities: ["Sales tracking", "Inventory", "Team access", "Branch workflows"]
+    summary: "Hotels and lodges that need reservations, stays, charges and everyday visibility.",
+    capabilities: ["Reservations", "Rooms and stays", "Team access", "Branch workflows"]
   },
   {
     key: "healthcare",
     label: "Healthcare",
-    summary: "Clinics, pharmacies and dental practices with structured operations.",
-    capabilities: ["Product lookup", "Stock control", "User permissions", "Reporting"]
+    summary: "Clinics and healthcare teams with structured appointments, visits and billing workflows.",
+    capabilities: ["Appointments", "Visits and services", "Access control", "Reporting"]
   },
   {
     key: "automotive",
     label: "Automotive",
-    summary: "Garages, auto parts sellers and service centers.",
-    capabilities: ["Parts inventory", "Purchases", "Receipts", "Financial summaries"]
+    summary: "Garages and service centers connecting vehicles, job cards, parts and invoices.",
+    capabilities: ["Job cards", "Parts visibility", "Service records", "Invoices"]
   },
   {
     key: "services",
     label: "Services",
-    summary: "Consultancies, agencies and service businesses that need clarity and control.",
-    capabilities: ["Team management", "Finance", "Reports", "Customer records"]
+    summary: "Consultancies, agencies and service businesses that need clarity across client work.",
+    capabilities: ["Client work", "Team management", "Finance", "Customer records"]
   },
   {
     key: "professional",
     label: "Professional Services",
-    summary: "Law firms, accounting firms and office-based professional teams.",
-    capabilities: ["Role access", "Reporting", "Customer management", "Branch support"]
+    summary: "Law, accounting and office-based teams connecting matters, tasks, time and billing.",
+    capabilities: ["Matters and tasks", "Role access", "Time and billing", "Client management"]
   }
 ] as const;
 
 export const industryDetailMap = {
   retail: {
-    title: "Sell faster. Keep stock tight.",
-    workflow: ["Products", "Sales", "Inventory", "Customers"],
-    primaryAction: "Move products with control",
-    bullets: ["POS", "Stock control", "Low stock", "Branches"]
+    title: "Keep product-led work visible.",
+    workflow: ["Customers", "Sales", "Stock", "Insights"],
+    primaryAction: "Connect the daily picture",
+    bullets: ["Sales workflows", "Stock visibility", "Customer history", "Branches"]
   },
   food: {
     title: "Move quickly at the counter.",

@@ -13,7 +13,7 @@ export const faqItems = [
   },
   {
     question: "Which businesses can use Dira OS?",
-    answer: "Retail, food service, beauty, healthcare, automotive, services and professional teams."
+    answer: "Retail, food and beverage, beauty, hospitality, healthcare, automotive, services and professional teams."
   },
   {
     question: "Can multiple employees use Dira OS?",

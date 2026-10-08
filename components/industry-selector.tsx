@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 export function IndustrySelector() {
-  const [selected, setSelected] = useState<(typeof industryGroups)[number]["key"]>("retail");
+  const [selected, setSelected] = useState<(typeof industryGroups)[number]["key"]>("hospitality");
   const active = industryDetailMap[selected];
   const currentGroup = industryGroups.find((item) => item.key === selected) ?? industryGroups[0];
 

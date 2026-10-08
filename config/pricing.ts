@@ -3,14 +3,14 @@ export const pricingPlans = [
     name: "Starter",
     price: "KES 700/month",
     note: "Up to 2 employees.",
-    features: ["Core POS", "Inventory", "Receipts", "Offline-first"],
+    features: ["Sales workflows", "Customer records", "Receipts", "Offline-first"],
     recommended: false
   },
   {
     name: "Growth",
     price: "KES 1,200/month",
     note: "Up to 5 employees.",
-    features: ["POS and receipts", "Inventory", "Finance tracking", "Team permissions"],
+    features: ["Transactions and payments", "Operations", "Finance visibility", "Team permissions"],
     recommended: true
   },
   {

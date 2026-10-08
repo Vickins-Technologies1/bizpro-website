@@ -1,48 +1,55 @@
 import {
-  Barcode,
+  Activity,
+  BarChart3,
   Calculator,
   Layers3,
   ReceiptText,
-  ShieldCheck,
-  Warehouse
+  Users2,
+  Wifi
 } from "lucide-react";
 
 export const homepageFeatureBlocks = [
   {
-    title: "Point of sale",
-    description: "Fast checkout, discounts and receipts.",
-    icon: ReceiptText,
-    bullets: ["Basket building", "Payment lines", "Receipt handling"]
+    title: "Run",
+    description: "Daily operations and workflows in one dependable place.",
+    icon: Activity,
+    bullets: ["Today's activity", "Work queues", "Approvals"]
   },
   {
-    title: "Inventory",
-    description: "Track products, suppliers and stock movement.",
-    icon: Warehouse,
-    bullets: ["Stock control", "Barcode lookup", "Transfers"]
+    title: "Sell",
+    description: "Sales, transactions, payments and receipts without the clutter.",
+    icon: ReceiptText,
+    bullets: ["Sales flows", "Payments", "Receipts"]
+  },
+  {
+    title: "Manage",
+    description: "Customers, services, products and business records stay connected.",
+    icon: Layers3,
+    bullets: ["Customer records", "Service records", "Business data"]
   },
   {
     title: "Finance",
-    description: "Keep sales, expenses and balances in view.",
+    description: "Revenue, expenses, balances and financial visibility in context.",
     icon: Calculator,
-    bullets: ["Summaries", "Collections", "Balances"]
+    bullets: ["Revenue visibility", "Expenses", "Balances"]
   },
   {
-    title: "Team management",
-    description: "Give each role the access it needs.",
-    icon: ShieldCheck,
-    bullets: ["Roles", "Permissions", "Branches"]
+    title: "Operate",
+    description: "Teams, branches, appointments and day-to-day work move together.",
+    icon: Users2,
+    bullets: ["Roles", "Branches", "Appointments"]
   },
   {
-    title: "Reporting",
-    description: "See performance at a glance.",
-    icon: Layers3,
-    bullets: ["Sales trends", "Low stock", "Insights"]
+    title: "Understand",
+    description: "Reports, analytics and business performance without the noise.",
+    icon: BarChart3,
+    bullets: ["Performance views", "Trends", "Business insights"]
   },
   {
-    title: "Offline sync",
-    description: "Keep working when connectivity drops.",
-    icon: Barcode,
-    bullets: ["Local queue", "Reconnect sync", "Recovery"]
+    title: "Stay connected",
+    description: "Keep working offline and sync when the connection returns.",
+    icon: Wifi,
+    bullets: ["Local work", "Queued sync", "Recovery"]
   }
 ] as const;
 

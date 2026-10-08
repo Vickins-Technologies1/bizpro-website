@@ -4,7 +4,7 @@ import { HomeClient } from "@/components/home-client";
 
 export const metadata: Metadata = buildMetadata({
   title: "Dira OS — Run your business as one system",
-  description: "The offline-first business operating system for sales, inventory, finance, teams and branches across East Africa.",
+  description: "The offline-first business operating system for sales, operations, finance, customers, teams, branches and insights.",
   path: "/"
 });
 

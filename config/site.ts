@@ -16,7 +16,7 @@ export const siteConfig = {
   siteName: "Dira OS",
   tagline: "Business OS",
   description:
-    "Dira OS is an offline-first business operating system for sales, POS, inventory, finance, teams, branches and real-time business insights.",
+    "Dira OS is an offline-first business operating system for sales, operations, finance, customers, teams, branches and business insights.",
   websiteUrl: readPublicEnv("NEXT_PUBLIC_SITE_URL", "https://dira-os.vickinstechnologies.com"),
   playStoreUrl: readPublicEnv("NEXT_PUBLIC_PLAY_STORE_URL", defaultPlayStoreUrl),
   contactEmail: readPublicEnv("NEXT_PUBLIC_CONTACT_EMAIL", ""),
@@ -33,7 +33,7 @@ export const siteConfig = {
   },
   brand: {
     descriptor: "Business Operating System",
-    positioning: "Sales. Inventory. Finance. Teams. Insights."
+    positioning: "Operations. Finance. Customers. Teams. Insights."
   }
 } as const;
 
