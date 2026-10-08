@@ -7,6 +7,7 @@ import { DownloadCTA } from "@/components/ui/download-cta";
 
 const productLinks = [
   { href: "/features", label: "Features" },
+  { href: "/industries", label: "Industries" },
   { href: "/pricing", label: "Pricing" },
   { href: "/download", label: "Download" }
 ] as const;
@@ -42,7 +43,7 @@ export function Footer() {
               A modern business operating system designed to simplify everyday business management.
             </p>
             <div className="flex flex-wrap gap-2">
-              <DownloadCTA compact label="Start Free Trial" />
+              <DownloadCTA compact label="Get Started" />
               <Link href="/contact" className={buttonStyles("secondary")}>
                 Contact
               </Link>

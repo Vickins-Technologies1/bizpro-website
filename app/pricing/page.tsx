@@ -1,79 +1,23 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Check, ArrowRight } from "lucide-react";
+import { ArrowRight, Check, CircleHelp, Sparkles } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { Card } from "@/components/ui/card";
-import { buttonStyles } from "@/components/ui/button";
+import { DownloadCTA } from "@/components/ui/download-cta";
 import { Reveal } from "@/components/ui/reveal";
 import { pricingPlans } from "@/config/pricing";
 import { buildMetadata } from "@/lib/seo";
+import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Pricing",
-  description: "Choose a Dira OS plan for your team, from Starter to Enterprise.",
-  path: "/pricing"
-});
+export const metadata: Metadata = buildMetadata({ title: "Pricing", description: "Choose a Dira OS plan for your team, from Starter to Enterprise.", path: "/pricing" });
 
 export default function PricingPage() {
-  return (
-    <section className="py-10 sm:py-14 lg:py-16">
-      <Container>
-        <Reveal>
-          <SectionHeading
-            eyebrow="Pricing"
-            title="Simple plan structure."
-            description="Start with a 1-month free trial, then choose a plan based on your team size."
-          />
-        </Reveal>
+  return <main>
+    <section className="relative overflow-hidden border-b border-border bg-surface py-16 sm:py-20 lg:py-24"><div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,var(--wash),transparent_34%)]" /><Container className="relative"><Reveal><div className="max-w-3xl"><p className="eyebrow">Simple pricing</p><h1 className="mt-5 text-4xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl">Choose the operating space your team needs.</h1><p className="mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg">Start with a plan that fits the size of your team, then keep the same connected Dira OS foundation as the business grows.</p><div className="mt-8 flex flex-wrap gap-3"><DownloadCTA label="Start Free" /><Link href="#plans" className="button secondary">Compare plans <ArrowRight className="h-4 w-4" /></Link></div></div></Reveal><div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 rounded-xl border border-border bg-card/80 px-4 py-4 text-xs text-muted sm:px-5"><span className="flex items-center gap-2 font-semibold text-foreground"><Sparkles className="h-4 w-4 text-accent" /> One month free</span><span>No card required</span><span>Plans from KES 700/month</span></div></Container></section>
 
-        <Reveal delay={70}>
-          <div className="mt-4 rounded-3xl border border-border/70 bg-card/60 p-4 text-sm text-muted">
-            1 month free trial. No card required.
-          </div>
-        </Reveal>
+    <section id="plans" className="section"><Container><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">{pricingPlans.map((plan, index) => <Reveal key={plan.name} delay={index * 70} direction={index === 1 ? "up" : index % 2 === 0 ? "left" : "right"}><article className={cn("relative flex h-full flex-col rounded-xl border bg-card p-5 sm:p-6", plan.recommended ? "border-primary/50 shadow-panel" : "border-border")}><div className="flex items-start justify-between gap-3"><div><p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">{plan.name}</p><p className="mt-2 text-xs leading-5 text-muted">{plan.note}</p></div>{plan.recommended && <span className="rounded-full bg-primary/10 px-2.5 py-1 text-[10px] font-semibold text-primary">Recommended</span>}</div><p className="mt-7 text-2xl font-semibold tracking-[-0.05em]">{plan.price}</p><div className="mt-7 flex-1 border-t border-border pt-5"><p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">Includes</p><ul className="mt-4 grid gap-3">{plan.features.map((feature) => <li key={feature} className="flex items-start gap-2 text-xs text-muted"><Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" /> {feature}</li>)}</ul></div><DownloadCTA compact label={plan.recommended ? "Start with Growth" : "Get started"} variant={plan.recommended ? "primary" : "secondary"} className="mt-7 w-full" /></article></Reveal>)}</div></Container></section>
 
-        <div className="mt-6 grid gap-4 lg:grid-cols-3">
-          {pricingPlans.map((plan, index) => (
-            <Reveal key={plan.name} delay={index * 80} direction={index === 1 ? "up" : index === 0 ? "left" : "right"}>
-              <Card className={`p-5 ${plan.recommended ? "border-primary/25 ring-1 ring-primary/10" : ""}`}>
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">{plan.name}</p>
-                    <p className="mt-2 text-sm leading-6 text-muted">{plan.note}</p>
-                  </div>
-                  {plan.recommended ? (
-                    <span className="rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary motion-safe:animate-soft-pulse">
-                      Recommended
-                    </span>
-                  ) : null}
-                </div>
+    <section className="section surface"><Container className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]"><div className="section-heading"><span className="eyebrow">A clear starting point</span><h2>Pricing should help you decide, not slow you down.</h2><p>Compare plans by the team size and capabilities that matter to your operation. If you need context, the Dira OS team can help.</p><Link href="/contact" className="button secondary mt-7">Talk to the team <ArrowRight className="h-4 w-4" /></Link></div><div className="grid gap-3 sm:grid-cols-2"><div className="rounded-xl border border-border bg-card p-5"><CircleHelp className="h-5 w-5 text-primary" /><p className="mt-4 text-sm font-semibold">Need help choosing?</p><p className="mt-2 text-xs leading-5 text-muted">Use the contact page for the available support channels.</p></div><div className="rounded-xl border border-border bg-card p-5"><Check className="h-5 w-5 text-accent" /><p className="mt-4 text-sm font-semibold">Start without friction</p><p className="mt-2 text-xs leading-5 text-muted">One month free, with no card required.</p></div></div></Container></section>
 
-                <p className="mt-5 text-2xl font-semibold tracking-tight">{plan.price}</p>
-
-                <ul className="mt-5 grid gap-2.5">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-sm text-muted">
-                      <Check className="mt-0.5 h-4 w-4 text-primary" aria-hidden="true" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={90}>
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-border/70 bg-card/70 p-5">
-            <p className="text-sm text-muted">Need help choosing? Talk to the Dira OS team.</p>
-            <Link href="/contact" className={buttonStyles("secondary")}>
-              Contact us
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
-        </Reveal>
-      </Container>
-    </section>
-  );
+    <section className="final-cta"><Container><span className="eyebrow">Ready to begin</span><h2>One clear plan.<br /><em>One connected system.</em></h2><p>Start with Dira OS and see how it fits your way of working.</p><DownloadCTA label="Start Free" /></Container></section>
+  </main>;
 }

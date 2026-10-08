@@ -52,34 +52,50 @@ export const industryGroups = [
 export const industryDetailMap = {
   retail: {
     title: "Sell faster. Keep stock tight.",
+    workflow: ["Products", "Sales", "Inventory", "Customers"],
+    primaryAction: "Move products with control",
     bullets: ["POS", "Stock control", "Low stock", "Branches"]
   },
   food: {
     title: "Move quickly at the counter.",
+    workflow: ["Menu", "Orders", "Kitchen", "Tables", "Payments"],
+    primaryAction: "Keep service moving",
     bullets: ["Ordering", "Sales", "Staff access", "Daily summaries"]
   },
   beauty: {
     title: "Services, products and repeat visits.",
+    workflow: ["Services", "Appointments", "Specialists", "Clients", "Payments"],
+    primaryAction: "Keep client work together",
     bullets: ["Customer history", "Sales", "Team permissions", "Reports"]
   },
   hospitality: {
     title: "Reliable operations all day.",
+    workflow: ["Rooms", "Reservations", "Guests", "Stays", "Charges"],
+    primaryAction: "Keep stays visible",
     bullets: ["Sales visibility", "Inventory", "Branch support", "Offline work"]
   },
   healthcare: {
     title: "Structured daily operations.",
+    workflow: ["Patients", "Appointments", "Visits", "Services", "Billing"],
+    primaryAction: "Keep care operations organized",
     bullets: ["Products", "Stock tracking", "Access control", "Reports"]
   },
   automotive: {
     title: "Parts, service and stock together.",
+    workflow: ["Vehicles", "Job cards", "Services", "Parts", "Invoices"],
+    primaryAction: "Connect the job to the invoice",
     bullets: ["Parts inventory", "Purchases", "Receipts", "Summaries"]
   },
   services: {
     title: "Keep services lean and visible.",
+    workflow: ["Clients", "Services", "Jobs", "Payments"],
+    primaryAction: "Keep client work moving",
     bullets: ["Finance", "Employee access", "Client records", "Branches"]
   },
   professional: {
     title: "Clean control for office teams.",
+    workflow: ["Clients", "Matters", "Tasks", "Time", "Billing"],
+    primaryAction: "Keep work and billing aligned",
     bullets: ["Permissions", "Reporting", "Client management", "Multi-location"]
   }
 } as const;

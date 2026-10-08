@@ -61,6 +61,19 @@ export const featureCategories = [
     ]
   },
   {
+    label: "Teams",
+    title: "Keep the day moving.",
+    description: "Bring daily activity, receipts and operating summaries into one dependable workflow.",
+    items: [
+      "Daily and monthly views",
+      "Sales summaries",
+      "Receipt and print support",
+      "Operational snapshots",
+      "Audit-friendly workflows",
+      "Secure everyday operations"
+    ]
+  },
+  {
     label: "Manage",
     title: "Know what you have.",
     description: "Manage products, suppliers and stock movement from one place.",
@@ -74,7 +87,7 @@ export const featureCategories = [
     ]
   },
   {
-    label: "Track",
+    label: "Finance",
     title: "Track money clearly.",
     description: "See expenses, collections and balances together.",
     items: [
@@ -88,14 +101,27 @@ export const featureCategories = [
   },
   {
     label: "Operate",
-    title: "Give the right access.",
+    title: "Give people the right access.",
     description: "Assign roles and branch access with clarity.",
     items: [
       "Employees and roles",
-      "Branch management",
       "Business access",
       "Audit-friendly workflows",
       "Owner and manager views",
+      "Secure everyday operations",
+      "Roles and permissions"
+    ]
+  },
+  {
+    label: "Branches",
+    title: "Keep locations connected.",
+    description: "Give owners and managers a clearer view across the business.",
+    items: [
+      "Branch management",
+      "Branch access",
+      "Owner and manager views",
+      "Business access",
+      "Operational snapshots",
       "Secure everyday operations"
     ]
   },

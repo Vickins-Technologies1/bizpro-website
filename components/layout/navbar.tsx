@@ -154,7 +154,7 @@ export function Navbar() {
 
           <div className="hidden items-center gap-2 lg:flex">
             <ThemeToggle compact className="shrink-0" />
-            <DownloadCTA compact label="Start Free Trial" className="shrink-0" />
+            <DownloadCTA compact label="Get Started" className="shrink-0" />
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
@@ -209,7 +209,7 @@ export function Navbar() {
               ))}
             </nav>
             <div className="pt-3">
-              <DownloadCTA compact label="Start Free Trial" className="w-full justify-center" onClick={closeMenu} />
+              <DownloadCTA compact label="Get Started" className="w-full justify-center" onClick={closeMenu} />
             </div>
           </Container>
         </div>
