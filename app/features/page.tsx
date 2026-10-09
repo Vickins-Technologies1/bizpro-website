@@ -25,8 +25,8 @@ import { buildMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Features",
-  description: "Explore Dira OS across selling, operations, inventory, finance, teams, branches, insights and offline sync.",
+  title: "Business Management Software Features",
+  description: "Explore Dira OS features for point of sale, inventory, sales, expenses, reporting, customers, teams, branches and offline-first work.",
   path: "/features"
 });
 

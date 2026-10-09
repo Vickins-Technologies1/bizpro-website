@@ -3,7 +3,9 @@ import type { ReactNode } from "react";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { DownloadProvider } from "@/components/download/download-context";
 import { SiteChrome } from "@/components/layout/site-chrome";
+import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/config/site";
+import { getOrganizationSchema, getWebsiteSchema } from "@/lib/structured-data";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
@@ -57,6 +59,8 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <DownloadProvider>
+            <JsonLd data={getOrganizationSchema()} />
+            <JsonLd data={getWebsiteSchema()} />
             <div className="relative flex min-h-screen flex-col">
               <main className="flex-1"><SiteChrome>{children}</SiteChrome></main>
             </div>

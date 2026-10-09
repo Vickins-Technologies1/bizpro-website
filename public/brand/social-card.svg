@@ -20,10 +20,10 @@
     <text x="102" y="70" fill="white" font-size="22" font-weight="700" font-family="Arial, sans-serif">Good morning, Admin</text>
     <rect x="102" y="94" width="96" height="72" rx="12" fill="#13284A"/>
     <text x="116" y="117" fill="#91A8C9" font-size="10" font-family="Arial, sans-serif">REVENUE</text>
-    <text x="116" y="143" fill="white" font-size="17" font-weight="700" font-family="Arial, sans-serif">KES 248k</text>
+    <text x="116" y="143" fill="white" font-size="17" font-weight="700" font-family="Arial, sans-serif">In view</text>
     <rect x="210" y="94" width="104" height="72" rx="12" fill="#13284A"/>
     <text x="224" y="117" fill="#91A8C9" font-size="10" font-family="Arial, sans-serif">ORDERS</text>
-    <text x="224" y="143" fill="white" font-size="17" font-weight="700" font-family="Arial, sans-serif">184</text>
+    <text x="224" y="143" fill="white" font-size="17" font-weight="700" font-family="Arial, sans-serif">Recorded</text>
     <rect x="102" y="184" width="212" height="122" rx="12" fill="#101F36"/>
     <path d="M119 274L142 251L162 260L188 225L212 242L238 211L262 228L290 199" stroke="#54E8B0" stroke-width="4" fill="none"/>
     <path d="M119 274L142 251L162 260L188 225L212 242L238 211L262 228L290 199V286H119Z" fill="#1458E8" fill-opacity="0.18"/>

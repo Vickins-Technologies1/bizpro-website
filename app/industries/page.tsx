@@ -10,8 +10,8 @@ import { buildMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Industries",
-  description: "See how Dira OS adapts to retail, food and beverage, beauty, hospitality, healthcare, automotive, services and professional services.",
+  title: "Business Management Software for Different Industries",
+  description: "See how Dira OS supports retail, food and beverage, beauty, hospitality, healthcare, agriculture, automotive and service businesses.",
   path: "/industries"
 });
 

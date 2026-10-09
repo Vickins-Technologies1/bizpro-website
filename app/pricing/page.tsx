@@ -8,7 +8,7 @@ import { pricingPlans } from "@/config/pricing";
 import { buildMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = buildMetadata({ title: "Pricing", description: "Choose a Dira OS plan for your team, from Starter to Enterprise.", path: "/pricing" });
+export const metadata: Metadata = buildMetadata({ title: "Dira OS Pricing | Business Software Plans", description: "Compare Dira OS business management plans for sales, inventory, finance, teams and multi-branch operations. Start with one month free.", path: "/pricing" });
 
 export default function PricingPage() {
   return <main>

@@ -8,7 +8,7 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { siteConfig } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({ title: "Contact", description: "Contact Dira OS using the available support channels.", path: "/contact" });
+export const metadata: Metadata = buildMetadata({ title: "Contact Dira OS Support", description: "Contact the Dira OS team about business management software, Android installation, support and plans.", path: "/contact" });
 
 export default function ContactPage() {
   const contactItems = [

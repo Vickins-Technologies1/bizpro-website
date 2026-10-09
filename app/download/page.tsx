@@ -8,7 +8,7 @@ import { releases } from "@/config/releases";
 import { siteConfig } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({ title: "Download Dira OS", description: "Download Dira OS for Android from Google Play or install the available APK.", path: "/download" });
+export const metadata: Metadata = buildMetadata({ title: "Download Dira OS for Android", description: "Install the Dira OS Android business management app from Google Play or download the available APK for compatible devices.", path: "/download" });
 
 const androidRelease = releases[0];
 

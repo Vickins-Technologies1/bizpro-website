@@ -3,5 +3,5 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
-  return NextResponse.redirect(new URL("/downloads/bizpro.apk", request.url), 307);
+  return NextResponse.redirect(new URL("/downloads/bizpro.apk", request.url), 308);
 }

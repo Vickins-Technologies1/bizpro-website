@@ -5,9 +5,11 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/"
+      allow: "/",
+      disallow: ["/api/", "/admin/", "/app/", "/dashboard/", "/login", "/preview/", "/test/"]
     },
-    sitemap: new URL("/sitemap.xml", siteConfig.websiteUrl).toString()
+    sitemap: new URL("/sitemap.xml", siteConfig.websiteUrl).toString(),
+    host: siteConfig.websiteUrl
   };
 }
 

@@ -6,7 +6,7 @@ import { DownloadCTA } from "@/components/ui/download-cta";
 import { Reveal } from "@/components/ui/reveal";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({ title: "About", description: "Learn why Dira OS exists and how it brings business operations together in one offline-first system.", path: "/about" });
+export const metadata: Metadata = buildMetadata({ title: "About Dira OS | Vickins Technologies", description: "Learn how Dira OS by Vickins Technologies brings sales, inventory, finance, customers and teams together in one business operating system.", path: "/about" });
 
 const principles = [
   { title: "Make operations clearer", body: "Bring sales, inventory, finance and business activity into one operating picture.", icon: Layers3 },

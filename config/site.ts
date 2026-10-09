@@ -10,20 +10,33 @@ function readPublicEnv(name: string, fallback: string) {
   return value && value.trim() ? value.trim() : fallback;
 }
 
+const defaultSiteUrl = "https://dira-os.vickinstechnologies.com";
 const defaultPlayStoreUrl = "https://play.google.com/store/apps/details?id=com.bizpro.vickins";
+
+function readPublicUrl(name: string, fallback: string) {
+  const value = readPublicEnv(name, fallback);
+
+  try {
+    return new URL(value).toString().replace(/\/$/, "");
+  } catch {
+    return fallback;
+  }
+}
 
 export const siteConfig = {
   siteName: "Dira OS",
   tagline: "Business OS",
+  companyName: "Vickins Technologies Inc.",
+  companyUrl: "https://www.vickinstechnologies.com",
   description:
-    "Dira OS is an offline-first business operating system for sales, operations, finance, customers, teams, branches and business insights.",
-  websiteUrl: readPublicEnv("NEXT_PUBLIC_SITE_URL", "https://dira-os.vickinstechnologies.com"),
+    "Dira OS is an offline-first business operating system for point of sale, inventory, finance, reporting, customers and teams.",
+  websiteUrl: readPublicUrl("NEXT_PUBLIC_SITE_URL", defaultSiteUrl),
   playStoreUrl: readPublicEnv("NEXT_PUBLIC_PLAY_STORE_URL", defaultPlayStoreUrl),
-  contactEmail: readPublicEnv("NEXT_PUBLIC_CONTACT_EMAIL", ""),
-  contactPhone: readPublicEnv("NEXT_PUBLIC_CONTACT_PHONE", ""),
+  contactEmail: readPublicEnv("NEXT_PUBLIC_CONTACT_EMAIL", "vickinstechnologies@gmail.com"),
+  contactPhone: readPublicEnv("NEXT_PUBLIC_CONTACT_PHONE", "+254794501005"),
   whatsappUrl: readPublicEnv("NEXT_PUBLIC_WHATSAPP_URL", ""),
   supportHours: readPublicEnv("NEXT_PUBLIC_SUPPORT_HOURS", "Mon-Fri, 9:00-17:00"),
-  productVersion: readPublicEnv("NEXT_PUBLIC_PRODUCT_VERSION", "Current release"),
+  productVersion: readPublicEnv("NEXT_PUBLIC_PRODUCT_VERSION", "1.0.0"),
   minimumAndroidVersion: readPublicEnv("NEXT_PUBLIC_MIN_ANDROID_VERSION", "Android 8.0+"),
   defaultCurrency: readPublicEnv("NEXT_PUBLIC_DEFAULT_CURRENCY", "KES"),
   analyticsEndpoint: readPublicEnv("NEXT_PUBLIC_ANALYTICS_ENDPOINT", ""),
@@ -34,7 +47,8 @@ export const siteConfig = {
   brand: {
     descriptor: "Business Operating System",
     positioning: "Operations. Finance. Customers. Teams. Insights."
-  }
+  },
+  lastModified: "2026-10-10"
 } as const;
 
 export function getDownloadLink(): DownloadLink {

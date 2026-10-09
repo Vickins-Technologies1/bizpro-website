@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy",
-  description: "Dira OS privacy overview.",
+  description: "Read the Dira OS privacy policy and how website and app information is handled.",
   path: "/privacy"
 });
 
@@ -16,7 +16,7 @@ export default function PrivacyPage() {
     <section className="py-10 sm:py-14 lg:py-16">
       <Container>
         <Reveal>
-          <SectionHeading eyebrow="Legal" title="Privacy Policy" description="A concise privacy outline for Dira OS." />
+          <SectionHeading as="h1" eyebrow="Legal" title="Privacy Policy" description="A concise privacy outline for Dira OS." />
         </Reveal>
 
         <div className="mt-8 grid gap-4">

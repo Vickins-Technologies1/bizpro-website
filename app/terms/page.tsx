@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Terms of Service",
-  description: "Dira OS terms overview.",
+  description: "Read the Dira OS terms of service for website and app use, plans and availability.",
   path: "/terms"
 });
 
@@ -16,7 +16,7 @@ export default function TermsPage() {
     <section className="py-10 sm:py-14 lg:py-16">
       <Container>
         <Reveal>
-          <SectionHeading eyebrow="Legal" title="Terms of Service" description="A concise terms outline for Dira OS." />
+          <SectionHeading as="h1" eyebrow="Legal" title="Terms of Service" description="A concise terms outline for Dira OS." />
         </Reveal>
 
         <div className="mt-8 grid gap-4">
