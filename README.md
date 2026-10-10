@@ -1,18 +1,18 @@
 # Dira OS marketing site
 
-## Redesign notes
+## Download center
 
-- Added a compact light/dark/system theme system using semantic CSS tokens in `app/globals.css`. `next-themes` applies the selected theme before paint and persists the choice.
-- Rebuilt the homepage around a responsive SaaS layout with an offline demo, product dashboard, connected workflow, BI view, industries, FAQ and trust content.
-- Added `DownloadModal` for all primary download CTAs and a release-driven `/download` page.
+- `/download` is the release-driven Dira OS Download Center. It detects the visitor's likely platform, provides manual platform tabs, and shows only verified destinations.
+- The current published native release is Android: Google Play plus the checked-in HTTPS APK. Windows, macOS, Linux/Kali, iOS/iPadOS, and web app entries remain visible but intentionally have no fake actions until their artifacts or production URLs are verified.
+- `DownloadModal` is shared by primary CTAs and links back to the same download center.
 
 ## Publishing a release
 
-Update `config/releases.ts` with the version, file URL, size, release date and SHA-256 checksum. Replace the placeholder installer files and checksums before shipping.
+Update `config/releases.ts` with the version, file URL, size, release date and SHA-256 checksum. Set `NEXT_PUBLIC_WEB_APP_URL` only when a real production application URL is available. Add a platform action only after its artifact or destination has been checked over HTTPS.
 
 ## Brand content
 
-Swap customer marks, testimonials and platform links in `components/home-client.tsx` and `config/releases.ts`. The current customer names and installer URLs are intentionally sample content.
+Brand assets live in `public/brand/`. Keep download metadata in `config/releases.ts` rather than scattering URLs across components.
 
 ## Validation
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Check, Download, ExternalLink, FileDown, Smartphone, X } from "lucide-react";
+import { ArrowRight, Check, Download, ExternalLink, FileDown, Smartphone, X } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 export function DownloadModal({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -51,18 +51,19 @@ export function DownloadModal({ open, onClose }: { open: boolean; onClose: () =>
     <div className="modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
       <div ref={modalRef} className="download-modal" role="dialog" aria-modal="true" aria-labelledby="download-title" aria-describedby="download-description">
         <button ref={closeButtonRef} className="modal-close" onClick={onClose} aria-label="Close download options"><X size={17} /></button>
-        <span className="eyebrow"><Smartphone size={13} /> Get Dira OS</span>
-        <h2 id="download-title">Run your business wherever you work.</h2>
-        <p id="download-description">Choose the available Android installation path for your device.</p>
+        <span className="eyebrow"><Download size={13} /> Download Dira OS</span>
+        <h2 id="download-title">Choose your installation path.</h2>
+        <p id="download-description">Android is available today. Review every verified platform and release from the full download center.</p>
         <div className="download-options">
           <a href={siteConfig.playStoreUrl} className="download-option recommended" target="_blank" rel="noreferrer">
             <Smartphone size={18} /><span><b>Google Play</b><small>Recommended Android installation</small></span><em>Recommended</em><ExternalLink size={14} />
           </a>
-          <a href="/downloads/bizpro.apk" className="download-option">
+          <a href={siteConfig.androidApkUrl} className="download-option" download>
             <FileDown size={18} /><span><b>Direct APK</b><small>Available Android package</small></span><Download size={14} />
           </a>
         </div>
-        <div className="modal-foot"><Check size={14} /> Android {siteConfig.minimumAndroidVersion} · Works offline · No card required</div>
+        <a href="/download" className="download-option"><Check size={18} /><span><b>All platform downloads</b><small>See availability, requirements, checksums and installation help</small></span><ArrowRight size={14} /></a>
+        <div className="modal-foot"><Check size={14} /> Android {siteConfig.minimumAndroidVersion} · Official HTTPS destinations</div>
         <p className="mt-4 text-center text-[11px] text-muted"><a className="underline underline-offset-2 hover:text-foreground" href="/download">View installation instructions</a></p>
       </div>
     </div>

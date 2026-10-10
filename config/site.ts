@@ -17,7 +17,23 @@ function readPublicUrl(name: string, fallback: string) {
   const value = readPublicEnv(name, fallback);
 
   try {
-    return new URL(value).toString().replace(/\/$/, "");
+    const url = new URL(value);
+    return url.protocol === "https:" ? url.toString().replace(/\/$/, "") : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function readDownloadUrl(name: string, fallback: string) {
+  const value = readPublicEnv(name, fallback);
+
+  if (value.startsWith("/") && !value.startsWith("//")) {
+    return value;
+  }
+
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" ? url.toString() : fallback;
   } catch {
     return fallback;
   }
@@ -31,7 +47,9 @@ export const siteConfig = {
   description:
     "Dira OS is an offline-first business operating system for point of sale, inventory, finance, reporting, customers and teams.",
   websiteUrl: readPublicUrl("NEXT_PUBLIC_SITE_URL", defaultSiteUrl),
-  playStoreUrl: readPublicEnv("NEXT_PUBLIC_PLAY_STORE_URL", defaultPlayStoreUrl),
+  playStoreUrl: readDownloadUrl("NEXT_PUBLIC_PLAY_STORE_URL", defaultPlayStoreUrl),
+  androidApkUrl: readDownloadUrl("NEXT_PUBLIC_ANDROID_APK_URL", "/downloads/bizpro.apk"),
+  webAppUrl: readDownloadUrl("NEXT_PUBLIC_WEB_APP_URL", ""),
   contactEmail: readPublicEnv("NEXT_PUBLIC_CONTACT_EMAIL", "vickinstechnologies@gmail.com"),
   contactPhone: readPublicEnv("NEXT_PUBLIC_CONTACT_PHONE", "+254794501005"),
   whatsappUrl: readPublicEnv("NEXT_PUBLIC_WHATSAPP_URL", ""),

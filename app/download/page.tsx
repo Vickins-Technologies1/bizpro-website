@@ -1,26 +1,13 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, Check, Download, ExternalLink, FileDown, Smartphone, WifiOff } from "lucide-react";
-import { Container } from "@/components/ui/container";
-import { DownloadCTA } from "@/components/ui/download-cta";
-import { QRCodeCard } from "@/components/download/qr-code";
-import { releases } from "@/config/releases";
-import { siteConfig } from "@/config/site";
+import { DownloadCenter } from "@/components/download/download-center";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata({ title: "Download Dira OS for Android", description: "Install the Dira OS Android business management app from Google Play or download the available APK for compatible devices.", path: "/download" });
-
-const androidRelease = releases[0];
+export const metadata: Metadata = buildMetadata({
+  title: "Download Dira OS for Every Platform",
+  description: "Find the verified Dira OS download for your device. Install the official Android release from Google Play or download the published APK.",
+  path: "/download"
+});
 
 export default function DownloadPage() {
-  return <main><section className="relative overflow-hidden border-b border-border bg-surface py-16 sm:py-20 lg:py-24"><div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,var(--wash),transparent_34%)]" /><Container className="relative"><div className="max-w-3xl"><p className="eyebrow"><Download size={13} /> Get Dira OS</p><h1 className="mt-5 text-4xl font-semibold tracking-[-0.065em] text-balance sm:text-6xl">Your business, ready wherever you work.</h1><p className="mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg">Install Dira OS for Android and keep the work moving across sales, operations, finance and teams—even when connectivity changes.</p><div className="mt-8 flex flex-wrap gap-3"><DownloadCTA label="Get Dira OS" /><Link href="#install" className="button secondary">Installation guide <ArrowRight className="h-4 w-4" /></Link></div></div></Container></section>
-
-    <section className="section"><Container className="grid items-start gap-10 lg:grid-cols-[1fr_0.78fr]"><div className="rounded-2xl border border-primary/25 bg-card p-5 shadow-panel sm:p-7"><div className="flex items-start justify-between gap-4"><div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary"><Smartphone className="h-6 w-6" /></div><span className="rounded-full bg-accent/10 px-2.5 py-1 text-[10px] font-semibold text-accent">Recommended</span></div><p className="mt-7 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">Android</p><h2 className="mt-2 text-2xl font-semibold tracking-[-0.04em]">Dira OS for Android</h2><p className="mt-3 max-w-lg text-sm leading-6 text-muted">Get the official Android release from Google Play, or install the available APK directly when that is the right path for your device.</p><div className="mt-6 flex flex-wrap gap-3"><a className="button primary" href={siteConfig.playStoreUrl} target="_blank" rel="noreferrer">Get it on Google Play <ExternalLink className="h-4 w-4" /></a><a className="button secondary" href="/downloads/bizpro.apk">Download APK <FileDown className="h-4 w-4" /></a></div><div className="mt-7 grid gap-2 border-t border-border pt-5 sm:grid-cols-2"><div><p className="text-[10px] uppercase tracking-[0.16em] text-muted">Version</p><p className="mt-1 text-xs font-semibold">{androidRelease.version}</p></div><div><p className="text-[10px] uppercase tracking-[0.16em] text-muted">Minimum Android</p><p className="mt-1 text-xs font-semibold">{siteConfig.minimumAndroidVersion}</p></div><div><p className="text-[10px] uppercase tracking-[0.16em] text-muted">Package size</p><p className="mt-1 text-xs font-semibold">{androidRelease.size}</p></div><div><p className="text-[10px] uppercase tracking-[0.16em] text-muted">Release date</p><p className="mt-1 text-xs font-semibold">{androidRelease.date}</p></div></div></div><QRCodeCard value={siteConfig.playStoreUrl} /></Container></section>
-
-    <section id="install" className="section surface"><Container><div className="section-heading narrow"><span className="eyebrow">Install with confidence</span><h2>Three steps to get started.</h2><p>Use Google Play for the recommended installation path, or use the direct APK option when appropriate for your Android device.</p></div><div className="mt-10 grid gap-3 md:grid-cols-3">{[[Download, "Choose your path", "Open Google Play or download the available APK."], [Check, "Install Dira OS", `Use a compatible Android device running ${siteConfig.minimumAndroidVersion}.`], [WifiOff, "Keep working", "Sign in while online, then continue core work when connectivity drops."]].map(([Icon, title, body], index) => <article key={title as string} className="rounded-xl border border-border bg-card p-5"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary"><Icon className="h-4 w-4" /></span><p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">0{index + 1}</p><h3 className="mt-2 text-base font-semibold">{title as string}</h3><p className="mt-2 text-sm leading-6 text-muted">{body as string}</p></article>)}</div></Container></section>
-
-    <section className="section"><Container className="grid items-center gap-8 lg:grid-cols-[0.75fr_1.25fr]"><div className="section-heading"><span className="eyebrow">Available today</span><h2>Android is the supported download surface.</h2><p>The current public download options are Google Play and the available Android APK. Desktop and iOS builds are not listed until a real downloadable release is available.</p></div><div className="rounded-xl border border-border bg-surface p-5"><div className="flex items-center gap-3"><Smartphone className="h-5 w-5 text-primary" /><div><p className="text-sm font-semibold">Android release {androidRelease.version}</p><p className="mt-1 text-xs text-muted">{androidRelease.notes.join(" · ")}</p></div></div><div className="mt-5 flex flex-wrap gap-2">{androidRelease.notes.map((note) => <span key={note} className="rounded-md border border-border bg-card px-2.5 py-1.5 text-[10px] text-muted">{note}</span>)}</div></div></Container></section>
-
-    <section className="final-cta"><Container><span className="eyebrow">Take Dira OS with you</span><h2>Start with the device<br /><em>already in your hand.</em></h2><p>Download the Android release and get your business workspace moving.</p><DownloadCTA label="Get Dira OS" /></Container></section>
-  </main>;
+  return <DownloadCenter />;
 }
