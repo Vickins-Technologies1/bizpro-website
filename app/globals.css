@@ -186,3 +186,69 @@ html,
 body {
   overflow-x: hidden;
 }
+
+/* Download Center theme surface. The page keeps its navy character in dark mode while
+   using the same semantic light/dark theme switch as the rest of the site. */
+.download-center {
+  --download-bg: #f6f9fe;
+  --download-surface: #eef5ff;
+  --download-surface-deep: #e7f0fc;
+  --download-card: rgba(255, 255, 255, 0.92);
+  --download-card-solid: #ffffff;
+  --download-border: rgba(10, 20, 42, 0.12);
+  --download-border-strong: rgba(15, 91, 255, 0.22);
+  --download-heading: #0a142a;
+  --download-body: #536783;
+  --download-muted: #6b7e98;
+  --download-primary: #0f5bff;
+  --download-primary-hover: #0b47c7;
+  --download-primary-soft: rgba(15, 91, 255, 0.09);
+  --download-soft: rgba(10, 20, 42, 0.035);
+  --download-soft-strong: rgba(10, 20, 42, 0.06);
+  --download-blue: #0f5bff;
+  --download-blue-soft: rgba(15, 91, 255, 0.09);
+  --download-blue-border: rgba(15, 91, 255, 0.2);
+  --download-accent: #138a69;
+  --download-accent-soft: rgba(19, 138, 105, 0.1);
+  --download-accent-text: #0d765a;
+  --download-warning: #8a5a00;
+  --download-warning-soft: rgba(173, 107, 0, 0.1);
+  --download-shadow: 0 25px 90px rgba(24, 54, 94, 0.14);
+  --download-card-shadow: 0 18px 60px rgba(24, 54, 94, 0.1);
+}
+
+[data-theme="dark"] .download-center {
+  --download-bg: #061326;
+  --download-surface: #071a32;
+  --download-surface-deep: #0a1b35;
+  --download-card: rgba(11, 32, 64, 0.75);
+  --download-card-solid: #0b2040;
+  --download-border: rgba(255, 255, 255, 0.1);
+  --download-border-strong: rgba(112, 166, 255, 0.5);
+  --download-heading: #ffffff;
+  --download-body: #aabbd3;
+  --download-muted: #7e97b8;
+  --download-primary: #2f7eff;
+  --download-primary-hover: #4b8eff;
+  --download-primary-soft: rgba(47, 126, 255, 0.15);
+  --download-soft: rgba(255, 255, 255, 0.035);
+  --download-soft-strong: rgba(255, 255, 255, 0.07);
+  --download-blue: #a9c7ff;
+  --download-blue-soft: rgba(47, 126, 255, 0.1);
+  --download-blue-border: rgba(111, 159, 255, 0.25);
+  --download-accent: #6edfc0;
+  --download-accent-soft: rgba(57, 217, 176, 0.1);
+  --download-accent-text: #7af0cf;
+  --download-warning: #ffe0a0;
+  --download-warning-soft: rgba(244, 180, 77, 0.07);
+  --download-shadow: 0 25px 90px rgba(0, 0, 0, 0.35);
+  --download-card-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+}
+
+.download-glow {
+  background: radial-gradient(circle at 75% 5%, rgba(15, 91, 255, 0.12), transparent 34%), radial-gradient(circle at 12% 75%, rgba(19, 138, 105, 0.08), transparent 30%);
+}
+
+[data-theme="dark"] .download-glow {
+  background: radial-gradient(circle at 75% 5%, rgba(45, 126, 255, 0.24), transparent 34%), radial-gradient(circle at 12% 75%, rgba(57, 217, 176, 0.1), transparent 30%);
+}
