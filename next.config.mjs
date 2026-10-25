@@ -3,6 +3,16 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "bizpro.vickinstechnologies.com" }],
+        destination: "https://dira-os.vickinstechnologies.com/:path*",
+        permanent: true
+      }
+    ];
+  },
   async headers() {
     return [
       {

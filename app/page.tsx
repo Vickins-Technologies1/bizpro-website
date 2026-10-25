@@ -5,8 +5,8 @@ import { getSoftwareApplicationSchema } from "@/lib/structured-data";
 import { HomeClient } from "@/components/home-client";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Dira OS | Business Management, POS & Inventory Software",
-  description: "Manage sales, inventory, customers and business operations with Dira OS, an offline-first Android business management app for growing teams.",
+  title: "Dira OS | Business Management & POS Software",
+  description: "Manage sales, inventory, expenses, finances and teams with Dira OS business software. Work offline, sync when connected and keep your business in one platform.",
   path: "/"
 });
 

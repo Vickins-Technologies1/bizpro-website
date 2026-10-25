@@ -2,13 +2,13 @@
 
 ## Initial verification checklist
 
-After deploying with `NEXT_PUBLIC_SITE_URL=https://dira-os.vickinstechnologies.com`:
+After deploying the current build (the canonical hostname is fixed in source):
 
 1. Open the canonical home page and confirm its status is 200.
-2. Open `/robots.txt` and confirm it includes `Sitemap: https://dira-os.vickinstechnologies.com/sitemap.xml`.
+2. Open `/robots.txt` and confirm it includes `Sitemap: https://dira-os.vickinstechnologies.com/sitemap.xml` and the canonical Host directive.
 3. Open `/sitemap.xml`, validate it as XML, and confirm that every `<loc>` uses HTTPS and the canonical hostname.
-4. Inspect each public route for one unique `<title>`, one useful meta description, one canonical link, and one primary `h1`.
-5. Confirm `/download/apk` returns 308 and ends at `/downloads/bizpro.apk`.
+4. Inspect all 18 indexable public routes for one unique `<title>`, one useful meta description, one canonical link, and one primary `h1`.
+5. Confirm `/download/apk` returns 308 and ends at `/downloads/bizpro.apk`, and the legacy `bizpro.vickinstechnologies.com` hostname returns a permanent 308 to the same path on the canonical Dira OS host.
 6. Confirm the Google Play link resolves to the verified Dira OS listing.
 7. Run Lighthouse on mobile and desktop after deployment. Record LCP, INP, CLS, TTFB, accessibility, and the tested URL/date; do not compare results from different devices or throttling profiles as if they were the same measurement.
 
@@ -17,7 +17,7 @@ After deploying with `NEXT_PUBLIC_SITE_URL=https://dira-os.vickinstechnologies.c
 The domain owner must complete verification; no verification token is stored in this repository.
 
 1. Add a Domain property for `vickinstechnologies.com` if DNS access is available, or add the URL-prefix property `https://dira-os.vickinstechnologies.com/`.
-2. Complete the DNS, HTML file, HTML meta tag, or Analytics verification method supplied by Search Console.
+2. For HTML tag verification, set the deployment environment variable `GOOGLE_SITE_VERIFICATION` to the token value Google supplies (without inventing or committing one), redeploy, and confirm the generated page contains the matching verification meta tag. DNS and HTML-file methods can also be completed directly in Search Console.
 3. Submit `https://dira-os.vickinstechnologies.com/sitemap.xml` under **Sitemaps**.
 4. Use **URL inspection** for the home page and the main product pages, then request indexing after the canonical hostname is live.
 5. Review **Pages** for excluded URLs, redirects, duplicate canonical selection, crawl errors, and server errors.

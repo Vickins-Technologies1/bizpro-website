@@ -10,19 +10,8 @@ function readPublicEnv(name: string, fallback: string) {
   return value && value.trim() ? value.trim() : fallback;
 }
 
-const defaultSiteUrl = "https://dira-os.vickinstechnologies.com";
+const canonicalSiteUrl = "https://dira-os.vickinstechnologies.com";
 const defaultPlayStoreUrl = "https://play.google.com/store/apps/details?id=com.bizpro.vickins";
-
-function readPublicUrl(name: string, fallback: string) {
-  const value = readPublicEnv(name, fallback);
-
-  try {
-    const url = new URL(value);
-    return url.protocol === "https:" ? url.toString().replace(/\/$/, "") : fallback;
-  } catch {
-    return fallback;
-  }
-}
 
 function readDownloadUrl(name: string, fallback: string) {
   const value = readPublicEnv(name, fallback);
@@ -46,7 +35,10 @@ export const siteConfig = {
   companyUrl: "https://www.vickinstechnologies.com",
   description:
     "Dira OS is an offline-first business operating system for point of sale, inventory, finance, reporting, customers and teams.",
-  websiteUrl: readPublicUrl("NEXT_PUBLIC_SITE_URL", defaultSiteUrl),
+  // Canonical URLs must remain on the verified production hostname, including
+  // when a hosting environment has a stale NEXT_PUBLIC_SITE_URL value.
+  websiteUrl: canonicalSiteUrl,
+  googleSiteVerification: readPublicEnv("GOOGLE_SITE_VERIFICATION", ""),
   playStoreUrl: readDownloadUrl("NEXT_PUBLIC_PLAY_STORE_URL", defaultPlayStoreUrl),
   androidApkUrl: readDownloadUrl("NEXT_PUBLIC_ANDROID_APK_URL", "/downloads/bizpro.apk"),
   webAppUrl: readDownloadUrl("NEXT_PUBLIC_WEB_APP_URL", ""),
@@ -66,7 +58,6 @@ export const siteConfig = {
     descriptor: "Business Operating System",
     positioning: "Operations. Finance. Customers. Teams. Insights."
   },
-  lastModified: "2026-10-10"
 } as const;
 
 export function getDownloadLink(): DownloadLink {

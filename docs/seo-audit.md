@@ -1,6 +1,7 @@
 # Dira OS SEO audit and implementation
 
-Audit date: 10 October 2026  
+Audit date: 25 October 2026
+
 Canonical target: `https://dira-os.vickinstechnologies.com`
 
 ## Scope
@@ -13,8 +14,8 @@ The verified Google Play listing is `https://play.google.com/store/apps/details?
 
 | Severity | Finding | Resolution |
 | --- | --- | --- |
-| Critical | Production canonical tags and sitemap URLs resolved to the legacy `bizpro.vickinstechnologies.com` hostname even when requested through `dira-os.vickinstechnologies.com`. | The code default and example deployment configuration now use `https://dira-os.vickinstechnologies.com`. The production `NEXT_PUBLIC_SITE_URL` variable still needs to be changed and redeployed by the domain owner. |
-| High | The sitemap used `new Date()` for every request, which made every URL appear newly modified and made change history unreliable. | Replaced with a maintained public-route inventory and an explicit `siteConfig.lastModified` value. Update that value when public content changes. |
+| Critical | Production `robots.txt` and sitemap URLs still advertised the legacy `bizpro.vickinstechnologies.com` hostname. | Canonical metadata, robots and sitemap URLs now use the fixed production URL `https://dira-os.vickinstechnologies.com`, ignoring stale `NEXT_PUBLIC_SITE_URL` overrides. Deploy this build and confirm the live output. |
+| High | The sitemap contained only the broad feature and industry overviews. | Added four product workflow pages and four industry pages to the canonical sitemap. The sitemap omits `lastmod` because reliable per-page content modification dates are not maintained. |
 | High | `robots.txt` allowed all paths and did not identify common private namespaces. | Added explicit disallows for `/api/`, `/admin/`, `/app/`, `/dashboard/`, `/login`, `/preview/`, and `/test/`, while keeping public assets crawlable and publishing the canonical sitemap URL. |
 | High | The `/download/apk` alias returned a temporary 307 redirect. | Changed the alias to a permanent 308 redirect to the static APK. The redirect remains outside the sitemap. |
 | High | No site-wide Organization or WebSite JSON-LD existed; SoftwareApplication data was also absent. | Added one centralized Organization and WebSite graph in the root layout and one verified SoftwareApplication graph on the homepage. FAQPage JSON-LD is retained only on the FAQ page. |
@@ -28,7 +29,7 @@ The verified Google Play listing is `https://play.google.com/store/apps/details?
 
 Indexable public pages are:
 
-`/`, `/features`, `/industries`, `/pricing`, `/download`, `/about`, `/contact`, `/faq`, `/privacy`, `/terms`
+`/`, `/features`, `/industries`, `/pricing`, `/download`, `/about`, `/contact`, `/faq`, `/privacy`, `/terms`, `/pos-software`, `/inventory-management`, `/business-finance`, `/offline-business-software`, `/industries/retail`, `/industries/restaurants`, `/industries/beauty`, `/industries/professional-services`
 
 The `/download/apk` endpoint is a redirect and is intentionally excluded from the sitemap. Private application namespaces are blocked in `robots.txt`, but authentication and authorization must still be enforced by the application if those routes are introduced.
 
@@ -38,14 +39,10 @@ The primary themes are business management software, POS and sales workflows, in
 
 ## Measurement status
 
-The local production build completed successfully, and the local route checks returned 200 for all ten public pages plus `robots.txt` and `sitemap.xml`. The redirect endpoint returned 308. No Lighthouse, PageSpeed Insights, CrUX, Search Console, or Bing Webmaster data was available in the workspace, so no Core Web Vitals or ranking improvement is claimed.
+The local production build completed successfully. The local SEO checker returned 200 for all 18 public pages, validated unique titles/descriptions and canonicals, checked same-origin links, parsed the JSON-LD blocks, and verified the sitemap, robots output and both redirects. The sitemap was also parsed as XML. No Lighthouse, PageSpeed Insights, CrUX, Search Console, or Bing Webmaster data was available in the workspace, so no Core Web Vitals or ranking improvement is claimed.
 
 ## Remaining deployment action
 
-Set the production environment variable below, redeploy, then verify that every canonical, Open Graph URL, robots sitemap URL, and sitemap `<loc>` uses the Dira OS hostname:
+The live domain response identified Vercel on 25 October 2026. Before these source changes are deployed, the public homepage still returns a canonical pointing at `https://bizpro.vickinstechnologies.com`, and live `robots.txt`/`sitemap.xml` still advertise that legacy host. Deploy the updated build, then verify that every canonical, Open Graph URL, robots sitemap URL, and sitemap `<loc>` uses the Dira OS hostname and that requests to the old hostname return a permanent redirect. Search Console verification is supported with a server-side `GOOGLE_SITE_VERIFICATION` environment value containing only the token provided by Google. Do not set a token until the property is created.
 
-```text
-NEXT_PUBLIC_SITE_URL=https://dira-os.vickinstechnologies.com
-```
-
-If the deployment platform currently has `https://bizpro.vickinstechnologies.com` configured, changing the code alone cannot change the already-injected public environment value.
+The exact production sitemap URL is `https://dira-os.vickinstechnologies.com/sitemap.xml`. Submit it after Search Console property verification. See [docs/seo-monitoring.md](seo-monitoring.md) for the steps.
