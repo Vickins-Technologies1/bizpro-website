@@ -37,3 +37,15 @@ Before publishing, run `pnpm run typecheck` and `pnpm run build`.
 - Navigation: `config/navigation.ts`
 - Brand assets: `public/brand/`
 - Site and contact configuration: `config/site.ts` / `.env.example`
+
+### Contact form email
+
+The contact form posts to the Node.js App Router endpoint at `/api/contact`. Configure these server-only environment variables in the deployment provider (and in an ignored local `.env.local` for development):
+
+- `SMTP_USER`: Gmail address used to authenticate and as the sender.
+- `GOOGLE_APP_PASSWORD`: Google App Password for that account (2-Step Verification must be enabled).
+- `CONTACT_RECEIVER_EMAIL`: inbox that receives contact messages.
+
+Do not use `NEXT_PUBLIC_` prefixes for these values. For production on Vercel, add them under the project's Environment Variables, redeploy, then submit a real contact form to verify delivery. SMTP authentication and inbox delivery cannot be verified from this repository without those secrets and access to the deployed environment. The endpoint includes basic in-process rate limiting; deployments with multiple or frequently recycled instances should add a shared rate-limit store or provider-level rate limiting for consistent enforcement.
+
+For a local SMTP connectivity check, put the three values in ignored `.env.local` and run `pnpm email:verify`. This runs Nodemailer's `verify()` once as an operator diagnostic; the visitor API does not run it per request.
