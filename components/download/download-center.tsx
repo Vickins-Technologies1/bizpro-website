@@ -34,15 +34,15 @@ const platformIcons: Record<PlatformId, LucideIcon> = {
 const faqs = [
   [
     "Which operating systems does Dira OS support?",
-    "The only verified native download currently published is Android. Windows, macOS, Linux and Kali Linux, iOS/iPadOS, and a production web-app URL are not published in this release center."
+    "Native installers are available for Windows and Android. No installer is currently published for macOS, Linux or Kali Linux, or iOS/iPadOS, and this project has no configured production web-app URL."
   ],
   [
     "How do I choose the correct download?",
-    "Use the platform recommendation when it matches your device, then review the requirements and format before downloading. Google Play is the recommended Android path; the direct APK is for compatible Android devices where direct installation is appropriate."
+    "Use the platform recommendation when it matches your device, then review the requirements and format before downloading. Google Play is the recommended Android path; Windows users can download the published setup installer."
   ],
   [
     "What is the difference between Apple Silicon and Intel?",
-    "Apple Silicon means Apple M-series processors; Intel refers to older Intel-based Macs. A native macOS build is not published yet, so there is no macOS architecture choice to make today."
+    "Apple Silicon means Apple M-series processors; Intel refers to older Intel-based Macs. A native macOS build is not published yet, so there is no macOS architecture choice to make today. The Windows installer does not currently specify a CPU architecture."
   ],
   [
     "Can I install Dira OS on Kali Linux?",
@@ -58,11 +58,11 @@ const faqs = [
   ],
   [
     "How can I verify the integrity of a downloaded installer?",
-    "For the APK, compare its SHA-256 value with the checksum published on this page. On Windows PowerShell use Get-FileHash .\\bizpro.apk -Algorithm SHA256; on macOS or Linux use shasum -a 256 bizpro.apk or sha256sum bizpro.apk."
+    "Compare the selected installer’s SHA-256 value with the checksum published on this page. In PowerShell use Get-FileHash .\\dira-os-setup-0.1.0.exe -Algorithm SHA256; on macOS or Linux use shasum -a 256 <filename> or sha256sum <filename>. The Windows installer is not digitally signed."
   ],
   [
     "What should I do if installation fails?",
-    "Try Google Play first, confirm the device meets the published Android requirement, and make sure the download completed. Do not disable device protections globally. If the issue remains, contact support with the device model and the exact error."
+    "On Android, try Google Play first and confirm the published Android requirement. On Windows, compare the installer checksum and note that the file is unsigned. Do not disable device protections globally. If installation fails, contact support with the device details and exact error."
   ],
   [
     "Can I use Dira OS without installing a desktop application?",
@@ -327,7 +327,7 @@ export function DownloadCenter() {
 
       <section id="release" className="border-y border-[var(--download-border)] bg-[var(--download-bg)] py-14 sm:py-20">
         <div className="mx-auto grid w-full max-w-[77rem] gap-8 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:px-8">
-          <div><p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--download-blue)]">Latest stable release</p><h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-[var(--download-heading)] sm:text-4xl">A release record you can verify.</h2><p className="mt-4 max-w-lg text-sm leading-6 text-[var(--download-body)]">The current public release record covers Android. Desktop, Linux, iOS, and web artifacts are intentionally absent until they have official destinations.</p></div>
+          <div><p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--download-blue)]">Published releases</p><h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-[var(--download-heading)] sm:text-4xl">A release record you can verify.</h2><p className="mt-4 max-w-lg text-sm leading-6 text-[var(--download-body)]">Android 1.0.0 and the Windows desktop installer 0.1.0 are available. macOS, Linux, iOS, and web application artifacts are not published here.</p></div>
           <div className="rounded-2xl border border-[var(--download-border)] bg-[var(--download-card)] p-5 sm:p-6"><div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--download-accent)]">{latestRelease.platform} · stable</p><h3 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-[var(--download-heading)]">Dira OS {latestRelease.version}</h3></div><span className="rounded-full border border-[var(--download-blue-border)] bg-[var(--download-blue-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--download-blue)]">Released {latestRelease.date}</span></div><div className="mt-6 grid gap-3 sm:grid-cols-2">{latestRelease.notes.map((note) => <div key={note} className="flex items-start gap-2.5 rounded-xl border border-[var(--download-border)] bg-[var(--download-bg)]/65 p-3 text-sm text-[var(--download-body)]"><Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--download-accent)]" aria-hidden="true" />{note}</div>)}</div><div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[var(--download-border)] pt-4 text-xs text-[var(--download-muted)]"><span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-[var(--download-accent)]" aria-hidden="true" />APK checksum published</span><span>Detailed changelog not published</span></div></div>
         </div>
       </section>

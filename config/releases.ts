@@ -46,11 +46,25 @@ export const downloadPlatforms: DownloadPlatform[] = [
     id: "windows",
     label: "Windows",
     shortLabel: "Windows",
-    description: "Desktop builds for Windows will appear here when an official installer is published.",
-    status: "coming-soon",
-    statusLabel: "No installer published",
-    unavailableMessage: "There is no verified Windows .exe or .msi in the current release infrastructure. Windows 10/11 and CPU architecture support are therefore not claimed.",
-    artifacts: []
+    description: "Install the published Dira OS 0.1.0 desktop build using the Windows setup program.",
+    status: "available",
+    statusLabel: "Available now",
+    artifacts: [
+      {
+        id: "windows-exe",
+        label: "Dira OS Setup",
+        format: ".exe installer",
+        architecture: "Not specified",
+        href: "/downloads/dira-os-setup-0.1.0.exe",
+        verified: true,
+        version: "0.1.0",
+        size: "130.8 MB (124.7 MiB)",
+        releaseDate: "9 Nov 2026",
+        checksum: "B0D606E5CD87C034FAF2AB946532F19DBA283CDF591F11E6B1F84A2A9B807AFB",
+        signing: "This installer is not digitally signed. Windows may show a SmartScreen or publisher warning. Verify the SHA-256 checksum before installing.",
+        description: "The Dira OS Windows setup installer supplied by Vickins Technologies."
+      }
+    ]
   },
   {
     id: "macos",

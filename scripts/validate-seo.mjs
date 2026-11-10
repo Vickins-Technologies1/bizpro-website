@@ -74,6 +74,12 @@ for (const location of locations) {
   if (location.endsWith("/") && location !== `${canonicalBase}/`) fail(`sitemap.xml: trailing-slash duplicate URL ${location}`);
 }
 
+const windowsInstaller = await fetch(`${baseUrl}/downloads/dira-os-setup-0.1.0.exe`, { method: "HEAD" });
+if (windowsInstaller.status !== 200) fail(`Windows installer: expected 200, received ${windowsInstaller.status}`);
+if (windowsInstaller.headers.get("content-length") !== "130769446") {
+  fail(`Windows installer: unexpected content length ${windowsInstaller.headers.get("content-length")}`);
+}
+
 const redirectResponse = await fetch(`${baseUrl}/download/apk`, { redirect: "manual" });
 if (redirectResponse.status !== 308) fail(`/download/apk: expected 308, received ${redirectResponse.status}`);
 const legacyRequest = await new Promise((resolve, reject) => {

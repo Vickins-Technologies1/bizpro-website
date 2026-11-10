@@ -3,7 +3,8 @@
 ## Download center
 
 - `/download` is the release-driven Dira OS Download Center. It detects the visitor's likely platform, provides manual platform tabs, and shows only verified destinations.
-- The current published native release is Android: Google Play plus the checked-in HTTPS APK. Windows, macOS, Linux/Kali, iOS/iPadOS, and web app entries remain visible but intentionally have no fake actions until their artifacts or production URLs are verified.
+- Published native releases include Android (Google Play and the checked-in HTTPS APK) and the Windows 0.1.0 installer (`public/downloads/dira-os-setup-0.1.0.exe`). macOS, Linux/Kali, iOS/iPadOS, and web app entries remain unavailable until their artifacts or production URLs are verified.
+- Windows installers are tracked with Git LFS. Enable Git LFS in the connected Vercel project's **Settings → Git** before deploying this release; confirm the Vercel plan supports the 130.8 MB artifact. The installer is unsigned and its checksum is shown in the download center.
 - `DownloadModal` is shared by primary CTAs and links back to the same download center.
 
 ## Publishing a release
