@@ -6,13 +6,10 @@ import {
   ArrowRight,
   BarChart3,
   Building2,
-  CalendarClock,
   Check,
   ChevronDown,
   CircleDollarSign,
-  CreditCard,
   Layers3,
-  MapPin,
   ShieldCheck,
   Sparkles,
   Users2,
@@ -23,6 +20,7 @@ import { Container } from "@/components/ui/container";
 import { IndustrySelector } from "@/components/industry-selector";
 import { OfflineSyncVisual } from "@/components/product/offline-sync-visual";
 import { ProductShowcase } from "@/components/product/product-showcase";
+import { PhonePreview } from "@/components/product/phone-preview";
 import { homepageFeatureBlocks } from "@/config/features";
 import { industryGroups } from "@/config/industries";
 import { pricingPlans } from "@/config/pricing";
@@ -34,22 +32,9 @@ const capabilityItems = [
   [Users2, "Teams"], [Building2, "Branches"], [BarChart3, "Insights"], [Wifi, "Offline"]
 ] as const;
 
-const previewMetrics = [
-  ["Revenue", "In view"], ["Transactions", "Recorded"], ["Expenses", "Tracked"], ["Customers", "Active"]
-] as const;
-
-const previewActivity = [
-  [BarChart3, "New sale", "Recorded in Sales"], [CalendarClock, "Appointment", "Ready for today"], [Users2, "Customer", "Profile updated"],
-  [CreditCard, "Payment", "Added to Finance"], [Layers3, "Service / job", "Assigned to a team"], [CircleDollarSign, "Expense", "Captured for review"]
-] as const;
-
-function WorkspacePreview() {
-  return <div className="overflow-hidden rounded-[1.25rem] border border-border bg-card shadow-panel"><div className="flex items-center justify-between border-b border-border bg-surface-muted/70 px-4 py-3 text-[10px] font-semibold text-muted sm:px-5"><span className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-primary" /> Dira OS / Command center</span><span className="flex items-center gap-1.5 text-accent"><span className="h-1.5 w-1.5 rounded-full bg-accent" /> Connected</span></div><div className="grid gap-3 p-4 sm:p-5 lg:grid-cols-[1.02fr_.98fr]"><div className="rounded-xl border border-border bg-surface-muted p-4"><div className="flex items-start justify-between"><div><p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">Business performance</p><p className="mt-3 text-2xl font-semibold tracking-[-0.05em]">One clear picture.</p><p className="mt-2 text-xs leading-5 text-muted">The work behind the business, together.</p></div><BarChart3 className="h-5 w-5 text-primary" /></div><div className="mt-5 grid grid-cols-2 gap-2">{previewMetrics.map(([label, value]) => <div key={label} className="rounded-lg border border-border bg-card p-3"><p className="text-[10px] text-muted">{label}</p><p className="mt-2 text-xs font-semibold">{value}</p></div>)}</div><div className="mt-4 flex h-12 items-end gap-1.5 rounded-lg border border-border bg-card px-3 pb-2 pt-3">{[32, 46, 38, 58, 51, 68, 62, 82].map((height, index) => <span key={index} className="flex-1 rounded-t bg-gradient-to-t from-primary to-accent opacity-80" style={{ height: `${height}%` }} />)}</div></div><div className="rounded-xl border border-border bg-surface-muted p-4"><div className="flex items-center justify-between"><p className="text-xs font-semibold">Recent activity</p><span className="text-[10px] text-muted">Illustrative view</span></div><div className="mt-3 space-y-1.5">{previewActivity.map(([Icon, title, detail]) => <div key={title} className="flex items-center gap-2.5 rounded-lg border border-border bg-card px-2.5 py-2"><span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary"><Icon className="h-3.5 w-3.5" /></span><span className="min-w-0"><b className="block truncate text-[11px] font-semibold">{title}</b><small className="mt-0.5 block truncate text-[10px] text-muted">{detail}</small></span><Check className="ml-auto h-3.5 w-3.5 shrink-0 text-accent" /></div>)}</div></div></div><div className="grid gap-2 border-t border-border bg-surface-muted/45 px-4 py-3 sm:grid-cols-3 sm:px-5"><span className="flex items-center gap-2 text-[10px] text-muted"><MapPin className="h-3.5 w-3.5 text-accent" /> Branches connected</span><span className="flex items-center gap-2 text-[10px] text-muted"><Users2 className="h-3.5 w-3.5 text-accent" /> Team in sync</span><span className="flex items-center gap-2 text-[10px] text-muted"><Wifi className="h-3.5 w-3.5 text-accent" /> Ready offline</span></div></div>;
-}
-
 export function HomeClient() {
   return <main>
-    <section className="hero !bg-[radial-gradient(circle_at_80%_5%,var(--wash),transparent_32%),linear-gradient(var(--background),var(--surface))]"><Container className="hero-grid"><div className="hero-copy"><span className="eyebrow"><Sparkles size={13} /> Business operating system</span><h1>Run your entire business from one system.</h1><p>Connect sales, operations, finance, customers, teams, branches and insights in one workspace that keeps working when the internet does not.</p><div className="hero-actions"><DownloadCTA label="Start Free" /><Link className="button secondary" href="#capabilities">Explore Dira OS <ArrowRight size={16} /></Link></div><div className="proof-row"><span><Check size={14} /> One month free</span><span><Wifi size={14} /> Offline-first</span><span><ShieldCheck size={14} /> Role-based access</span></div></div><div className="hero-product"><WorkspacePreview /><div className="preview-caption"><span><i /> Product workspace preview</span><b>Everything happening, connected.</b></div></div></Container><Container className="trust-row"><span>One system for the work behind the work</span><div>{["SALES", "OPERATIONS", "FINANCE", "CUSTOMERS", "INSIGHTS"].map((item) => <b key={item}>{item}</b>)}</div></Container></section>
+    <section className="hero"><Container className="hero-grid"><div className="hero-copy"><span className="eyebrow"><Sparkles size={13} /> Mobile business operating system</span><h1>The whole business.<br /><em>In your pocket.</em></h1><p>Keep sales, inventory, finance and everyday operations close at hand. Dira OS is built for business owners who need to keep moving, even when the connection does not.</p><div className="hero-actions"><DownloadCTA label="Get Dira OS" /><Link className="button secondary" href="#capabilities">Explore the system <ArrowRight size={16} /></Link></div><div className="proof-row"><span><Check size={14} /> One month free</span><span><Wifi size={14} /> Offline-first</span><span><ShieldCheck size={14} /> Role-based access</span></div></div><div className="hero-product"><PhonePreview /></div></Container><Container className="trust-row"><span>Operations, at a glance</span><div>{["SALES", "INVENTORY", "FINANCE", "CUSTOMERS", "OFFLINE"].map((item) => <b key={item}>{item}</b>)}</div></Container></section>
 
     <section id="capabilities" className="border-y border-border bg-surface"><Container className="grid grid-cols-2 gap-px bg-border sm:grid-cols-4 lg:grid-cols-8">{capabilityItems.map(([Icon, label]) => <div key={label} className="flex items-center justify-center gap-2 bg-surface px-2 py-4 text-xs font-semibold text-muted"><Icon className="h-4 w-4 text-primary" /> {label}</div>)}</Container></section>
 

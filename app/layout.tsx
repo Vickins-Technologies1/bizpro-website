@@ -1,12 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { ThemeProvider } from "@/components/layout/theme-provider";
+import localFont from "next/font/local";
+import { GlobalBackgroundSlideshow } from "@/components/layout/global-background-slideshow";
 import { DownloadProvider } from "@/components/download/download-context";
 import { SiteChrome } from "@/components/layout/site-chrome";
 import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/config/site";
 import { getOrganizationSchema, getWebsiteSchema } from "@/lib/structured-data";
 import "@/app/globals.css";
+
+const displayFont = localFont({ src: "../public/fonts/sora-latin.woff2", variable: "--font-display", weight: "400 700", display: "swap" });
+const bodyFont = localFont({ src: "../public/fonts/dm-sans-latin.woff2", variable: "--font-body", weight: "400 700", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.websiteUrl),
@@ -43,10 +47,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8fafd" },
-    { media: "(prefers-color-scheme: dark)", color: "#050b18" }
-  ],
+  themeColor: "#07111a",
+  colorScheme: "dark",
   width: "device-width",
   initialScale: 1
 };
@@ -57,18 +59,17 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head><meta name="color-scheme" content="light dark" /><meta name="theme-color" content="#ffffff" /></head>
-      <body>
-        <ThemeProvider>
-          <DownloadProvider>
-            <JsonLd data={getOrganizationSchema()} />
-            <JsonLd data={getWebsiteSchema()} />
-            <div className="relative flex min-h-screen flex-col">
-              <main className="flex-1"><SiteChrome>{children}</SiteChrome></main>
-            </div>
-          </DownloadProvider>
-        </ThemeProvider>
+    <html lang="en">
+      <head>
+        <link rel="preload" as="image" href="/backgrounds/analytics-review.webp" />
+      </head>
+      <body className={`${displayFont.variable} ${bodyFont.variable}`}>
+        <GlobalBackgroundSlideshow />
+        <DownloadProvider>
+          <JsonLd data={getOrganizationSchema()} />
+          <JsonLd data={getWebsiteSchema()} />
+          <div className="site-content"><SiteChrome>{children}</SiteChrome></div>
+        </DownloadProvider>
       </body>
     </html>
   );

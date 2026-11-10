@@ -2,30 +2,30 @@
 
 ## Brand palette
 
-The supplied `public/brand/dira-logo.png` was visually and programmatically sampled. The mark is led by royal blue and a mint/green accent.
+The permanent site theme uses the supplied Dira OS mark as its reference: a deep ink canvas, clear blue for actions, and a cyan accent for highlights. The editorial background slideshow sits behind a dark overlay so text stays readable.
 
 | Role | Token | Value |
 | --- | --- | --- |
-| Primary | `--primary` | `#0F5BFF` |
-| Primary dark | `--primary-dark` | `#06379D` |
-| Accent | `--accent` | `#1DD0A3` |
-| Ink | `--foreground` | `#0A142A` |
-| Muted ink | `--muted` | `#5B6980` |
-| Light background | `--background` | `#F8FAFD` |
-| Dark background | `[data-theme=dark] --background` | `#050B18` |
+| Primary | `--primary` | `#59AEF8` |
+| Primary hover | `--primary-hover` | `#8CCAFF` |
+| Accent | `--accent` | `#50DBC9` |
+| Background | `--background` | `#07111A` |
+| Foreground | `--foreground` | `#F1F6F8` |
+| Muted text | `--muted` | `#A5B4BE` |
+| Border | `--border` | `rgba(171, 204, 219, 0.17)` |
 
 The tonal scale used in the interface is primary 50–950: `#EFF5FF`, `#DCE9FF`, `#B9D1FF`, `#8FB3FF`, `#6293FF`, `#4184FF`, `#0F5BFF`, `#0B47C7`, `#09399B`, `#082E7A`, `#061E4F`. Accent uses the corresponding mint range from `#EDFFFA` to `#064B3C`.
 
 ## Type and layout
 
-- UI and headings use the existing system/Geist-compatible stack; body copy uses a compact sans stack.
+- Headings use Sora and body copy uses DM Sans, loaded through Next.js font optimization.
 - Headings use tight tracking and short line-height. Body copy stays at 15–16px with a muted tone.
 - The shared container is 1,160px, with 72–105px section rhythm and 10–16px card radii.
 - Brand color is reserved for actions, links, state, charts and intentional glows.
 
-## Tokens and themes
+## Tokens and surfaces
 
-Theme tokens live in `app/globals.css` and are consumed by both legacy CSS primitives and Tailwind utilities. `next-themes` provides Light, Dark and System behavior and persists the choice without a flash.
+Tokens live in `app/globals.css` and are consumed by shared CSS primitives and Tailwind utilities. The public site uses one permanent dark theme. A fixed seven-image background slideshow persists across route navigation, pauses for reduced-motion preferences, and uses a contrast overlay behind page content.
 
 ## Content workflows
 

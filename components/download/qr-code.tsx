@@ -13,7 +13,7 @@ export async function QRCodeCard({ value }: { value: string }) {
   });
 
   return (
-    <figure className="rounded-3xl border border-border/70 bg-white p-4 shadow-panel dark:bg-card">
+    <figure className="rounded-3xl border border-border/70 bg-card p-4 shadow-panel">
       <div className="mx-auto max-w-[15rem]" aria-hidden="true" dangerouslySetInnerHTML={{ __html: svg }} />
       <figcaption className="mt-4 text-center text-sm text-muted">Scan to open Dira OS on Google Play.</figcaption>
     </figure>

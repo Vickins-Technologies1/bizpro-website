@@ -26,10 +26,10 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-14 border-t border-border/60 bg-surface-muted/45">
+    <footer className="site-footer mt-14 border-t border-border/60 bg-surface-muted/45">
       <Container className="py-9">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.25fr_0.75fr_0.75fr_0.75fr_0.75fr]">
-          <div className="space-y-4">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.8fr_0.8fr_0.8fr]">
+          <div className="footer-brand space-y-4">
             <div>
               <div className="flex items-center gap-2.5">
                 <Image src="/brand/logo-official.png" alt="Dira OS" width={32} height={32} className="h-8 w-8 object-contain" unoptimized />
@@ -40,7 +40,7 @@ export function Footer() {
               </div>
             </div>
             <p className="max-w-md text-xs leading-6 text-muted">
-              A modern business operating system designed to simplify everyday business management.
+              A mobile business operating system for sales, inventory, finance and everyday operations. By Vickins Technologies.
             </p>
             <div className="flex flex-wrap gap-2">
               <DownloadCTA compact label="Get Started" />
@@ -92,8 +92,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-border/60 pt-5">
-          <p className="text-xs text-muted">© {year} Dira OS. All rights reserved.</p>
+        <div className="footer-bottom mt-8 flex flex-col gap-3 border-t border-border/60 pt-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-muted">© {year} Dira OS · Vickins Technologies. All rights reserved.</p>
+          <a href={`mailto:${siteConfig.contactEmail}`} className="text-xs text-muted transition hover:text-primary">{siteConfig.contactEmail}</a>
         </div>
       </Container>
     </footer>

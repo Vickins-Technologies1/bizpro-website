@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { navigation } from "@/config/navigation";
 import { Container } from "@/components/ui/container";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { DownloadCTA } from "@/components/ui/download-cta";
 import { cn } from "@/lib/utils";
 
@@ -155,12 +154,10 @@ export function Navbar() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
-            <ThemeToggle compact className="shrink-0" />
             <DownloadCTA compact label="Get Started" className="shrink-0" />
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
-            <ThemeToggle compact className="shrink-0" />
             <button
               ref={menuButtonRef}
               type="button"
