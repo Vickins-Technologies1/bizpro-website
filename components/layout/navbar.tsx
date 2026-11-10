@@ -123,8 +123,9 @@ export function Navbar() {
   return (
     <>
       <header
+      data-scrolled={scrolled}
       className={cn(
-        "sticky top-0 z-50 border-b transition-colors duration-200",
+        "sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-200",
         scrolled
           ? "border-border/70 bg-background/90 shadow-panel backdrop-blur-md supports-[backdrop-filter]:bg-background/80"
           : "border-border/60 bg-background/90 backdrop-blur-md",
