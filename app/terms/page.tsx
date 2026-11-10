@@ -13,7 +13,7 @@ export const metadata: Metadata = buildMetadata({
 
 export default function TermsPage() {
   return (
-    <section className="py-10 sm:py-14 lg:py-16">
+    <main><section className="py-10 sm:py-14 lg:py-16">
       <Container>
         <Reveal>
           <SectionHeading as="h1" eyebrow="Legal" title="Terms of Service" description="A concise terms outline for Dira OS." />
@@ -33,6 +33,6 @@ export default function TermsPage() {
           ))}
         </div>
       </Container>
-    </section>
+    </section></main>
   );
 }

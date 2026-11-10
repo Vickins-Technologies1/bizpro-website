@@ -19,8 +19,10 @@ The tonal scale used in the interface is primary 50–950: `#EFF5FF`, `#DCE9FF`,
 ## Type and layout
 
 - Headings use Sora and body copy uses DM Sans, loaded through Next.js font optimization.
-- Headings use tight tracking and short line-height. Body copy stays at 15–16px with a muted tone.
-- The shared container is 1,160px, with 72–105px section rhythm and 10–16px card radii.
+- Navigation, buttons, forms, body copy and supporting UI use DM Sans. Mono-styled values map to DM Sans as well.
+- Headings use balanced wrapping, controlled weights and tight tracking. Descriptions use a readable 14–16px scale.
+- Shared responsive type targets are 34–64px for the home hero, 30–46px for page titles, 24–34px for section titles and 17–20px for card titles.
+- The shared container is 1,160px, with 48–64px section rhythm and consistent 12–14px card radii.
 - Brand color is reserved for actions, links, state, charts and intentional glows.
 
 ## Tokens and surfaces

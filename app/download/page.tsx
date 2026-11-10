@@ -9,5 +9,5 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function DownloadPage() {
-  return <DownloadCenter />;
+  return <main><DownloadCenter /></main>;
 }

@@ -4,6 +4,11 @@ const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./config/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-body)", "sans-serif"],
+        display: ["var(--font-display)", "sans-serif"],
+        mono: ["var(--font-body)", "sans-serif"]
+      },
       colors: {
         background: "var(--background)", foreground: "var(--foreground)", card: "var(--card)", surface: "var(--surface)", "surface-muted": "var(--surface-muted)", "surface-elevated": "var(--surface-elevated)", muted: "var(--muted)", border: "var(--border)", primary: "var(--primary)", "primary-foreground": "var(--primary-foreground)", accent: "var(--accent)"
       },

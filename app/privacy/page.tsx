@@ -13,7 +13,7 @@ export const metadata: Metadata = buildMetadata({
 
 export default function PrivacyPage() {
   return (
-    <section className="py-10 sm:py-14 lg:py-16">
+    <main><section className="py-10 sm:py-14 lg:py-16">
       <Container>
         <Reveal>
           <SectionHeading as="h1" eyebrow="Legal" title="Privacy Policy" description="A concise privacy outline for Dira OS." />
@@ -33,6 +33,6 @@ export default function PrivacyPage() {
           ))}
         </div>
       </Container>
-    </section>
+    </section></main>
   );
 }
