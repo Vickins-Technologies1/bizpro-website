@@ -56,7 +56,10 @@ export function Navbar() {
   };
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 6);
+    const onScroll = () => {
+      const next = window.scrollY > 8;
+      setScrolled((current) => (current === next ? current : next));
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -123,15 +126,15 @@ export function Navbar() {
   return (
     <>
       <header
-      data-scrolled={scrolled}
-      className={cn(
-        "sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-200",
-        scrolled
-          ? "border-border/70 bg-background/90 shadow-panel backdrop-blur-md supports-[backdrop-filter]:bg-background/80"
-          : "border-border/60 bg-background/90 backdrop-blur-md",
-        "supports-[backdrop-filter]:bg-background/75"
-      )}
-    >
+        data-scrolled={scrolled}
+        className={cn(
+          "sticky top-0 z-50 border-b",
+          scrolled
+            ? "border-border/70 bg-background/90 shadow-panel backdrop-blur-md supports-[backdrop-filter]:bg-background/80"
+            : "border-border/60 bg-background/90 backdrop-blur-md",
+          "supports-[backdrop-filter]:bg-background/75"
+        )}
+      >
       <Container className="relative">
         <div className="flex min-h-[60px] items-center justify-between gap-3 py-2 lg:min-h-[64px]">
           <Link href="/" className="flex items-center gap-2.5">
@@ -192,9 +195,11 @@ export function Navbar() {
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"
+        aria-hidden={!menuOpen}
+        inert={!menuOpen}
         ref={menuPanelRef}
         className={cn(
-          "fixed inset-y-0 right-0 z-50 flex w-[min(88vw,22rem)] flex-col border-l border-border/70 bg-card shadow-[-24px_0_70px_rgba(4,12,28,.2)] transition-transform duration-300 ease-out lg:hidden supports-[backdrop-filter]:bg-card/92 supports-[backdrop-filter]:backdrop-blur-xl",
+          "fixed inset-y-0 right-0 z-50 flex w-[min(88vw,22rem)] flex-col border-l border-border/70 bg-card pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] shadow-[-24px_0_70px_rgba(4,12,28,.2)] transition-transform duration-300 ease-out lg:hidden supports-[backdrop-filter]:bg-card/92 supports-[backdrop-filter]:backdrop-blur-xl",
           menuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >

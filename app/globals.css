@@ -487,3 +487,231 @@ main > section:has(> .final-cta) { background: transparent; }
 @media (prefers-reduced-motion: reduce) {
   .back-to-top { transition: none; }
 }
+
+/* Floating shared navigation: keep its flow height stable while the surface tucks in. */
+html {
+  scroll-padding-top: calc(4.5rem + env(safe-area-inset-top));
+}
+
+html [id] {
+  scroll-margin-top: calc(4.5rem + env(safe-area-inset-top));
+}
+
+header.sticky {
+  top: 0;
+  padding-top: env(safe-area-inset-top);
+  min-height: calc(57px + env(safe-area-inset-top));
+  transition: width 240ms ease, transform 240ms ease, border 240ms ease, border-radius 240ms ease,
+    background-color 240ms ease, box-shadow 240ms ease;
+}
+
+header.sticky[data-scrolled="true"] {
+  width: min(1320px, calc(100% - clamp(1.25rem, 4vw, 3.25rem)));
+  border-color: rgba(170, 204, 220, 0.24);
+  border-style: solid;
+  border-width: 0 1px 1px;
+  border-radius: 16px;
+  background: rgba(7, 18, 28, 0.86);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.24), 0 1px 0 rgba(215, 239, 248, 0.05) inset;
+  transform: translate3d(0, 6px, 0);
+}
+
+header.sticky[data-scrolled="true"] img {
+  width: 30px;
+  height: 30px;
+}
+
+header.sticky[data-scrolled="true"] .button.compact {
+  min-height: 33px;
+}
+
+/* Initial page load only. The mark is a layered CSS 3D composition using the existing logo. */
+.preloader {
+  position: fixed;
+  z-index: 140;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: max(1.25rem, env(safe-area-inset-top)) max(1.25rem, env(safe-area-inset-right))
+    max(1.25rem, env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
+  background: rgba(4, 12, 20, 0.76);
+  backdrop-filter: blur(10px) saturate(112%);
+  opacity: 1;
+  pointer-events: none;
+  animation: preloader-failsafe 1ms linear 5s forwards;
+  transition: opacity 260ms ease, visibility 260ms ease;
+}
+
+.preloader--leaving {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.preloader-content {
+  display: grid;
+  justify-items: center;
+  width: min(100%, 240px);
+  text-align: center;
+}
+
+.preloader-stage {
+  position: relative;
+  display: grid;
+  width: 112px;
+  height: 112px;
+  margin-bottom: 20px;
+  place-items: center;
+  perspective: 720px;
+}
+
+.preloader-stage::before {
+  position: absolute;
+  inset: 25px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(65, 164, 222, 0.28), rgba(44, 209, 193, 0.08) 48%, transparent 74%);
+  content: "";
+  filter: blur(16px);
+}
+
+.preloader-orbit {
+  position: absolute;
+  inset: 7px 0;
+  border: 1px solid rgba(160, 198, 218, 0.17);
+  border-right-color: rgba(93, 210, 211, 0.62);
+  border-left-color: rgba(81, 166, 237, 0.55);
+  border-radius: 50%;
+  transform: rotateX(68deg) rotateZ(-22deg);
+  animation: preloader-orbit 8s linear infinite;
+}
+
+.preloader-object {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  transform-style: preserve-3d;
+  animation: dira-mark-turn 7.5s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+  filter: drop-shadow(0 12px 20px rgba(12, 120, 193, 0.2));
+}
+
+.preloader-object::before {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(149, 198, 222, 0.24);
+  border-radius: 21px;
+  background: linear-gradient(145deg, rgba(40, 78, 106, 0.92), rgba(8, 24, 39, 0.96));
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(226, 244, 250, 0.12);
+  content: "";
+  transform: translate3d(3px, 0, -9px);
+}
+
+.preloader-object__face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  border: 1px solid rgba(187, 221, 237, 0.28);
+  border-radius: 21px;
+  background: radial-gradient(circle at 28% 18%, rgba(40, 107, 150, 0.42), rgba(9, 26, 41, 0.94) 68%);
+  box-shadow: inset 0 1px 0 rgba(236, 249, 252, 0.13), 0 7px 14px rgba(0, 0, 0, 0.26);
+  place-items: center;
+  transform: translateZ(8px);
+  backface-visibility: hidden;
+}
+
+.preloader-object__face::after {
+  position: absolute;
+  inset: 0 auto 0 -70%;
+  width: 48%;
+  background: linear-gradient(100deg, transparent, rgba(224, 250, 255, 0.26), transparent);
+  content: "";
+  transform: skewX(-18deg);
+  animation: preloader-sheen 4.8s ease-in-out infinite;
+}
+
+.preloader-object__face img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 9px rgba(23, 133, 202, 0.32));
+}
+
+.preloader-copy {
+  display: grid;
+  gap: 5px;
+}
+
+.preloader-wordmark {
+  color: #f1f6f8;
+  font: 600 15px/1.3 var(--font-display), sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.preloader-status {
+  color: #a9bac4;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.preloader-progress {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 152px;
+  height: 2px;
+  margin-top: 18px;
+  border-radius: 999px;
+  background: rgba(169, 194, 207, 0.18);
+}
+
+.preloader-progress span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 38%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #59aef0, #64d5cb);
+  transform: translateX(-105%);
+  animation: preloader-progress 1.5s cubic-bezier(0.5, 0, 0.35, 1) infinite;
+}
+
+@keyframes dira-mark-turn {
+  from { transform: rotateX(7deg) rotateY(-13deg) rotateZ(-2deg); }
+  to { transform: rotateX(-5deg) rotateY(13deg) rotateZ(2deg); }
+}
+
+@keyframes preloader-orbit {
+  from { transform: rotateX(68deg) rotateZ(-22deg); }
+  to { transform: rotateX(68deg) rotateZ(338deg); }
+}
+
+@keyframes preloader-sheen {
+  0%, 30% { left: -70%; }
+  70%, 100% { left: 135%; }
+}
+
+@keyframes preloader-progress {
+  from { transform: translateX(-105%); }
+  to { transform: translateX(370%); }
+}
+
+@keyframes preloader-failsafe {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .preloader { background: rgba(4, 12, 20, 0.96); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header.sticky,
+  .preloader-object,
+  .preloader-orbit,
+  .preloader-object__face::after,
+  .preloader-progress span {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .preloader { transition: none; animation: preloader-failsafe 1ms linear 5s forwards !important; }
+  header.sticky[data-scrolled="true"] { transform: none; }
+  .preloader-progress span { width: 42%; transform: none; }
+}
