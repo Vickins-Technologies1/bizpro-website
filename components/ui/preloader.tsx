@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
+import { DiraMark3D } from "@/components/ui/dira-mark-3d";
 
 const MINIMUM_VISIBLE_MS = 420;
 const FALLBACK_TIMEOUT_MS = 4_500;
-const EXIT_TRANSITION_MS = 260;
+const EXIT_TRANSITION_MS = 620;
 
 export function Preloader() {
   const [visible, setVisible] = useState(true);
@@ -53,12 +53,7 @@ export function Preloader() {
     <div className={`preloader${ready ? " preloader--leaving" : ""}`} role="status" aria-live="polite">
       <div className="preloader-content">
         <div className="preloader-stage" aria-hidden="true">
-          <span className="preloader-orbit" />
-          <div className="preloader-object">
-            <div className="preloader-object__face">
-              <Image src="/brand/dira-logo.png" alt="" width={80} height={80} priority unoptimized />
-            </div>
-          </div>
+          <DiraMark3D isExiting={ready} />
         </div>
         <div className="preloader-copy">
           <span className="preloader-wordmark">Dira OS</span>
