@@ -3,7 +3,9 @@ import type { ReactNode } from "react";
 import localFont from "next/font/local";
 import { GlobalBackgroundSlideshow } from "@/components/layout/global-background-slideshow";
 import { DownloadProvider } from "@/components/download/download-context";
+import { Navbar } from "@/components/layout/navbar";
 import { SiteChrome } from "@/components/layout/site-chrome";
+import { Preloader } from "@/components/ui/preloader";
 import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/config/site";
 import { getOrganizationSchema, getWebsiteSchema } from "@/lib/structured-data";
@@ -69,6 +71,8 @@ export default function RootLayout({
         <DownloadProvider>
           <JsonLd data={getOrganizationSchema()} />
           <JsonLd data={getWebsiteSchema()} />
+          <Preloader />
+          <Navbar />
           <div className="site-content"><SiteChrome>{children}</SiteChrome></div>
         </DownloadProvider>
       </body>

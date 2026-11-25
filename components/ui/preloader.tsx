@@ -51,10 +51,8 @@ export function Preloader() {
 
   return (
     <div className={`preloader${ready ? " preloader--leaving" : ""}`} role="status" aria-live="polite">
+      <DiraMark3D isExiting={ready} />
       <div className="preloader-content">
-        <div className="preloader-stage" aria-hidden="true">
-          <DiraMark3D isExiting={ready} />
-        </div>
         <div className="preloader-copy">
           <span className="preloader-wordmark">Dira OS</span>
           <span className="preloader-status">{ready ? "Ready" : "Preparing your workspace"}</span>

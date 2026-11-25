@@ -143,6 +143,7 @@ function createProgram(gl: WebGLRenderingContext): WebGLProgram | null {
     uniform float u_pitch;
     uniform float u_roll;
     uniform float u_bob;
+    uniform float u_scale;
     varying vec3 v_position;
     varying vec3 v_normal;
     varying float v_material;
@@ -160,8 +161,8 @@ function createProgram(gl: WebGLRenderingContext): WebGLProgram | null {
     }
 
     void main() {
-      vec3 position = rotateObject(a_position);
-      position.y += u_bob;
+      vec3 position = rotateObject(a_position) * u_scale;
+      position.y += u_bob * u_scale;
       v_position = position;
       v_normal = normalize(rotateObject(a_normal));
       v_material = a_material;
@@ -171,6 +172,7 @@ function createProgram(gl: WebGLRenderingContext): WebGLProgram | null {
   const fragmentSource = `
     precision ${fragmentPrecision} float;
     uniform float u_time;
+    uniform float u_scale;
     varying vec3 v_position;
     varying vec3 v_normal;
     varying float v_material;
@@ -185,7 +187,7 @@ function createProgram(gl: WebGLRenderingContext): WebGLProgram | null {
       float edgeLight = pow(1.0 - max(dot(normal, viewDirection), 0.0), 2.4) * 0.22;
       vec3 sweepDirection = normalize(vec3(cos(u_time * 0.48), 0.28, 0.85 + sin(u_time * 0.48) * 0.24));
       float sweep = pow(max(dot(normal, sweepDirection), 0.0), 24.0) * 0.26;
-      float vertical = smoothstep(-0.8, 0.78, v_position.y);
+      float vertical = smoothstep(-0.8 * u_scale, 0.78 * u_scale, v_position.y);
       vec3 frontMaterial = mix(vec3(0.045, 0.29, 0.63), vec3(0.09, 0.68, 0.62), vertical);
       vec3 sideMaterial = vec3(0.035, 0.12, 0.20);
       vec3 base = mix(frontMaterial, sideMaterial, v_material);
@@ -243,9 +245,11 @@ export function DiraMark3D({ isExiting }: { isExiting: boolean }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const exitingRef = useRef(isExiting);
+  const redrawRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     exitingRef.current = isExiting;
+    redrawRef.current?.();
   }, [isExiting]);
 
   useEffect(() => {
@@ -287,6 +291,7 @@ export function DiraMark3D({ isExiting }: { isExiting: boolean }) {
       if (gl && program) gl.deleteProgram(program);
       buffer = null;
       program = null;
+      redrawRef.current = null;
     };
 
     try {
@@ -330,6 +335,7 @@ export function DiraMark3D({ isExiting }: { isExiting: boolean }) {
       const pitchLocation = gl.getUniformLocation(program, "u_pitch");
       const rollLocation = gl.getUniformLocation(program, "u_roll");
       const bobLocation = gl.getUniformLocation(program, "u_bob");
+      const scaleLocation = gl.getUniformLocation(program, "u_scale");
       const timeLocation = gl.getUniformLocation(program, "u_time");
       gl.enable(gl.DEPTH_TEST);
       gl.depthFunc(gl.LEQUAL);
@@ -338,9 +344,15 @@ export function DiraMark3D({ isExiting }: { isExiting: boolean }) {
 
       let canvasWidth = 0;
       let canvasHeight = 0;
+      let responsiveObjectScale = 0.3;
+      let displayedObjectScale = responsiveObjectScale;
+      let hasSized = false;
       draw = (time: number) => {
         if (!gl || !program) return;
 
+        if (reducedMotion) {
+          displayedObjectScale = responsiveObjectScale * (exitingRef.current ? 0.78 : 1);
+        }
         const turn = reducedMotion ? -0.34 : elapsed * angularSpeed + Math.sin(elapsed * 0.22) * 0.12;
         gl.clearColor(0, 0, 0, 0);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -348,18 +360,36 @@ export function DiraMark3D({ isExiting }: { isExiting: boolean }) {
         gl.uniform1f(pitchLocation, reducedMotion ? 0.12 : 0.15 + Math.sin(elapsed * 0.43) * 0.08);
         gl.uniform1f(rollLocation, reducedMotion ? -0.025 : Math.sin(elapsed * 0.31) * 0.055);
         gl.uniform1f(bobLocation, reducedMotion ? 0 : Math.sin(elapsed * 0.82) * 0.035);
+        gl.uniform1f(scaleLocation, displayedObjectScale);
         gl.uniform1f(timeLocation, reducedMotion ? 0 : time);
         if (canvasWidth > 0 && canvasHeight > 0) gl.drawArrays(gl.TRIANGLES, 0, vertexCount);
       };
+      redrawRef.current = () => draw(elapsed);
 
       resizeCanvas = () => {
         if (!gl) return;
         const bounds = host.getBoundingClientRect();
+        if (bounds.width <= 0 || bounds.height <= 0) return;
         const lowPower = window.matchMedia("(max-width: 640px)").matches || (navigator.hardwareConcurrency || 8) <= 4;
-        const pixelRatio = Math.min(window.devicePixelRatio || 1, lowPower ? 1 : 1.25);
+        const viewportPixels = bounds.width * bounds.height;
+        const maxPixels = lowPower ? 1_500_000 : 3_500_000;
+        const pixelRatio = Math.min(
+          window.devicePixelRatio || 1,
+          lowPower ? 1 : 1.25,
+          Math.sqrt(maxPixels / viewportPixels)
+        );
         const width = Math.max(1, Math.round(bounds.width * pixelRatio));
         const height = Math.max(1, Math.round(bounds.height * pixelRatio));
-        if (width === canvasWidth && height === canvasHeight) return;
+        const targetSize = Math.max(118, Math.min(238, Math.min(bounds.width, bounds.height) * 0.22));
+        responsiveObjectScale = Math.max(0.12, Math.min(0.58, targetSize / (0.765 * bounds.height)));
+        if (!hasSized || reducedMotion) {
+          displayedObjectScale = responsiveObjectScale * (exitingRef.current ? 0.78 : 1);
+        }
+        hasSized = true;
+        if (width === canvasWidth && height === canvasHeight) {
+          draw(elapsed);
+          return;
+        }
 
         canvasWidth = width;
         canvasHeight = height;
@@ -378,6 +408,8 @@ export function DiraMark3D({ isExiting }: { isExiting: boolean }) {
 
         const targetSpeed = exitingRef.current ? 0.14 : 0.46;
         angularSpeed += (targetSpeed - angularSpeed) * Math.min(delta * 1.8, 1);
+        const targetScale = responsiveObjectScale * (exitingRef.current ? 0.78 : 1);
+        displayedObjectScale += (targetScale - displayedObjectScale) * Math.min(delta * 2.2, 1);
         draw(elapsed);
 
         if (!reducedMotion && !document.hidden) {
@@ -408,6 +440,7 @@ export function DiraMark3D({ isExiting }: { isExiting: boolean }) {
       onContextLost = (event: Event) => {
         event.preventDefault();
         stopAnimation();
+        redrawRef.current = null;
         delete host.dataset.webgl;
       };
 

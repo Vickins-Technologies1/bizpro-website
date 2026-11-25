@@ -128,7 +128,7 @@ export function Navbar() {
       <header
         data-scrolled={scrolled}
         className={cn(
-          "sticky top-0 z-50 border-b",
+          "site-navbar fixed inset-x-0 top-0 z-50 border-b",
           scrolled
             ? "border-border/70 bg-background/90 shadow-panel backdrop-blur-md supports-[backdrop-filter]:bg-background/80"
             : "border-border/60 bg-background/90 backdrop-blur-md",

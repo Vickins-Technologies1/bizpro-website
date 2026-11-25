@@ -46,7 +46,7 @@ html{background:var(--background)}body{background:var(--background);color:var(--
 
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Dira OS permanent signature system */
@@ -134,13 +134,15 @@ h1, h2, h3, h4, .site-brand, .section-heading h2, .final-cta h2 {
     linear-gradient(90deg, rgba(5, 15, 24, 0.62), rgba(5, 15, 24, 0.24) 52%, rgba(5, 15, 24, 0.62));
 }
 
-.site-content { position: relative; z-index: 1; min-height: 100vh; }
+.site-content { position: relative; z-index: 1; min-height: 100vh; padding-top: var(--site-header-height); }
 .site-shell { min-height: 100vh; }
 .site-shell > main { position: relative; }
 
-header.sticky {
-  position: sticky;
+header.site-navbar {
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
   width: 100%;
   margin: 0 auto;
@@ -152,16 +154,16 @@ header.sticky {
   backdrop-filter: blur(20px) saturate(140%);
 }
 
-header.sticky[data-scrolled="true"] {
+header.site-navbar[data-scrolled="true"] {
   border-bottom-color: rgba(170, 204, 220, 0.22);
   background: rgba(7, 18, 28, 0.92);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
 }
 
-header.sticky nav a { color: #a8b7c2; border-radius: 999px; }
-header.sticky nav a:hover, header.sticky nav a[aria-current="page"] { color: #f1f6f8; background: rgba(94, 176, 240, 0.12); }
-header.sticky > div { max-width: none; }
-header.sticky img { filter: drop-shadow(0 0 12px rgba(45, 155, 240, 0.16)); }
+header.site-navbar nav a { color: #a8b7c2; border-radius: 999px; }
+header.site-navbar nav a:hover, header.site-navbar nav a[aria-current="page"] { color: #f1f6f8; background: rgba(94, 176, 240, 0.12); }
+header.site-navbar > div { max-width: none; }
+header.site-navbar img { filter: drop-shadow(0 0 12px rgba(45, 155, 240, 0.16)); }
 
 .hero {
   position: relative;
@@ -434,9 +436,9 @@ main > section:has(> .final-cta) { background: transparent; }
 .site-content main .download-center #faq h2,
 .site-content main .download-center > section:last-child h2 { max-width: 24ch; }
 
-.site-shell > header.sticky > .container > div { min-height: 56px; padding-block: 6px; }
-.site-shell > header.sticky img { width: 32px; height: 32px; }
-.site-shell > header.sticky .button.compact { min-height: 34px; padding-inline: 14px; font-size: 12px; }
+.site-navbar > .container > div { min-height: 56px; padding-block: 6px; }
+.site-navbar img { width: 32px; height: 32px; }
+.site-navbar .button.compact { min-height: 34px; padding-inline: 14px; font-size: 12px; }
 .back-to-top {
   position: fixed;
   right: max(1rem, env(safe-area-inset-right));
@@ -488,7 +490,11 @@ main > section:has(> .final-cta) { background: transparent; }
   .back-to-top { transition: none; }
 }
 
-/* Floating shared navigation: keep its flow height stable while the surface tucks in. */
+/* Reserve header space and align in-page links around the fixed navigation. */
+:root {
+  --site-header-height: calc(57px + env(safe-area-inset-top, 0px));
+}
+
 html {
   scroll-padding-top: calc(4.5rem + env(safe-area-inset-top));
 }
@@ -497,15 +503,15 @@ html [id] {
   scroll-margin-top: calc(4.5rem + env(safe-area-inset-top));
 }
 
-header.sticky {
+header.site-navbar {
   top: 0;
   padding-top: env(safe-area-inset-top);
-  min-height: calc(57px + env(safe-area-inset-top));
+  min-height: var(--site-header-height);
   transition: width 240ms ease, transform 240ms ease, border 240ms ease, border-radius 240ms ease,
     background-color 240ms ease, box-shadow 240ms ease;
 }
 
-header.sticky[data-scrolled="true"] {
+header.site-navbar[data-scrolled="true"] {
   width: min(1320px, calc(100% - clamp(1.25rem, 4vw, 3.25rem)));
   border-color: rgba(170, 204, 220, 0.24);
   border-style: solid;
@@ -516,26 +522,29 @@ header.sticky[data-scrolled="true"] {
   transform: translate3d(0, 6px, 0);
 }
 
-header.sticky[data-scrolled="true"] img {
+header.site-navbar[data-scrolled="true"] img {
   width: 30px;
   height: 30px;
 }
 
-header.sticky[data-scrolled="true"] .button.compact {
+header.site-navbar[data-scrolled="true"] .button.compact {
   min-height: 33px;
 }
 
-/* Initial page load only. The mark is a layered CSS 3D composition using the existing logo. */
+/* Full-viewport WebGL preloader and atmospheric environment. */
 .preloader {
   position: fixed;
   z-index: 140;
   inset: 0;
-  display: grid;
-  place-items: center;
-  padding: max(1.25rem, env(safe-area-inset-top)) max(1.25rem, env(safe-area-inset-right))
-    max(1.25rem, env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
-  background: rgba(4, 12, 20, 0.76);
-  backdrop-filter: blur(10px) saturate(112%);
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 50% 47%, rgba(18, 91, 124, 0.24), transparent 42%),
+    radial-gradient(ellipse at 16% 18%, rgba(35, 101, 144, 0.12), transparent 34%),
+    linear-gradient(145deg, #07131e 0%, #081722 52%, #050e17 100%);
   opacity: 1;
   pointer-events: none;
   animation: preloader-failsafe 1ms linear 8s forwards;
@@ -549,50 +558,38 @@ header.sticky[data-scrolled="true"] .button.compact {
 
 .preloader--leaving .preloader-content {
   opacity: 0;
-  transform: scale(0.94);
+  transform: translate(-50%, -50%) scale(0.94);
 }
 
 .preloader-content {
+  position: absolute;
+  top: calc(50% + clamp(5.6rem, 12vmin, 9rem));
+  left: 50%;
+  z-index: 2;
   display: grid;
   justify-items: center;
   width: min(100%, 240px);
   text-align: center;
+  transform: translate(-50%, -50%);
   transition: opacity 620ms ease, transform 620ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.preloader-stage {
-  position: relative;
-  display: grid;
-  width: 112px;
-  height: 112px;
-  margin-bottom: 20px;
-  place-items: center;
-  animation: preloader-arrive 680ms cubic-bezier(0.18, 0.74, 0.22, 1) both;
-}
-
-.preloader-stage::before {
-  position: absolute;
-  inset: 30px 24px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(65, 164, 222, 0.30), rgba(44, 209, 193, 0.08) 48%, transparent 74%);
-  content: "";
-  filter: blur(20px);
-}
-
 .preloader-mark-3d {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
-  width: 112px;
-  height: 112px;
+  width: 100%;
+  height: 100%;
   isolation: isolate;
+  pointer-events: none;
 }
 
 .preloader-mark-3d__glow {
   position: absolute;
-  inset: 10px 8px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(41, 156, 207, 0.16), transparent 70%);
-  filter: blur(10px);
+  inset: 0;
+  background:
+    radial-gradient(ellipse clamp(10rem, 26vmin, 19rem) clamp(8rem, 21vmin, 15rem) at 50% 48%, rgba(37, 156, 202, 0.17), transparent 74%),
+    radial-gradient(ellipse 38vw 28vh at 50% 52%, rgba(12, 63, 91, 0.12), transparent 72%);
 }
 
 .preloader-mark-3d__fallback,
@@ -606,8 +603,8 @@ header.sticky[data-scrolled="true"] .button.compact {
 
 .preloader-mark-3d__fallback {
   z-index: 1;
-  width: 64px;
-  height: 64px;
+  width: clamp(6rem, 22vmin, 14rem);
+  height: clamp(6rem, 22vmin, 14rem);
   margin: auto;
   object-fit: contain;
   filter: drop-shadow(0 5px 11px rgba(23, 133, 202, 0.3));
@@ -666,11 +663,6 @@ header.sticky[data-scrolled="true"] .button.compact {
   animation: preloader-progress 1.5s cubic-bezier(0.5, 0, 0.35, 1) infinite;
 }
 
-@keyframes preloader-arrive {
-  from { opacity: 0; transform: translateY(8px) scale(0.92); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
 @keyframes preloader-progress {
   from { transform: translateX(-105%); }
   to { transform: translateX(370%); }
@@ -680,13 +672,8 @@ header.sticky[data-scrolled="true"] .button.compact {
   to { opacity: 0; visibility: hidden; }
 }
 
-@supports not (backdrop-filter: blur(1px)) {
-  .preloader { background: rgba(4, 12, 20, 0.96); }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  header.sticky,
-  .preloader-stage,
+  header.site-navbar,
   .preloader-content,
   .preloader-mark-3d__canvas,
   .preloader-mark-3d__fallback,
@@ -696,7 +683,7 @@ header.sticky[data-scrolled="true"] .button.compact {
   }
 
   .preloader { transition: none; animation: preloader-failsafe 1ms linear 8s forwards !important; }
-  .preloader--leaving .preloader-content { transform: none; }
-  header.sticky[data-scrolled="true"] { transform: none; }
+  .preloader--leaving .preloader-content { transform: translate(-50%, -50%); }
+  header.site-navbar[data-scrolled="true"] { transform: none; }
   .preloader-progress span { width: 42%; transform: none; }
 }
