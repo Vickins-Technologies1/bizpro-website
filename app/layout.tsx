@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { GlobalBackgroundSlideshow } from "@/components/layout/global-background-slideshow";
 import { DownloadProvider } from "@/components/download/download-context";
 import { Navbar } from "@/components/layout/navbar";
@@ -8,8 +9,10 @@ import { SiteChrome } from "@/components/layout/site-chrome";
 import { Preloader } from "@/components/ui/preloader";
 import { JsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/config/site";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import { getOrganizationSchema, getWebsiteSchema } from "@/lib/structured-data";
 import "@/app/globals.css";
+import "@/app/themes.css";
 
 const displayFont = localFont({ src: "../public/fonts/sora-latin.woff2", variable: "--font-display", weight: "400 700", display: "swap" });
 const bodyFont = localFont({ src: "../public/fonts/dm-sans-latin.woff2", variable: "--font-body", weight: "400 700", display: "swap" });
@@ -49,8 +52,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#07111a",
-  colorScheme: "dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f6f9fb" },
+    { media: "(prefers-color-scheme: dark)", color: "#07111a" }
+  ],
+  colorScheme: "light dark",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover"
@@ -62,19 +68,28 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <Script
+          id="dira-theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(() => { try { const saved = localStorage.getItem("dira-os-theme"); const system = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; const theme = saved === "light" || saved === "dark" ? saved : system; document.documentElement.dataset.theme = theme; document.documentElement.style.colorScheme = theme; } catch { document.documentElement.dataset.theme = "dark"; document.documentElement.style.colorScheme = "dark"; } })();`
+          }}
+        />
         <link rel="preload" as="image" href="/backgrounds/analytics-review.webp" />
       </head>
       <body className={`${displayFont.variable} ${bodyFont.variable}`}>
-        <GlobalBackgroundSlideshow />
-        <DownloadProvider>
-          <JsonLd data={getOrganizationSchema()} />
-          <JsonLd data={getWebsiteSchema()} />
-          <Preloader />
-          <Navbar />
-          <div className="site-content"><SiteChrome>{children}</SiteChrome></div>
-        </DownloadProvider>
+        <ThemeProvider>
+          <GlobalBackgroundSlideshow />
+          <DownloadProvider>
+            <JsonLd data={getOrganizationSchema()} />
+            <JsonLd data={getWebsiteSchema()} />
+            <Preloader />
+            <Navbar />
+            <div className="site-content"><SiteChrome>{children}</SiteChrome></div>
+          </DownloadProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

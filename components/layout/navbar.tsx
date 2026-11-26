@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { navigation } from "@/config/navigation";
 import { Container } from "@/components/ui/container";
 import { DownloadCTA } from "@/components/ui/download-cta";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { cn } from "@/lib/utils";
 
 function NavLink({
@@ -158,6 +159,7 @@ export function Navbar() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
+            <ThemeToggle />
             <DownloadCTA compact label="Get Started" className="shrink-0" />
           </div>
 
@@ -185,7 +187,7 @@ export function Navbar() {
         tabIndex={menuOpen ? 0 : -1}
         onClick={closeMenu}
         className={cn(
-          "fixed inset-0 z-40 bg-slate-950/45 backdrop-blur-[2px] transition-opacity duration-200 lg:hidden",
+          "fixed inset-0 z-40 bg-[var(--nav-backdrop)] backdrop-blur-[2px] transition-opacity duration-200 lg:hidden",
           menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         )}
       />
@@ -199,7 +201,7 @@ export function Navbar() {
         inert={!menuOpen}
         ref={menuPanelRef}
         className={cn(
-          "fixed inset-y-0 right-0 z-50 flex w-[min(88vw,22rem)] flex-col border-l border-border/70 bg-card pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] shadow-[-24px_0_70px_rgba(4,12,28,.2)] transition-transform duration-300 ease-out lg:hidden supports-[backdrop-filter]:bg-card/92 supports-[backdrop-filter]:backdrop-blur-xl",
+          "fixed inset-y-0 right-0 z-50 flex w-[min(88vw,22rem)] flex-col border-l border-border/70 bg-card pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] shadow-[var(--shadow-float)] transition-transform duration-300 ease-out lg:hidden supports-[backdrop-filter]:bg-card/92 supports-[backdrop-filter]:backdrop-blur-xl",
           menuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
@@ -217,6 +219,11 @@ export function Navbar() {
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
+        </div>
+
+        <div className="flex items-center justify-between border-b border-border/70 px-5 py-3">
+          <span className="text-xs font-medium text-muted">Appearance</span>
+          <ThemeToggle showLabels />
         </div>
 
         <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 py-5">

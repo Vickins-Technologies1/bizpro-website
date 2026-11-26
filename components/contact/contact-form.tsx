@@ -56,7 +56,7 @@ export function ContactForm() {
         <button type="submit" disabled={status === "sending"} className={cn(buttonStyles("primary"), "disabled:cursor-wait disabled:opacity-60")}>
           <Send className="h-4 w-4" aria-hidden="true" />{status === "sending" ? "Sending…" : "Send message"}
         </button>
-        <p role="status" aria-live="polite" className={cn("text-sm text-muted", status === "sent" && "text-accent", status === "error" && "text-red-600")}>
+        <p role="status" aria-live="polite" className={cn("text-sm text-muted", status === "sent" && "text-[var(--success)]", status === "error" && "text-[var(--error)]")}>
           {feedback || "We’ll get back to you as soon as we can."}
         </p>
       </div>

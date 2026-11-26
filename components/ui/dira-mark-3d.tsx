@@ -144,6 +144,7 @@ function createProgram(gl: WebGLRenderingContext): WebGLProgram | null {
     uniform float u_roll;
     uniform float u_bob;
     uniform float u_scale;
+    uniform float u_light_theme;
     varying vec3 v_position;
     varying vec3 v_normal;
     varying float v_material;
@@ -188,8 +189,12 @@ function createProgram(gl: WebGLRenderingContext): WebGLProgram | null {
       vec3 sweepDirection = normalize(vec3(cos(u_time * 0.48), 0.28, 0.85 + sin(u_time * 0.48) * 0.24));
       float sweep = pow(max(dot(normal, sweepDirection), 0.0), 24.0) * 0.26;
       float vertical = smoothstep(-0.8 * u_scale, 0.78 * u_scale, v_position.y);
-      vec3 frontMaterial = mix(vec3(0.045, 0.29, 0.63), vec3(0.09, 0.68, 0.62), vertical);
-      vec3 sideMaterial = vec3(0.035, 0.12, 0.20);
+      vec3 darkBlue = vec3(0.045, 0.29, 0.63);
+      vec3 darkTeal = vec3(0.09, 0.68, 0.62);
+      vec3 lightBlue = vec3(0.035, 0.24, 0.45);
+      vec3 lightTeal = vec3(0.02, 0.46, 0.40);
+      vec3 frontMaterial = mix(mix(darkBlue, darkTeal, vertical), mix(lightBlue, lightTeal, vertical), u_light_theme);
+      vec3 sideMaterial = mix(vec3(0.035, 0.12, 0.20), vec3(0.055, 0.13, 0.19), u_light_theme);
       vec3 base = mix(frontMaterial, sideMaterial, v_material);
       vec3 color = base * (0.30 + diffuse * 0.74);
       color += vec3(0.70, 0.90, 1.0) * specular;
@@ -266,6 +271,7 @@ export function DiraMark3D({ isExiting }: { isExiting: boolean }) {
     let angularSpeed = 0.46;
     let reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let resizeObserver: ResizeObserver | null = null;
+    let themeObserver: MutationObserver | null = null;
     let motionQuery: MediaQueryList | null = null;
     let onMotionPreferenceChange: ((event: MediaQueryListEvent) => void) | null = null;
     let onVisibilityChange: (() => void) | null = null;
@@ -287,6 +293,7 @@ export function DiraMark3D({ isExiting }: { isExiting: boolean }) {
       if (onContextLost) canvas.removeEventListener("webglcontextlost", onContextLost);
       window.removeEventListener("resize", resizeCanvas);
       resizeObserver?.disconnect();
+      themeObserver?.disconnect();
       if (gl && buffer) gl.deleteBuffer(buffer);
       if (gl && program) gl.deleteProgram(program);
       buffer = null;
@@ -337,6 +344,7 @@ export function DiraMark3D({ isExiting }: { isExiting: boolean }) {
       const bobLocation = gl.getUniformLocation(program, "u_bob");
       const scaleLocation = gl.getUniformLocation(program, "u_scale");
       const timeLocation = gl.getUniformLocation(program, "u_time");
+      const lightThemeLocation = gl.getUniformLocation(program, "u_light_theme");
       gl.enable(gl.DEPTH_TEST);
       gl.depthFunc(gl.LEQUAL);
       gl.disable(gl.CULL_FACE);
@@ -362,6 +370,7 @@ export function DiraMark3D({ isExiting }: { isExiting: boolean }) {
         gl.uniform1f(bobLocation, reducedMotion ? 0 : Math.sin(elapsed * 0.82) * 0.035);
         gl.uniform1f(scaleLocation, displayedObjectScale);
         gl.uniform1f(timeLocation, reducedMotion ? 0 : time);
+        gl.uniform1f(lightThemeLocation, document.documentElement.dataset.theme === "light" ? 1 : 0);
         if (canvasWidth > 0 && canvasHeight > 0) gl.drawArrays(gl.TRIANGLES, 0, vertexCount);
       };
       redrawRef.current = () => draw(elapsed);
@@ -450,6 +459,8 @@ export function DiraMark3D({ isExiting }: { isExiting: boolean }) {
       document.addEventListener("visibilitychange", onVisibilityChange);
       canvas.addEventListener("webglcontextlost", onContextLost);
       window.addEventListener("resize", resizeCanvas, { passive: true });
+      themeObserver = new MutationObserver(() => draw(elapsed));
+      themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
       resizeObserver?.observe(host);
       resizeCanvas();
       host.dataset.webgl = "true";
