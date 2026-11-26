@@ -281,7 +281,10 @@ header.site-navbar nav a:hover, header.site-navbar nav a[aria-current="page"] { 
   font-weight: 600;
   transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
+.theme-toggle button svg { transition: transform 220ms cubic-bezier(.2, .75, .25, 1); }
 .theme-toggle button:hover { color: var(--foreground); }
+.theme-toggle button:active svg { transform: rotate(-12deg) scale(.92); }
+.theme-toggle button[aria-pressed="true"] svg { animation: theme-icon-arrive 260ms cubic-bezier(.2, .75, .25, 1); }
 .theme-toggle button[aria-pressed="true"],
 html[data-theme="light"] .theme-toggle button[data-theme-option="light"],
 html[data-theme="dark"] .theme-toggle button[data-theme-option="dark"] {
@@ -291,6 +294,21 @@ html[data-theme="dark"] .theme-toggle button[data-theme-option="dark"] {
 }
 .theme-toggle button:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 .theme-toggle--labeled button { min-width: 74px; }
+
+@keyframes theme-icon-arrive {
+  from { opacity: .62; transform: rotate(-22deg) scale(.88); }
+  to { opacity: 1; transform: rotate(0) scale(1); }
+}
+
+/* Same-document view transition snapshots: the incoming root is revealed as a circular wave. */
+::view-transition-image-pair(root) { isolation: auto; }
+::view-transition-old(root),
+::view-transition-new(root) {
+  display: block;
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) { z-index: 1; will-change: clip-path, opacity; }
 
 html[data-theme="light"] .global-background__slide.is-active { opacity: var(--ambient-image-opacity); }
 html[data-theme="light"] .global-background__shade { transition: background-color 200ms ease; }
@@ -326,5 +344,6 @@ html[data-theme="light"] .download-center {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .theme-toggle button { transition: none; }
+  .theme-toggle button,
+  .theme-toggle button svg { transition: none; animation: none; }
 }

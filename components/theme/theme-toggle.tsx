@@ -15,7 +15,7 @@ export function ThemeToggle({ className, showLabels = false }: { className?: str
         aria-label="Use light theme"
         aria-pressed={theme ? theme === "light" : undefined}
         title="Light theme"
-        onClick={() => setTheme("light")}
+        onClick={(event) => setTheme("light", event.currentTarget)}
       >
         <Sun className="h-4 w-4" aria-hidden="true" />
         {showLabels ? <span>Light</span> : null}
@@ -26,7 +26,7 @@ export function ThemeToggle({ className, showLabels = false }: { className?: str
         aria-label="Use dark theme"
         aria-pressed={theme ? theme === "dark" : undefined}
         title="Dark theme"
-        onClick={() => setTheme("dark")}
+        onClick={(event) => setTheme("dark", event.currentTarget)}
       >
         <Moon className="h-4 w-4" aria-hidden="true" />
         {showLabels ? <span>Dark</span> : null}
